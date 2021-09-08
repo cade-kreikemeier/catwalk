@@ -1,0 +1,27 @@
+{
+  "name": "catwalk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shredd-it-Co/catwalk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shredd-it-Co/catwalk/issues"
+  },
+  "homepage": "https://github.com/Shredd-it-Co/catwalk#readme",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1"
+  }
+}
