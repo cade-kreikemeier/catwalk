@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: |
         npm install
-        # npx webpack
-        # npm run server
+        npx eslint server/ --ext .js --ext .jsx
+        npx eslint client/src/ --ext .js --ext .jsx
