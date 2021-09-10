@@ -27,3 +27,4 @@ jobs:
         npm install
         npx eslint server/ --ext .js --ext .jsx
         npx eslint client/src/ --ext .js --ext .jsx
+        npm run buil-react
