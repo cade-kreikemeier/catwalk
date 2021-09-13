@@ -8,7 +8,7 @@ interface CarouselCardProps {
 const cardStyle = {
   display: 'inline-block',
   width: '150px',
-  height: '200px',
+  height: '240px',
   overflow: 'hidden'
 };
 
