@@ -8,12 +8,12 @@ interface CarouselProps {
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   return <React.Fragment>
-      <h3>{props.title}</h3>
-      <div>
+    <h3>{props.title}</h3>
+    <div style={{ overflow: 'auto', whiteSpace: 'nowrap', height: '200px' }}>
       {props.data.map((d, i) => {
-        return <CarouselCard category={d[0]} title={d[1]} key={i}/>;
+        return <CarouselCard category={d[0]} title={d[1]} key={i} />;
       })}
-      </div>
+    </div>
   </React.Fragment>;
 };
 
