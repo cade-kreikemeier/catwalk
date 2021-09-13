@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './client/src/index.js',
+  entry: './client/src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'client', 'dist')
@@ -10,7 +10,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$$/,
         include: [
           path.join(__dirname, 'client', 'src')
         ],
@@ -20,7 +20,8 @@ module.exports = {
           options: {
             presets: [
               '@babel/preset-env',
-              '@babel/preset-react'
+              '@babel/preset-react',
+              '@babel/preset-typescript'
             ]
           }
         }
