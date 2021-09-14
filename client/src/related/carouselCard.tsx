@@ -12,7 +12,7 @@ interface CarouselCardProps {
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard">
-    <img src="https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg" />
+    <img src={props.imageUrl} />
     <p>{props.category}</p>
     <p>{props.title}</p>
   </div>;
