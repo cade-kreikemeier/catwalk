@@ -9,7 +9,7 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   return <React.Fragment>
     <h3>{props.title}</h3>
-    <div style={{ overflow: 'auto', whiteSpace: 'nowrap' }}>
+    <div className="carousel">
       {props.data.map((d, i) => {
         return <CarouselCard
           imageUrl="https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg"

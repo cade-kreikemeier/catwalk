@@ -84,3 +84,24 @@
   border-color: black;
   display: inline-block;
 }
+
+/* Related Items */
+
+.carousel {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.carouselCard {
+  display: inline-block;
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+  overflow: hidden;
+}
+.carouselCard > img {
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+  overflow: hidden;
+}
