@@ -1,0 +1,105 @@
+/* const divStyle = { */
+  /* display: 'grid', */
+  /* // grid-gap: '5%', */
+  /* grid-template-columns: "4fr 40% 1fr 30% 4fr", */
+  /* grid-template-rows: "4fr 20% 1fr 10% 1fr 10% 4fr" */
+/* }; */
+
+ .overView {
+
+  /* top: 20%;
+  left: 20%;
+  bottom: 20%; */
+  min-height: 100%;
+  min-width: 100%;
+
+  background-color: grey;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 42% 24% 1fr;
+  grid-template-rows: 1fr 30% 40% 15% 1fr;
+
+  grid-template-areas:
+  ".       .              .           ."
+  ".   imageGallery   productInfo     ."
+  ".   imageGallery  styleSelector    ."
+  ".   imageGallery   addToCart       ."
+  ".       .              .           .";
+}
+
+.imageGallery {
+  background-color: red;
+  grid-area: imageGallery;
+}
+
+.productInfo {
+  background-color: blue;
+  grid-area: productInfo;
+}
+
+.styleSelector {
+  background-color: yellow;
+  grid-area: styleSelector;
+  display: inline-block;
+
+}
+
+.addToCart {
+  background-color: green;
+  grid-area: addToCart;
+}
+
+.overViewContainer {
+  background-color:hotpink;
+  min-height: 75vh;
+  /* justify-content: center; */
+
+  display: flex;
+  /* align-items: center; */
+  /* flex-direction: row; */
+  /* flex-direction: column; */
+}
+
+.circle {
+  height: 40px;
+  width: 40px;
+  padding: 10px 10px 10px 10px;
+  margin: 5px 5px 5px 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.selectSize {
+  height: 4rem;
+  width:  10rem;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.volume {
+  height: 2rem;
+  width:  4rem;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+}
+
+.Add2Bag {
+  height: 4rem;
+  width:  10rem;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.favBtn {
+  height: 2rem;
+  width:  2rem;
+  border-style: solid;
+  border-color: black;
+  display: inline-block;
+}
