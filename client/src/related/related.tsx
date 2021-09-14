@@ -9,7 +9,7 @@ const Related: React.FC = () => {
     <h2>Related Items</h2>
     <Carousel title="Related Products" data={data}/>
     <Carousel title="Your Outfit" data={data}/>
-  </div>
+  </div>;
 };
 
 export default Related;

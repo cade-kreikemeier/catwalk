@@ -14,5 +14,5 @@ export default function StyleSelector() {
       <div className="selectSize"> Select Size</div>
       <div className="volume">add</div>
     </div>
-  )
+  );
 };

@@ -5,5 +5,5 @@ export default function ImageGallery() {
     <div className='imageGallery'>
       <h3>Image Gallery!</h3>
     </div>
-  )
+  );
 };

@@ -30,6 +30,6 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
     <p>{props.category}</p>
     <p>{props.title}</p>
   </div>;
-}
+};
 
 export default CarouselCard;
