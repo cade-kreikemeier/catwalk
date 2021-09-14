@@ -94,14 +94,12 @@
 
 .carouselCard {
   display: inline-block;
-  height: 150px;
+  height: 200px;
   width: auto;
-  object-fit: contain;
-  overflow: hidden;
 }
+
 .carouselCard > img {
-  height: 150px;
-  width: auto;
+  height: 100px;
   object-fit: contain;
   overflow: hidden;
 }
