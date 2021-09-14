@@ -1,4 +1,4 @@
- .overView {
+.overView {
   min-height: 100%;
   min-width: 100%;
   background-color: grey;
@@ -84,7 +84,7 @@
   border-color: black;
   display: inline-block;
 }
-
+  
 /* Related Items */
 
 .carousel {
@@ -102,4 +102,51 @@
   height: 100px;
   object-fit: contain;
   overflow: hidden;
+}
+
+/* Reviews */
+
+.reviews {
+  max-width: 60vw;
+  min-width: 600px;
+  margin: 0 auto;
+  background-color: grey;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.reviewBreakdown {
+  border: 3px solid red;
+}
+
+.ratingSummary {
+  border: 3px solid orange;
+}
+
+.ratingBreakdown {
+  border: 3px solid yellow;
+}
+
+.attributesSummary {
+  border: 3px solid darkorange;
+}
+
+.reviewList { 
+  border: 3px solid blue; 
+}
+
+.reviewList button {
+  margin: 1rem 2rem;
+}
+
+.reviewSort {
+  border: 3px solid green;
+}
+
+.reviewTileContainer {
+  border: 3px solid purple;
+}
+
+.reviewTile {
+  border: 3px solid yellowgreen;
 }

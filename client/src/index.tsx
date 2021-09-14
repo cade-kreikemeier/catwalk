@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './overview/overview';
 import Related from './related/related';
-import Reviews from './reviews/reviews';
+import Reviews from './reviews/Reviews';
 
 ReactDOM.render(
   <div>
