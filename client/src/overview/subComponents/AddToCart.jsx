@@ -6,5 +6,5 @@ export default function AddToCart() {
       <div className='AddToBag'>ADD TO BAG</div>
       <div className='favBtn'>⭐️</div>
     </div>
-  )
+  );
 };
