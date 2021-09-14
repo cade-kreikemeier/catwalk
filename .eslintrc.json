@@ -29,6 +29,7 @@
         "@typescript-eslint/no-extra-semi": "off",
         "@typescript-eslint/no-use-before-define": [
             "error"
-        ]
+        ],
+        "no-multiple-empty-lines": ["error", {"max": 2}]
     }
 }
