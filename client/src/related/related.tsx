@@ -3,7 +3,7 @@ import React from 'react';
 const Related = (props) => {
   return < div >
     <h2>Related Items!</h2>
-  </div >
+  </div >;
 };
 
 export default Related;

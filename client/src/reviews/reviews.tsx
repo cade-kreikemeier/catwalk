@@ -5,5 +5,5 @@ export default function Reviews() {
     <div>
       <h2>Reviews!</h2>
     </div>
-  )
+  );
 };

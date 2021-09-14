@@ -21,7 +21,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "semi": 0,
+        "semi": ["error", "always"],
         "eol-last": "off",
         "space-before-function-paren": "off",
         "no-use-before-define": "off",
