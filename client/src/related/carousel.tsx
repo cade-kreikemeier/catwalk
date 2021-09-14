@@ -11,7 +11,17 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     <h3>{props.title}</h3>
     <div style={{ overflow: 'auto', whiteSpace: 'nowrap' }}>
       {props.data.map((d, i) => {
-        return <CarouselCard category={d[0]} title={d[1]} key={i} />;
+        return <CarouselCard
+          imageUrl="https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg"
+          category={d[0]}
+          title={d[1]}
+          price="$12.34"
+          averageRating={2.3}
+          actionCallback={() => { console.log('clicked'); }}
+          actionChild={(
+            <span>👍</span>
+          )}
+          key={i} />;
       })}
     </div>
   </React.Fragment>;

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface CarouselCardProps {
+  imageUrl: string,
   category: string,
   title: string,
+  price: string,
+  averageRating: number,
+  actionChild: ReactNode,
+  actionCallback: () => void
 }
 
 const cardStyle = {
