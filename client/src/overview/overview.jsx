@@ -15,5 +15,5 @@ export default function OverView(props) {
         <AddToCart />
       </div>
     </div>
-  )
+  );
 };

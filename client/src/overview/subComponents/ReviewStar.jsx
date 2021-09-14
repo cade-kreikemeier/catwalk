@@ -5,5 +5,5 @@ export default function ReviewStar() {
     <div className='reviewStar'>
       <h3>⭐️⭐️⭐️⭐️⭐️</h3>
     </div>
-  )
+  );
 };

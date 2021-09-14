@@ -1,5 +1,5 @@
 import React from 'react';
-import ReviewStar from './ReviewStar.jsx'
+import ReviewStar from './ReviewStar.jsx';
 export default function ProductInfo() {
   return (
     <div className='productInfo'>
@@ -7,5 +7,5 @@ export default function ProductInfo() {
       <h3>Expand Product Name</h3>
       <span>$369</span>
     </div>
-  )
+  );
 };
