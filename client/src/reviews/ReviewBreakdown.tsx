@@ -4,10 +4,7 @@ import RatingSummary from './RatingSummary';
 import AttributesSummary from './AttributesSummary';
 
 const ReviewBreakdown: React.FC = () => (
-  <div
-    className="reviewBreakdown"
-    style={{ border: '3px solid red' }}
-  >
+  <div className="reviewBreakdown">
     <h2>Review Breakdown</h2>
     <RatingSummary />
     <RatingBreakdown />

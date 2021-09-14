@@ -3,13 +3,13 @@ import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => (
-  <div
-    className="reviewList"
-    style={{ border: '3px solid blue' }}
-  >
-    <h2>Review List</h2>
+  <div className="reviewList">
+    <h2>Reviews List</h2>
     <ReviewSort />
-    <ReviewTile />
+    <div className="reviewTileContainer">
+      <ReviewTile />
+      <ReviewTile />
+    </div>
     <button>Add Review</button>
     <button>More Reviews</button>
   </div>

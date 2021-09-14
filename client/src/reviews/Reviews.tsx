@@ -1,13 +1,12 @@
 import React from 'react';
 import ReviewBreakdown from './ReviewBreakdown';
-import ReviewsList from './ReviewsList'
+import ReviewsList from './ReviewsList';
 
 const Reviews: React.FC = () => (
-  <React.Fragment>
-    <h2>Reviews!</h2>
+  <div className="reviews">
     <ReviewBreakdown />
     <ReviewsList />
-  </React.Fragment>
+  </div>
 );
 
 export default Reviews;
