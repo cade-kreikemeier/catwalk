@@ -1,8 +1,9 @@
 import React from 'react';
 import Carousel from './carousel';
+import dummyData from '../dummyData/products';
 
 const Related: React.FC = () => {
-  const data = Array(20).fill(0).map((e, i) => {
+  const data = dummyData.map((e, i: number) => {
     return ['category' + i, 'title' + i];
   });
   return <div>
