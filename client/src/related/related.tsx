@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from './carousel';
-import dummyData from '../dummyData/products';
+import dummyData from '../dummyData/products.json';
 
 const Related: React.FC = () => {
   const data = dummyData.map((e, i: number) => {
