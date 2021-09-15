@@ -6,7 +6,11 @@ const Related: React.FC = () => {
   return <div>
     <h2>Related Items</h2>
     <Carousel title="Related Products"
-      ids={ids}
+      loadIds={new Promise(resolve => {
+        setTimeout(() => {
+          resolve(ids);
+        }, 500);
+      })}
       imageUrlProducer={id => {
         return new Promise(resolve => {
           setTimeout(() => {
