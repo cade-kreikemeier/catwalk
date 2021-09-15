@@ -13,9 +13,9 @@ interface CarouselCardProps {
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
-  const [rating, setRating] = useState(undefined);
-  const [data, setData] = useState({ category: null });
-  const [imageUrl, setImageUrl] = useState('');
+  const [rating, setRating] = useState(null);
+  const [data, setData] = useState({ category: null, name: null, price: null });
+  const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     props.loadData
@@ -39,17 +39,21 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   });
 
   return <div className="carouselCard">
-    {(imageUrl === '')
-      ? <img src="https://cdn.dribbble.com/users/172519/screenshots/3520576/dribbble-spinner-800x600.gif"/>
+    {(imageUrl === null)
+      ? <img src="https://cdn.dribbble.com/users/172519/screenshots/3520576/dribbble-spinner-800x600.gif" />
       : <img src={imageUrl} />
-    }
-    {(rating === undefined)
-      ? <p>Loading</p>
-      : <p>Rate: {rating}</p>
     }
     {(data.category === null)
       ? <p>Loading</p>
-      : <p>{data.category}</p>}
+      : <React.Fragment>
+        <p>{data.category}</p>
+        <p>{data.name}</p>
+        <p>${data.price}</p>
+      </React.Fragment>}
+    {(rating === null)
+      ? <p>Loading</p>
+      : <p>Rating: {rating}</p>
+    }
   </div>;
 };
 

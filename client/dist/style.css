@@ -94,8 +94,13 @@
 
 .carouselCard {
   display: inline-block;
-  height: 450px;
+  height: 500px;
   width: 200px;
+  margin: 16px;
+}
+
+.carouselCard p {
+  margin: 0px;
 }
 
 .carouselCard > img {
