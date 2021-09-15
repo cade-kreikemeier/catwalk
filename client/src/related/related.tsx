@@ -6,7 +6,8 @@ const Related: React.FC = () => {
   const ids = Array(20).fill(0).map((_, i) => i);
   return <React.Fragment>
     <h2>Related Items</h2>
-    <Carousel title="Related Products"
+    <Carousel
+      title="Related Products"
       loadIds={after(500).then(() => ids)}
       imageUrlProducer={
         id => after(3000 - id * 100)
