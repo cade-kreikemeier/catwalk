@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
@@ -6,6 +6,7 @@ const ReviewsList: React.FC = () => (
   <div className="reviewList">
     <h2>Reviews List</h2>
     <ReviewSort />
+    <div>{useContext(ProductContext)}</div>
     <div className="reviewTileContainer">
       <ReviewTile />
       <ReviewTile />
