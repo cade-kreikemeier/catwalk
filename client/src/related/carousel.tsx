@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import loadState from '../utils/loadState';
 import CarouselCard from './carouselCard';
 
 interface CarouselProps {
@@ -14,12 +15,7 @@ interface CarouselProps {
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
-  const [ids, updateIds] = useState([]);
-  useEffect(() => {
-    props.loadIds.then(ids => {
-      updateIds(ids);
-    });
-  });
+  const ids = loadState(props.loadIds, []);
 
   return <React.Fragment>
     <h3>{props.title}</h3>

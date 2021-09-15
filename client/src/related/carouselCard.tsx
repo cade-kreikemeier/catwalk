@@ -1,4 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode } from 'react';
+import loadState from '../utils/loadState';
 
 interface CarouselCardProps {
   loadImageUrl: Promise<string>,
@@ -10,17 +11,6 @@ interface CarouselCardProps {
   loadRatings: Promise<number>,
   actionChild: ReactNode,
   actionCallback: () => void
-}
-
-function loadState<T>(promise: Promise<T>, initialValue: T): T {
-  const [data, setData] = useState(initialValue);
-  useEffect(() => {
-    promise
-      .then(d => {
-        setData(d);
-      });
-  });
-  return data;
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
