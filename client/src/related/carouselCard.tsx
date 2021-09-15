@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 interface CarouselCardProps {
   imageUrl: string,
   category: string,
-  title: string,
+  name: string,
   price: string,
   averageRating: number,
   actionChild: ReactNode,
@@ -14,7 +14,7 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard">
     <img src={props.imageUrl} />
     <p>{props.category}</p>
-    <p>{props.title}</p>
+    <p>{props.name}</p>
   </div>;
 };
 
