@@ -40,7 +40,7 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
 
   return <div className="carouselCard">
     {(imageUrl === '')
-      ? <img />
+      ? <img src="https://cdn.dribbble.com/users/172519/screenshots/3520576/dribbble-spinner-800x600.gif"/>
       : <img src={imageUrl} />
     }
     {(rating === undefined)

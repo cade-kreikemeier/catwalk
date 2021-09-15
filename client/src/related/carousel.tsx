@@ -14,7 +14,6 @@ interface CarouselProps {
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
-  console.log(props.ids);
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
