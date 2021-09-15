@@ -12,38 +12,28 @@ interface CarouselCardProps {
   actionCallback: () => void
 }
 
-const CarouselCard: React.FC<CarouselCardProps> = (props) => {
-  const [rating, setRating] = useState(null);
-  const [data, setData] = useState({ category: null, name: null, price: null });
-  const [imageUrl, setImageUrl] = useState(null);
-
+function loadState<T>(promise: Promise<T>, initialValue: T): T {
+  const [data, setData] = useState(initialValue);
   useEffect(() => {
-    props.loadData
+    promise
       .then(d => {
         setData(d);
       });
   });
+  return data;
+}
 
-  useEffect(() => {
-    props.loadRatings
-      .then(v => {
-        setRating(v);
-      });
-  });
-
-  useEffect(() => {
-    props.loadImageUrl
-      .then(url => {
-        setImageUrl(url);
-      });
-  });
+const CarouselCard: React.FC<CarouselCardProps> = (props) => {
+  const data = loadState(props.loadData, null);
+  const rating = loadState(props.loadRatings, null);
+  const imageUrl = loadState(props.loadImageUrl, null);
 
   return <div className="carouselCard">
     {(imageUrl === null)
       ? <img src="https://cdn.dribbble.com/users/172519/screenshots/3520576/dribbble-spinner-800x600.gif" />
       : <img src={imageUrl} />
     }
-    {(data.category === null)
+    {(data === null)
       ? <p>Loading</p>
       : <React.Fragment>
         <p>{data.category}</p>

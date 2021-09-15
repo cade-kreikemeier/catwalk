@@ -20,6 +20,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
       updateIds(ids);
     });
   });
+
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
