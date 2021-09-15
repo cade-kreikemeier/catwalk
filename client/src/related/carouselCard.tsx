@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import loadState from '../utils/loadState';
-import reviewMetaData from '../utils/types';
+import reviewMetaData from '../models/reviewMetaDat.interface';
 
 interface CarouselCardProps {
   loadImageUrl: Promise<string>,

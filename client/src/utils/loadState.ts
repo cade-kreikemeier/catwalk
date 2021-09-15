@@ -4,9 +4,7 @@ function loadState<T>(promise: Promise<T>, initialValue: T): T {
   const [data, setData] = useState(initialValue);
   useEffect(() => {
     promise
-      .then(d => {
-        setData(d);
-      });
+      .then(setData);
   });
   return data;
 }
