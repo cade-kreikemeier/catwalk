@@ -3,25 +3,31 @@ import CarouselCard from './carouselCard';
 
 interface CarouselProps {
   title: string,
-  data: Array<Array<string>>,
+  ids: Array<number>,
+  viewModelProducer: (id: number) => Promise<{
+    category: string,
+    name: string,
+    price: string,
+  }>
+  ratingsProducer: (i: number) => Promise<number>
+  imageUrlProducer: (id: number) => Promise<string>
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
+  console.log(props.ids);
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
-      {props.data.map((d, i) => {
+      {props.ids.map((id) => {
         return <CarouselCard
-          imageUrl="https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg"
-          category={d[0]}
-          name={d[1]}
-          price="$12.34"
-          averageRating={2.3}
+          loadImageUrl={props.imageUrlProducer(id)}
+          loadData={props.viewModelProducer(id)}
+          loadRatings={props.ratingsProducer(id)}
           actionCallback={() => { console.log('clicked'); }}
           actionChild={(
             <span>👍</span>
           )}
-          key={i} />;
+          key={id} />;
       })}
     </div>
   </React.Fragment>;
