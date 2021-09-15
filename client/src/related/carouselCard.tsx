@@ -3,7 +3,7 @@ import loadState from '../utils/loadState';
 
 interface CarouselCardProps {
   loadImageUrl: Promise<string>,
-  loadData: Promise<{
+  loadMetaData: Promise<{
     name: string,
     category: string,
     price: string
@@ -14,7 +14,7 @@ interface CarouselCardProps {
 }
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
-  const data = loadState(props.loadData, null);
+  const metaData = loadState(props.loadMetaData, null);
   const rating = loadState(props.loadRatings, null);
   const imageUrl = loadState(props.loadImageUrl, null);
 
@@ -23,12 +23,12 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
       ? <img src="https://cdn.dribbble.com/users/172519/screenshots/3520576/dribbble-spinner-800x600.gif" />
       : <img src={imageUrl} />
     }
-    {(data === null)
+    {(metaData === null)
       ? <p>Loading</p>
       : <React.Fragment>
-        <p>{data.category}</p>
-        <p>{data.name}</p>
-        <p>${data.price}</p>
+        <p>{metaData.category}</p>
+        <p>{metaData.name}</p>
+        <p>${metaData.price}</p>
       </React.Fragment>}
     {(rating === null)
       ? <p>Loading</p>

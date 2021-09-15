@@ -4,7 +4,7 @@ import Carousel from './carousel';
 
 const Related: React.FC = () => {
   const ids = Array(20).fill(0).map((_, i) => i);
-  return <div>
+  return <React.Fragment>
     <h2>Related Items</h2>
     <Carousel title="Related Products"
       loadIds={after(500).then(() => ids)}
@@ -12,7 +12,7 @@ const Related: React.FC = () => {
         id => after(3000 - id * 100)
           .then(() => 'https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg')
       }
-      viewModelProducer={
+      metaDataProducer={
         id => after(1000 + id * 750)
           .then(() => ({
             category: 'Category',
@@ -25,7 +25,7 @@ const Related: React.FC = () => {
           .then(() => id / 10)
       }
     />
-  </div>;
+  </React.Fragment>;
 };
 
 export default Related;

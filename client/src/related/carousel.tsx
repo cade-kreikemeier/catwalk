@@ -5,7 +5,7 @@ import CarouselCard from './carouselCard';
 interface CarouselProps {
   title: string,
   loadIds: Promise<Array<number>>,
-  viewModelProducer: (id: number) => Promise<{
+  metaDataProducer: (id: number) => Promise<{
     category: string,
     name: string,
     price: string,
@@ -23,7 +23,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
       {ids.map((id) => {
         return <CarouselCard
           loadImageUrl={props.imageUrlProducer(id)}
-          loadData={props.viewModelProducer(id)}
+          loadMetaData={props.metaDataProducer(id)}
           loadRatings={props.ratingsProducer(id)}
           actionCallback={() => { console.log('clicked'); }}
           actionChild={(
