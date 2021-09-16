@@ -84,7 +84,7 @@
   border-color: black;
   display: inline-block;
 }
-  
+
 /* Related Items */
 
 .carousel {
@@ -94,13 +94,19 @@
 
 .carouselCard {
   display: inline-block;
-  height: 200px;
-  width: auto;
+  height: 500px;
+  width: 200px;
+  margin: 16px;
+}
+
+.carouselCard p {
+  margin: 0px;
 }
 
 .carouselCard > img {
-  height: 100px;
-  object-fit: contain;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -131,8 +137,8 @@
   border: 3px solid darkorange;
 }
 
-.reviewList { 
-  border: 3px solid blue; 
+.reviewList {
+  border: 3px solid blue;
 }
 
 .reviewList button {
