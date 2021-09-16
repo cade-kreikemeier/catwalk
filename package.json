@@ -9,6 +9,7 @@
     "build-dev": "webpack -w",
     "build": "webpack",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx",
+    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx --fix",
     "live": "live-server"
   },
   "repository": {
