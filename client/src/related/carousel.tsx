@@ -1,27 +1,32 @@
 import React from 'react';
+import loadState from '../utils/loadState';
+import reviewMetaData from '../models/reviewMetaDat.interface';
 import CarouselCard from './carouselCard';
 
 interface CarouselProps {
   title: string,
-  data: Array<Array<string>>,
+  loadIds: Promise<Array<number>>,
+  metaDataProducer: (id: number) => Promise<reviewMetaData>
+  ratingsProducer: (i: number) => Promise<number>
+  imageUrlProducer: (id: number) => Promise<string>
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
+  const ids = loadState(props.loadIds, []);
+
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
-      {props.data.map((d, i) => {
+      {ids.map((id) => {
         return <CarouselCard
-          imageUrl="https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg"
-          category={d[0]}
-          title={d[1]}
-          price="$12.34"
-          averageRating={2.3}
+          loadImageUrl={props.imageUrlProducer(id)}
+          loadMetaData={props.metaDataProducer(id)}
+          loadRatings={props.ratingsProducer(id)}
           actionCallback={() => { console.log('clicked'); }}
           actionChild={(
             <span>👍</span>
           )}
-          key={i} />;
+          key={id} />;
       })}
     </div>
   </React.Fragment>;
