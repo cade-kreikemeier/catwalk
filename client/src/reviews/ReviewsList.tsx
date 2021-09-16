@@ -1,11 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import { ProductContext } from '../contexts/ProductDataContext';
+import React from 'react';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => {
-  const data = useContext(ProductContext);
-  useEffect(() => console.log(data), []);
   return (
     <div className="reviewList">
       <h2>Reviews List</h2>
