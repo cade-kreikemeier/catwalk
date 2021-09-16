@@ -3,6 +3,7 @@ import { product } from '../models/product.interface';
 import { reviews } from '../models/reviews.interface';
 import { reviewMetaData } from '../models/reviewMetaData.interface';
 import { style } from '../models/style.interface';
+import { reviewSubmission } from '../models/reviewSubmission.interface';
 
 
 const apiServer = axios.create({
@@ -21,7 +22,9 @@ const requests = {
 };
 
 export const apiRequest = {
-  getAllProducts: (): Promise<product[]> => requests.get('/products'),
+  getAllProducts: (): Promise<product[]> => {
+    return requests.get('/products');
+  },
   getProductById: (productId: number): Promise<product> => {
     return requests.get(`/products/${productId}`);
   },
@@ -34,23 +37,16 @@ export const apiRequest = {
   getReviewsForProduct: (productId: number, page = 1, count = 5, sort = 'newest'): Promise<reviews> => {
     return requests.get('/reviews/', { params: { product_id: productId, page: page, count: count, sort: sort } });
   },
-  getReviewMetadata: (productId: number): Promise<reviewMetaData> =>
-    requests.get('/reviews/meta', { params: { product_id: productId } }),
-  postReview: (productId: number, rating: number, summary: string, body: string,
-    recommend: boolean, name: string, email: string, photos: string[], characteristics: unknown):
-    Promise<string> => {
-    return requests.post('/reviews/', {
-      product_id: productId,
-      rating,
-      summary,
-      body,
-      recommend,
-      name,
-      email,
-      photos,
-      characteristics
-    });
+  getReviewMetadata: (productId: number): Promise<reviewMetaData> => {
+    return requests.get('/reviews/meta', { params: { product_id: productId } });
   },
-  updateReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/helpful`),
-  reportReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/report`)
+  postReview: (review: reviewSubmission): Promise<string> => {
+    return requests.post('/reviews/', review);
+  },
+  updateReview: (reviewId: number): Promise<string> => {
+    return requests.put(`/reviews/${reviewId}/helpful`);
+  },
+  reportReview: (reviewId: number): Promise<string> => {
+    return requests.put(`/reviews/${reviewId}/report`);
+  }
 };
