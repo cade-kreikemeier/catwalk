@@ -20,5 +20,5 @@ interface review {
 
 interface photo {
   'thumbnail_url': string,
-  'url': string
+  url: string
 }

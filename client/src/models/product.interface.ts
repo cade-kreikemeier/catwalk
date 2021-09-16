@@ -1,4 +1,4 @@
-export interface productData {
+export interface product {
   id: number,
   campus: string,
   name: string,

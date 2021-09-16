@@ -1,16 +1,16 @@
-export interface styleData {
+export interface style {
   'product_id': string,
-  'results': resultData[]
+  results: resultData[]
 }
 
 interface resultData {
   'style_id': number,
-  'name': string,
+  name: string,
   'original_price': string,
   'sale_price': null | string,
   'default?': boolean,
-  'photos': photoData[],
-  'skus': {
+  photos: photo[],
+  skus: {
     [skuId: string]: skuData
   }
 }
@@ -20,7 +20,7 @@ interface skuData {
   size: string
 }
 
-interface photoData {
+interface photo {
   'thumbnail_url': string,
-  'url': string
+  url: string
 }
