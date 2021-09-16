@@ -10,14 +10,14 @@ interface ratings {
 }
 
 interface recommended {
-  [recommendedBoolean: string]: string
+  [recommendedVote: string]: string
 }
 
 interface characteristics {
- [itemProperty: string]: idValue
+ [itemProperty: string]: characteristic
 }
 
-interface idValue {
+interface characteristic{
   'id': number,
   'value': string
 }

@@ -1,7 +1,8 @@
+/* eslint @typescript-eslint/no-unused-vars: 0 */
 import React, { useEffect, useState } from 'react';
 import { productData } from './models/productData.interface';
 import { styleData } from './models/styleData.interface';
-import { reviewData } from './models/reviewData.interface';
+import { reviews } from './models/reviews.interface';
 import { apiRequest } from './utils/apiRequests';
 import { reviewMetadata } from './models/reviewMetadata.interface';
 
@@ -10,7 +11,7 @@ const ApiDemo: React.FC = () => {
   const [product, setProduct] = useState<productData>(null);
   const [styles, setStyles] = useState<styleData[]>();
   const [relatedIds, setRelatedIds] = useState<number[]>();
-  const [reviews, setReviews] = useState<reviewData>();
+  const [reviews, setReviews] = useState<reviews>();
   const [metaData, setMetadata] = useState<reviewMetadata>();
 
   useEffect(() => {

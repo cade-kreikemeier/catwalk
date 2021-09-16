@@ -1,16 +1,11 @@
-export interface reviewData {
+export interface reviews {
   product: string,
   page: number,
   count: number,
-  results: resultData[]
+  results: review[]
 }
 
-interface photoData {
-  'thumbnail_url': string,
-  'url': string
-}
-
-interface resultData {
+interface review {
   'review_id': number,
   rating: number,
   summary: string,
@@ -20,5 +15,10 @@ interface resultData {
   date: string,
   'reviewer_name': string,
   helpfulness: number,
-  photos: photoData[]
+  photos: photo[]
+}
+
+interface photo {
+  'thumbnail_url': string,
+  'url': string
 }

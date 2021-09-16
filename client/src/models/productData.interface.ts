@@ -4,7 +4,7 @@ export interface productData {
   name: string,
   slogan: string,
   description: string,
-  categor: string,
+  category: string,
   'default_price': string,
   'created_at': string,
   'updated_at': string
