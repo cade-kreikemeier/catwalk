@@ -1,6 +1,6 @@
 import React from 'react';
 import loadState from '../utils/loadState';
-import reviewMetaData from '../models/reviewMetaDat.interface';
+import reviewMetaData from '../models/reviewMetaData.type';
 import CarouselCard from './carouselCard';
 
 interface CarouselProps {

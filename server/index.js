@@ -17,6 +17,7 @@ app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 const apiProxy = createProxyMiddleware('/api',
   {
+    changeOrigin: true,
     headers: {
       Authorization: API_TOKEN
     },
