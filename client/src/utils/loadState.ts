@@ -5,7 +5,7 @@ function loadState<T>(promise: Promise<T>, initialValue: T): T {
   useEffect(() => {
     promise
       .then(setData);
-  });
+  }, []);
   return data;
 }
 

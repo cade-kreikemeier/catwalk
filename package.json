@@ -9,10 +9,7 @@
     "build-dev": "webpack -w",
     "build": "webpack",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx",
-<<<<<<< HEAD
-=======
     "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx --fix",
->>>>>>> master
     "live": "live-server --open=./client/dist/"
   },
   "repository": {

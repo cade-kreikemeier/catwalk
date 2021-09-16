@@ -37,8 +37,18 @@ export const apiRequest = {
   getReviewMetadata: (productId: number): Promise<reviewMeta> =>
     requests.get('/reviews/meta', { params: { product_id: productId } }),
   postReview: (productId: number, rating: number, summary: string, body: string,
-    recommend: boolean, name: string, email: string, photos: string[], characteristics: unknown): Promise<string> => requests.post('/reviews/',
-      { product_id: productId, rating, summary, body, recommend, name, email, photos, characteristics }),
+    recommend: boolean, name: string, email: string, photos: string[], characteristics: unknown):
+    Promise<string> => requests.post('/reviews/', {
+    product_id: productId,
+    rating,
+    summary,
+    body,
+    recommend,
+    name,
+    email,
+    photos,
+    characteristics
+  }),
   updateReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/helpful`),
   reportReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/report`)
 };
