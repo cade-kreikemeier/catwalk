@@ -43,60 +43,13 @@ const ApiDemo: React.FC = () => {
       .catch(err => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   apiRequest.postReview(44392, 5, 'api test summary', 'api test body', false, 'Tom cruise', 'louis@gmail.com', [], {
-  //     '148903': 4,
-  //     '148904': 4,
-  //     '148905': 4,
-  //     '148906': 4
-  //   })
-  //     .then(() => {
-  //       return apiRequest.getReviewsForProduct(44392, 1, 20, 'newest');
-  //     })
-  //     .then(data => setReviews(data))
-  //     .catch(err => console.error(err));
-  // }, []);
-
   useEffect(() => {
     apiRequest.getReviewMetadata(44392)
       .then(data => setMetadata(data))
       .catch(err => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   apiRequest.updateReview(840868)
-  //     .then(() => {
-  //       return apiRequest.getReviewsForProduct(44392, 1, 20, 'newest');
-  //     })
-  //     .then(data => setReviews(data))
-  //     .catch(err => console.error(err));
-  // }, []);
-
-  // useEffect(() => {
-  //   apiRequest.reportReview(840871)
-  //     .then(() => {
-  //       return apiRequest.getReviewsForProduct(44392, 1, 20, 'newest');
-  //     })
-  //     .then(data => setReviews(data))
-  //     .catch(err => console.error(err));
-  // }, []);
-
-  // {
-  // "review_id": 840870,
-  // "rating": 5,
-  // "summary": "api test summary",
-  // "recommend": false,
-  // "response": null,
-  // "body": "api test body",
-  // "date": "2021-09-15T00:00:00.000Z",
-  // "reviewer_name": "Tom cruise",
-  // "helpfulness": 0,
-  // "photos": []
-  // }
-
-return <React.Fragment>
-  <h2>IM A DEMO!!!</h2>
-</React.Fragment>;
+  return (<h2>IM A DEMO!!!</h2>);
 };
 
 export default ApiDemo;
