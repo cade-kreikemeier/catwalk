@@ -7,6 +7,7 @@ import { apiRequest } from './utils/apiRequests';
 import loadState from './utils/loadState';
 import Contexts from './contexts/Contexts';
 
+
 const App: React.FC = () => {
   const products = loadState(apiRequest.getAllProducts(), []);
   const product = loadState(apiRequest.getProductById(44388), null);

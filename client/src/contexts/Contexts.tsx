@@ -9,4 +9,6 @@ const Contexts = {
   ReviewsMetadataContext: createContext(null)
 };
 
+const thisContext = createContext('this is default value');
+
 export default Contexts;

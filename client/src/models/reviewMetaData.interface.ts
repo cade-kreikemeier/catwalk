@@ -1,4 +1,4 @@
-export interface reviewMeta {
+export interface reviewMetaData {
   'product_id': string,
   ratings: ratings,
   recommended: recommended,

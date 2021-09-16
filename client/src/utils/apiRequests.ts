@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { product } from '../models/product.interface';
 import { reviews } from '../models/reviews.interface';
-import { reviewMeta } from '../models/reviewMeta.interface';
+import { reviewMetaData } from '../models/reviewMetaData.interface';
 import { style } from '../models/style.interface';
 
 
@@ -34,21 +34,23 @@ export const apiRequest = {
   getReviewsForProduct: (productId: number, page = 1, count = 5, sort = 'newest'): Promise<reviews> => {
     return requests.get('/reviews/', { params: { product_id: productId, page: page, count: count, sort: sort } });
   },
-  getReviewMetadata: (productId: number): Promise<reviewMeta> =>
+  getReviewMetadata: (productId: number): Promise<reviewMetaData> =>
     requests.get('/reviews/meta', { params: { product_id: productId } }),
   postReview: (productId: number, rating: number, summary: string, body: string,
     recommend: boolean, name: string, email: string, photos: string[], characteristics: unknown):
-    Promise<string> => requests.post('/reviews/', {
-    product_id: productId,
-    rating,
-    summary,
-    body,
-    recommend,
-    name,
-    email,
-    photos,
-    characteristics
-  }),
+    Promise<string> => {
+    return requests.post('/reviews/', {
+      product_id: productId,
+      rating,
+      summary,
+      body,
+      recommend,
+      name,
+      email,
+      photos,
+      characteristics
+    });
+  },
   updateReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/helpful`),
   reportReview: (reviewId: number): Promise<string> => requests.put(`/reviews/${reviewId}/report`)
 };

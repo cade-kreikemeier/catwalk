@@ -4,7 +4,7 @@ import { product } from './models/product.interface';
 import { style } from './models/style.interface';
 import { reviews } from './models/reviews.interface';
 import { apiRequest } from './utils/apiRequests';
-import { reviewMeta } from './models/reviewMeta.interface';
+import { reviewMetaData } from './models/reviewMetaData.interface';
 
 const ApiDemo: React.FC = () => {
   const [products, setProducts] = useState<product[]>([]);
@@ -12,7 +12,7 @@ const ApiDemo: React.FC = () => {
   const [styles, setStyles] = useState<style[]>();
   const [relatedIds, setRelatedIds] = useState<number[]>();
   const [reviews, setReviews] = useState<reviews>();
-  const [metaData, setMetadata] = useState<reviewMeta>();
+  const [metaData, setMetadata] = useState<reviewMetaData>();
 
   useEffect(() => {
     apiRequest.getAllProducts()
