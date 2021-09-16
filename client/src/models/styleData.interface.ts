@@ -9,9 +9,9 @@ interface resultData {
   'original_price': string,
   'sale_price': null | string,
   'default?': boolean,
-  'photos': photoData[], //expect an arr with objects
+  'photos': photoData[],
   'skus': {
-    [skuId: string]: skuData  //doesn't really tell what skuId is, just need to be a string
+    [skuId: string]: skuData
   }
 }
 
