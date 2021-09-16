@@ -20,10 +20,64 @@
 }
 
 .productInfo {
-  background-color: blue;
   grid-area: productInfo;
+  display: flex;
+  background-color: blue;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: .5rem;
 }
 
+.reviewStar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: 20%;
+  border: 2px dashed green;
+  margin: 2px;
+}
+
+.productCatrgory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 15%;
+  border: 2px dashed green;
+  margin: 2px;
+}
+
+.productName {
+  display: flex;
+  width: 90%;
+  height: 35%;
+  align-items: center;
+  border: 2px dashed green;
+  margin: 2px;
+}
+
+.productPrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 10%;
+  align-items: center;
+  border: 2px dashed green;
+  margin: 2px;
+}
+
+.productReview {
+  font-size: 0.8rem;
+  width: 50%;
+  height: 50%;
+  border: 2px dashed green;
+}
 .styleSelector {
   background-color: yellow;
   grid-area: styleSelector;
@@ -54,7 +108,7 @@
 .selectSize {
   height: 4rem;
   width:  10rem;
-  border-style: solid;
+  border-style: dashed;
   border-color: black;
   display: inline-block;
   margin-right: 2rem;
@@ -63,7 +117,7 @@
 .volume {
   height: 2rem;
   width:  4rem;
-  border-style: solid;
+  border-style: dashed;
   border-color: black;
   display: inline-block;
 }
@@ -71,7 +125,7 @@
 .AddToBag {
   height: 4rem;
   width:  10rem;
-  border-style: solid;
+  border-style: dashed;
   border-color: black;
   display: inline-block;
   margin-right: 2rem;
@@ -80,7 +134,7 @@
 .favBtn {
   height: 2rem;
   width:  2rem;
-  border-style: solid;
+  border-style: dashed;
   border-color: black;
   display: inline-block;
 }
@@ -122,23 +176,23 @@
 }
 
 .reviewBreakdown {
-  border: 3px solid red;
+  border: 3px dashed red;
 }
 
 .ratingSummary {
-  border: 3px solid orange;
+  border: 3px dashed orange;
 }
 
 .ratingBreakdown {
-  border: 3px solid yellow;
+  border: 3px dashed yellow;
 }
 
 .attributesSummary {
-  border: 3px solid darkorange;
+  border: 3px dashed darkorange;
 }
 
 .reviewList {
-  border: 3px solid blue;
+  border: 3px dashed blue;
 }
 
 .reviewList button {
@@ -146,13 +200,13 @@
 }
 
 .reviewSort {
-  border: 3px solid green;
+  border: 3px dashed green;
 }
 
 .reviewTileContainer {
-  border: 3px solid purple;
+  border: 3px dashed purple;
 }
 
 .reviewTile {
-  border: 3px solid yellowgreen;
+  border: 3px dashed yellowgreen;
 }

@@ -1,9 +1,10 @@
 import React from 'react';
-
+import ProductReview from './ProductReview.jsx';
 export default function ReviewStar() {
   return (
     <div className='reviewStar'>
-      <h3>⭐️⭐️⭐️⭐️⭐️</h3>
+      ★★★★★
+      <ProductReview />
     </div>
   );
 };

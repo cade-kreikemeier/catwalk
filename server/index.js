@@ -21,6 +21,7 @@ const apiProxy = createProxyMiddleware('/api',
       Authorization: API_TOKEN
     },
     target: API_URL,
+    changeOrigin: true,
     pathRewrite: (path, req) => req.url.slice(4)
   });
 app.use(apiProxy);
