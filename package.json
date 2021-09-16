@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "jest",
     "server": "node server/index.js",
     "build-dev": "webpack -w",
     "build": "webpack",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx",
+    "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx --fix",
     "live": "live-server"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.1",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.31.0",
     "@typescript-eslint/parser": "^4.31.0",
@@ -45,6 +47,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.25.1",
+    "jest": "^27.2.0",
     "typescript": "^4.4.2",
     "webpack": "^5.52.0",
     "webpack-cli": "^4.8.0"
