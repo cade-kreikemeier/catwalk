@@ -6,7 +6,7 @@ import { styleData } from '../models/styleData.interface';
 
 
 const apiServer = axios.create({
-  baseURL: 'http://localhost:9001/api/fec2/hr-den/',
+  baseURL: 'http://localhost:9001/api',
   timeout: 10000
 });
 
