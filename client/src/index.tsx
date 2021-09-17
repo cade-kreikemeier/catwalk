@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './overview/overview';
 import Related from './related/related';
@@ -6,6 +6,7 @@ import Reviews from './reviews/Reviews';
 import { apiRequest } from './utils/apiRequests';
 import loadState from './utils/loadState';
 import Contexts from './contexts/Contexts';
+import Modal from './utils/Modal';
 
 
 const App: React.FC = () => {
@@ -16,22 +17,29 @@ const App: React.FC = () => {
   const reviews = loadState(apiRequest.getReviewsForProduct(44388), null);
   const reviewsMetadata = loadState(apiRequest.getReviewMetadata(44388), null);
 
+  const [modalContent, setModalContent] = useState(false);
+
   return (
-    <Contexts.ProductsContext.Provider value={products}>
-      <Contexts.ProductContext.Provider value={product}>
-        <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
-          <Contexts.ProductStyleContext.Provider value={productSytles}>
-            <Overview />
-            <Contexts.RelatedProducts.Provider value={relatedProducts}>
-              <Related />
-            </Contexts.RelatedProducts.Provider>
-          </Contexts.ProductStyleContext.Provider>
-          <Contexts.ReviewsContext.Provider value={reviews}>
-            <Reviews />
-          </Contexts.ReviewsContext.Provider>
-        </Contexts.ReviewsMetadataContext.Provider>
-      </Contexts.ProductContext.Provider>
-    </Contexts.ProductsContext.Provider>
+    <>
+      <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
+        <Contexts.ProductsContext.Provider value={products}>
+          <Contexts.ProductContext.Provider value={product}>
+            <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
+              <Contexts.ProductStyleContext.Provider value={productSytles}>
+                <Overview />
+                <Contexts.RelatedProducts.Provider value={relatedProducts}>
+                  <Related />
+                </Contexts.RelatedProducts.Provider>
+              </Contexts.ProductStyleContext.Provider>
+              <Contexts.ReviewsContext.Provider value={reviews}>
+                <Reviews />
+              </Contexts.ReviewsContext.Provider>
+            </Contexts.ReviewsMetadataContext.Provider>
+          </Contexts.ProductContext.Provider>
+        </Contexts.ProductsContext.Provider>
+        <Modal />
+      </Contexts.ModalContext.Provider>
+    </>
   );
 };
 
