@@ -8,11 +8,11 @@ import { act } from 'react-dom/test-utils';
 
 test('passes', async () => {
   let clicked = false;
-  await act(() => {
+  act(() => {
     render(<CarouselCard
-      loadImageUrl={Promise.resolve('')}
-      loadMetaData={Promise.resolve({ name: '', category: '', price: '' })}
-      loadRatings={Promise.resolve(1)}
+      imageUrl={''}
+      metaData={{ name: '', category: '', price: '' }}
+      rating={1}
       actionChild={
         <span>Child</span>
       }
