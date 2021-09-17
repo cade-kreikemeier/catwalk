@@ -1,7 +1,7 @@
 import React from 'react';
 import loadState from '../utils/loadState';
 import reviewMetaData from '../models/reviewMetaData.type';
-import CarouselCard from './carouselCard';
+import CarouselCard from './carouselCard/carouselCard';
 
 interface CarouselProps {
   title: string,
