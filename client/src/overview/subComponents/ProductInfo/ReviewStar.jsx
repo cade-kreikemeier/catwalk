@@ -15,15 +15,12 @@ export default function ReviewStar() {
         number = number + (parseInt(MetadataRating[i + 1]));
       }
     };
-    console.log('total', total);
-    console.log('number', number);
+
     return total / number;
   };
   let rating;
   if (currentReviewsMetadata !== null) {
     rating = calAvgRating(currentReviewsMetadata.ratings) / 5 * 100;
-    console.log(currentReviewsMetadata.ratings);
-    console.log(rating);
   }
 
   return (
