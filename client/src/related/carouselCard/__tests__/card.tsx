@@ -10,10 +10,9 @@ import { act } from 'react-dom/test-utils';
 afterAll(cleanup);
 
 test('displays infomation, correctly displayed', async () => {
-  let component: RenderResult<typeof import('@testing-library/dom/types/queries'), HTMLElement>;
   let clicked = false;
   await act(async () => {
-    component = render(<CarouselCard
+    render(<CarouselCard
       imageUrl={''}
       metaData={{ name: 'T-Shirt', category: 'Shirt', price: '10.00' }}
       rating={4.2}
@@ -24,7 +23,10 @@ test('displays infomation, correctly displayed', async () => {
     />);
   });
 
-  expect(component.getByText('$10.00')).toHaveTextContent('$10.00');
+  expect(screen.getByTestId('name')).toHaveTextContent('T-Shirt');
+  expect(screen.getByTestId('category')).toHaveTextContent('Shirt');
+  expect(screen.getByTestId('price')).toHaveTextContent('$10.00');
+  expect(screen.getByTestId('rating')).toHaveTextContent('Rating: 4.2');
 
   expect(clicked).toBe(false);
 });

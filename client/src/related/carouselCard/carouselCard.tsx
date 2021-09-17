@@ -12,10 +12,10 @@ interface CarouselCardProps {
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard">
     <img src={props.imageUrl} />
-    <p>{props.metaData.category}</p>
-    <p>{props.metaData.name}</p>
-    <p>{'$' + props.metaData.price}</p>
-    <p>Rating: {props.rating}</p>
+    <p data-testid="category">{props.metaData.category}</p>
+    <p data-testid="name">{props.metaData.name}</p>
+    <p data-testid="price">${props.metaData.price}</p>
+    <p data-testid="rating">Rating: {props.rating}</p>
   </div>;
 };
 
