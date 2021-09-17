@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Contexts from '../contexts/Contexts';
 import Carousel from './carousel';
 
 const Related: React.FC = () => {
-  const ids = Array(20).fill(0).map((_, i) => i);
+  const ids = useContext(Contexts.RelatedProducts);
   return <React.Fragment>
     <h2>Related Items</h2>
     <Carousel
