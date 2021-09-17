@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Shredd-it-Co/catwalk#readme",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
     "axios": "^0.21.4",
     "babel-loader": "^8.2.2",
     "core-js": "^3.17.3",
@@ -62,6 +63,8 @@
     "webpack-cli": "^4.8.0"
   },
   "jest": {
-    "setupFilesAfterEnv": ["./setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./setupTests.js"
+    ]
   }
 }

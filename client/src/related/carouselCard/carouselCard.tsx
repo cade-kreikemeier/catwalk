@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import loadState from '../../utils/loadState';
 import reviewMetaData from '../../models/reviewMetaData.type';
 
 interface CarouselCardProps {
@@ -15,7 +14,7 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
     <img src={props.imageUrl} />
     <p>{props.metaData.category}</p>
     <p>{props.metaData.name}</p>
-    <p>${props.metaData.price}</p>
+    <p>{'$' + props.metaData.price}</p>
     <p>Rating: {props.rating}</p>
   </div>;
 };
