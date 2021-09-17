@@ -7,5 +7,10 @@ export interface reviewSubmission {
   name: string,
   email: string,
   photos: string[],
-  characteristics: unknown
+  characteristics: characteristic
+}
+
+interface characteristic {
+  id: number,
+  value: string
 }
