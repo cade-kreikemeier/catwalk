@@ -9,19 +9,6 @@ const Related: React.FC = () => {
     <Carousel
       title="Related Products"
       ids={ids}
-      imageUrlProducer={
-        () => 'https://i.kym-cdn.com/photos/images/newsfeed/000/920/899/715.jpg'
-      }
-      metaDataProducer={
-        id => ({
-          category: 'Category',
-          name: 'Name',
-          price: id + '.00'
-        })
-      }
-      ratingsProducer={
-        id => id / 10
-      }
     />
   </React.Fragment>;
 };
