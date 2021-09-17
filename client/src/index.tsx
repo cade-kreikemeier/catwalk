@@ -17,7 +17,7 @@ const App: React.FC = () => {
   const reviews = loadState(apiRequest.getReviewsForProduct(44388), null);
   const reviewsMetadata = loadState(apiRequest.getReviewMetadata(44388), null);
 
-  const [modalContent, setModalContent] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
 
   return (
     <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
