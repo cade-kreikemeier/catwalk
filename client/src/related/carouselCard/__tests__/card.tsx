@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import '@testing-library/jest-dom/extend-expect';
 import CarouselCard from '../carouselCard';
 import { cleanup, fireEvent, render, RenderResult, screen } from '@testing-library/react';
 import React from 'react';
@@ -13,7 +12,7 @@ test('displays infomation, correctly displayed', async () => {
   let clicked = false;
   await act(async () => {
     render(<CarouselCard
-      imageUrl={''}
+      imageUrl={'http://www.example.com/pic.jpg'}
       metaData={{ name: 'T-Shirt', category: 'Shirt', price: '10.00' }}
       rating={4.2}
       actionChild={
@@ -23,6 +22,7 @@ test('displays infomation, correctly displayed', async () => {
     />);
   });
 
+  expect(screen.getByTestId('thumbnail')).toHaveAttribute('src', 'http://www.example.com/pic.jpg');
   expect(screen.getByTestId('name')).toHaveTextContent('T-Shirt');
   expect(screen.getByTestId('category')).toHaveTextContent('Shirt');
   expect(screen.getByTestId('price')).toHaveTextContent('$10.00');
