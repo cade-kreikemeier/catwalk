@@ -31,15 +31,39 @@
   padding: .5rem;
 }
 
+
+.starOutline {
+  display: flex;
+  position: absolute;
+  flex-grow: 0;
+  flex-shrink: 0;
+  /* top: 25%; */
+  color: lightgray;
+}
+
+.starFilled {
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  color: gold;
+  overflow: hidden;
+}
+
 .reviewStar {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 60%;
   height: 20%;
   border: 2px dashed green;
   margin: 2px;
+}
+
+.starsContainer {
+  position: relative;
+  display: flex;
+  color: transparent;
 }
 
 .productCatrgory {
