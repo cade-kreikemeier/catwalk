@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import CarouselCard from '../carouselCard';
-import { cleanup, fireEvent, render, RenderResult, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
