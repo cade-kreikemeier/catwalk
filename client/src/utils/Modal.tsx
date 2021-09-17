@@ -13,12 +13,10 @@ export default function Modal(): ReactElement {
     return ReactDOM.createPortal(
       <div className="modal-wrapper">
         <div className="modal-backdrop"></div>
-        <Contexts.ModalContext.Provider value={{ setModalContent }}>
-          <div className="modal-box">
-            <button onClick={onClose}>Close</button>
-            {modalContent}
-          </div>
-        </Contexts.ModalContext.Provider>
+        <div className="modal-box">
+          <button onClick={onClose}>Close</button>
+          {modalContent}
+        </div>
       </div>,
       document.getElementById('modal-root')
     );

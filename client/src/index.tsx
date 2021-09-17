@@ -20,26 +20,24 @@ const App: React.FC = () => {
   const [modalContent, setModalContent] = useState(false);
 
   return (
-    <>
-      <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
-        <Contexts.ProductsContext.Provider value={products}>
-          <Contexts.ProductContext.Provider value={product}>
-            <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
-              <Contexts.ProductStyleContext.Provider value={productSytles}>
-                <Overview />
-                <Contexts.RelatedProducts.Provider value={relatedProducts}>
-                  <Related />
-                </Contexts.RelatedProducts.Provider>
-              </Contexts.ProductStyleContext.Provider>
-              <Contexts.ReviewsContext.Provider value={reviews}>
-                <Reviews />
-              </Contexts.ReviewsContext.Provider>
-            </Contexts.ReviewsMetadataContext.Provider>
-          </Contexts.ProductContext.Provider>
-        </Contexts.ProductsContext.Provider>
-        <Modal />
-      </Contexts.ModalContext.Provider>
-    </>
+    <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
+      <Contexts.ProductsContext.Provider value={products}>
+        <Contexts.ProductContext.Provider value={product}>
+          <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
+            <Contexts.ProductStyleContext.Provider value={productSytles}>
+              <Overview />
+              <Contexts.RelatedProducts.Provider value={relatedProducts}>
+                <Related />
+              </Contexts.RelatedProducts.Provider>
+            </Contexts.ProductStyleContext.Provider>
+            <Contexts.ReviewsContext.Provider value={reviews}>
+              <Reviews />
+            </Contexts.ReviewsContext.Provider>
+          </Contexts.ReviewsMetadataContext.Provider>
+        </Contexts.ProductContext.Provider>
+      </Contexts.ProductsContext.Provider>
+      <Modal />
+    </Contexts.ModalContext.Provider>
   );
 };
 
