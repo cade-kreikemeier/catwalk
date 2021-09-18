@@ -43,7 +43,6 @@
   position: absolute;
   flex-grow: 0;
   flex-shrink: 0;
-  /* top: 25%; */
   color: lightgray;
 }
 
@@ -61,7 +60,7 @@
   justify-content: space-between;
   align-items: center;
   width: 60%;
-  height: 20%;
+  flex-grow: 1;
   border: 2px dashed black;
   margin: 2px;
 }
@@ -77,7 +76,7 @@
   justify-content: center;
   align-items: center;
   width: 20%;
-  height: 15%;
+  flex-grow: 1;
   border: 2px dashed black;
   margin: 2px;
 }
@@ -87,7 +86,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 90%;
-  height: 35%;
+  flex-grow: 3;
   border: 2px dashed black;
   margin: 2px;
   padding: 2px;
@@ -98,7 +97,7 @@
   justify-content: center;
   align-items: center;
   width: 20%;
-  height: 10%;
+  flex-grow: 1;
   align-items: center;
   border: 2px dashed black;
   margin: 2px;
