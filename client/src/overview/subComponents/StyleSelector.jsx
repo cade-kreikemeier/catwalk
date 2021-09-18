@@ -2,9 +2,14 @@ import React, { useContext } from 'react';
 import Contexts from '../../contexts/Contexts.tsx';
 export default function StyleSelector() {
   const currentProductStyle = useContext(Contexts.ProductStyleContext);
-
+  // let testUrl = '';
+  let stylePics = [];
   if (currentProductStyle !== null) {
-    console.log(currentProductStyle);
+    // testUrl = currentProductStyle.results[0].photos[0].thumbnail_url;
+    // stylePics = currentProductStyle.results[0].photos;
+    currentProductStyle.results.forEach((element, index) => {
+      stylePics.push(element.photos[0].thumbnail_url);
+    });
   }
   return (
     <div className='styleSelector'>
@@ -12,10 +17,15 @@ export default function StyleSelector() {
         {'Style > Selected Style'}
       </div>
       <div className='styleThumbnail'>
-        <span className='thumbnail tn1'></span>
-        <span className='thumbnail tn2'></span>
-        <span className='thumbnail tn3'></span>
-        <span className='thumbnail tn4'></span>
+        {stylePics
+          ? stylePics.map((stylePic, index) => {
+            return (
+            <span key={index} className='thumbnail'>
+              <img className={`tn${index}`} src={stylePic} style={{ width: '150%', height: '150%' }}></img>
+            </span>
+            );
+          })
+          : <span>None</span>}
       </div>
 
     </div>

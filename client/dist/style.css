@@ -154,6 +154,11 @@
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  margin: -10px;
 }
 
 .addToCartContainer {
