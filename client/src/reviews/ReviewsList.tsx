@@ -1,23 +1,42 @@
-import React, { ReactElement, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Contexts from '../contexts/Contexts';
 import { reviews } from '../models/reviews.interface';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC<reviews> = () => {
-  // const [displayReviews, setDisplayReviews] = useState(false);
-  // const [numDisplayed, setNumDisplayed] = useState(2);
-  // const [filterType, setFilterType] = useState('relevant');
-
-
   const { setModalContent } = useContext(Contexts.ModalContext);
   const reviews: reviews | null = useContext(Contexts.ReviewsContext);
+
+  const [displayedReviews, setDisplayReviews] = useState([]);
+  const [numDisplayed, setNumDisplayed] = useState(2);
+  // const [filterType, setFilterType] = useState('relevant');
+
   const child = <div>CHILD EXAMPLE</div>;
 
 
-  const onClick = () => {
+  const addReview = () => {
     setModalContent(child);
   };
+
+  const moreReviews = () => {
+    if (numDisplayed === 14 || (reviews.results.length - 1) === numDisplayed) {
+      setNumDisplayed(numDisplayed + 1);
+    } else if (numDisplayed < 15 && reviews.results.length - 1 > numDisplayed) {
+      setNumDisplayed(numDisplayed + 2);
+    };
+  };
+
+
+  useEffect(() => {
+    if (reviews) {
+      const displayReviews = [];
+      for (let i = 0; i < numDisplayed; i++) {
+        displayReviews.push(<ReviewTile key={reviews.results[i].review_id} review={reviews.results[i]} />);
+      }
+      setDisplayReviews(displayReviews);
+    }
+  }, [reviews, numDisplayed]);
 
   return (
     <>
@@ -26,12 +45,13 @@ const ReviewsList: React.FC<reviews> = () => {
         <ReviewSort />
         <div className='reviewTileContainer'>
           {reviews
-            ? reviews.results.map((review): ReactElement => <ReviewTile key={review.review_id} review={review} />)
-            : null
-          }
+            ? [...displayedReviews]
+            : null}
         </div>
-        <button onClick={onClick}>Add Review</button>
-        <button>More Reviews</button>
+        <button onClick={addReview}>Add Review</button>
+        {reviews === null || numDisplayed === reviews.results.length
+          ? null
+          : <button onClick={moreReviews}>More Reviews</button>}
       </div>
     </>
   );
