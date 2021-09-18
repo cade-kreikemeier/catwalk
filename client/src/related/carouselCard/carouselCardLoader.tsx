@@ -9,13 +9,12 @@ interface CarouselCardLoaderProps {
 
 const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
   const styles = loadState(apiRequest.getProductStyles(id), []);
-  let imageUrl;
+  let imageUrl: string;
   if (styles.length === 0) {
     imageUrl = '';
   } else {
     imageUrl = styles[0].results[0].photos[0].thumbnail_url;
   }
-  console.log(imageUrl);
   return <React.Fragment>
     <CarouselCard
       imageUrl={imageUrl}
