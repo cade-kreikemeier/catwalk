@@ -1,6 +1,11 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import Contexts from '../../contexts/Contexts.tsx';
 export default function StyleSelector() {
+  const currentProductStyle = useContext(Contexts.ProductStyleContext);
+
+  if (currentProductStyle !== null) {
+    console.log(currentProductStyle);
+  }
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
