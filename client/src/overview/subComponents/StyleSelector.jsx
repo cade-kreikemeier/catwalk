@@ -9,13 +9,13 @@ export default function StyleSelector() {
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
-        <h3> {'Style > Selected Style'}</h3>
+        {'Style > Selected Style'}
       </div>
       <div className='styleThumbnail'>
-        <span className="circle"></span>
-        <span className="circle"></span>
-        <span className="circle"></span>
-
+        <span className='thumbnail tn1'></span>
+        <span className='thumbnail tn2'></span>
+        <span className='thumbnail tn3'></span>
+        <span className='thumbnail tn4'></span>
       </div>
 
     </div>
