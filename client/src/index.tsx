@@ -10,12 +10,14 @@ import Modal from './utils/Modal';
 
 
 const App: React.FC = () => {
+  const productId = 44389;
+
   const products = loadState(apiRequest.getAllProducts(), []);
-  const product = loadState(apiRequest.getProductById(44388), null);
-  const productSytles = loadState(apiRequest.getProductStyles(44388), null);
-  const relatedProducts = loadState(apiRequest.getRelatedProducts(44388), []);
-  const reviews = loadState(apiRequest.getReviewsForProduct(44388), null);
-  const reviewsMetadata = loadState(apiRequest.getReviewMetadata(44388), null);
+  const product = loadState(apiRequest.getProductById(productId), null);
+  const productSytles = loadState(apiRequest.getProductStyles(productId), null);
+  const relatedProducts = loadState(apiRequest.getRelatedProducts(productId), []);
+  const reviews = loadState(apiRequest.getReviewsForProduct(productId), null);
+  const reviewsMetadata = loadState(apiRequest.getReviewMetadata(productId), null);
 
   const [modalContent, setModalContent] = useState(null);
 
