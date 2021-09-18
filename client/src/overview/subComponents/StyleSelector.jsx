@@ -2,11 +2,9 @@ import React, { useContext } from 'react';
 import Contexts from '../../contexts/Contexts.tsx';
 export default function StyleSelector() {
   const currentProductStyle = useContext(Contexts.ProductStyleContext);
-  // let testUrl = '';
+
   let stylePics = [];
   if (currentProductStyle !== null) {
-    // testUrl = currentProductStyle.results[0].photos[0].thumbnail_url;
-    // stylePics = currentProductStyle.results[0].photos;
     currentProductStyle.results.forEach((element, index) => {
       stylePics.push(element.photos[0].thumbnail_url);
     });
@@ -22,6 +20,7 @@ export default function StyleSelector() {
             return (
             <span key={index} className='thumbnail'>
               <img className={`tn${index}`} src={stylePic} style={{ width: '150%', height: '150%' }}></img>
+              {/* <span className="far fa-check-circle"></span> */}
             </span>
             );
           })
