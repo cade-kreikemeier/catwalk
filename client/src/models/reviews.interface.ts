@@ -5,7 +5,7 @@ export interface reviews {
   results: review[]
 }
 
-interface review {
+export interface review {
   'review_id': number,
   rating: number,
   summary: string,
