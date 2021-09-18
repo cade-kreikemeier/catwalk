@@ -24,13 +24,13 @@ const App: React.FC = () => {
       <Contexts.ProductsContext.Provider value={products}>
         <Contexts.ProductContext.Provider value={product}>
           <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
-            <Contexts.ProductStyleContext.Provider value={productSytles}>
-              <Overview />
-              <Contexts.RelatedProducts.Provider value={relatedProducts}>
-                <Related />
-              </Contexts.RelatedProducts.Provider>
-            </Contexts.ProductStyleContext.Provider>
             <Contexts.ReviewsContext.Provider value={reviews}>
+              <Contexts.ProductStyleContext.Provider value={productSytles}>
+                <Overview />
+                <Contexts.RelatedProducts.Provider value={relatedProducts}>
+                  <Related />
+                </Contexts.RelatedProducts.Provider>
+              </Contexts.ProductStyleContext.Provider>
               <Reviews />
             </Contexts.ReviewsContext.Provider>
           </Contexts.ReviewsMetadataContext.Provider>
