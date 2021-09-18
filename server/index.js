@@ -9,14 +9,6 @@ const { API_TOKEN, API_URL } = require('../apiConfig/config.ts');
 const port = 9001;
 const app = express();
 
-const cacheMiddleware = new ExpressCache(
-  cacheManager.caching({
-    store: 'memory', max: 10000, ttl: 3600
-  })
-);
-
-cacheMiddleware.attach(app);
-
 // app.use(cors());
 
 // app.use(function(req, res, next) {
@@ -33,7 +25,13 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+const cacheMiddleware = new ExpressCache(
+  cacheManager.caching({
+    store: 'memory', max: 10000, ttl: 3600
+  })
+);
 
+cacheMiddleware.attach(app);
 const apiProxy = createProxyMiddleware('/api',
   {
     changeOrigin: true,
