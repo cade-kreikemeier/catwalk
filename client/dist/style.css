@@ -1,24 +1,68 @@
-* {
-  margin: 0;
-  padding: 0;
+/* CSS HEX */ 
+:root {
+  --medium-turquoise: #55dde0ff;
+  --charcoal: #2f4858ff;
+  --queen-blue: #33658aff;
+  --honey-yellow: #f6ae2dff;
+  --safety-orange-blaze-orange: #f26419ff;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h2,
+h3,
+p {
+  margin-bottom: 1em;
+}
+
+body {
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  padding-inline: clamp(1rem, 3rem, 6rem);
+}
+
+img {
+  max-width: 100%;
+}
+
+.section-md {
+  margin-inline: auto;
+  width: clamp(30rem, 60vw, 72rem);
+  display: flex;
+}
+
+.section-lg {
+  margin-inline: auto;
+  width: clamp(30rem, 75vw, 90rem);
+  height: min(55rem, 100vh);
+  display: flex;
+}
+
 .overView {
-  min-height: 100%;
-  min-width: 100%;
+  padding: 2rem 6rem;
   background-color: grey;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 1fr 42% 24% 1fr;
-  grid-template-rows: 1fr 30% 40% 15% 1fr;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1.5fr 2.5fr 1fr;
   grid-template-areas:
-  ".       .              .           ."
-  ".   imageGallery   productInfo     ."
-  ".   imageGallery  styleSelector    ."
-  ".   imageGallery   addToCart       ."
-  ".       .              .           .";
+  "imageGallery   productInfo"
+  "imageGallery  styleSelector"
+  "imageGallery   addToCart"
 }
+
 
 .imageGallery {
   background-color: red;
@@ -39,12 +83,6 @@
 .addToCart {
   background-color: green;
   grid-area: addToCart;
-}
-
-.overViewContainer {
-  background-color:hotpink;
-  min-height: 75vh;
-  display: flex;
 }
 
 .circle {
@@ -93,6 +131,10 @@
 
 /* Related Items */
 
+.related {
+  flex-direction: column;
+}
+
 .carousel {
   overflow: auto;
   white-space: nowrap;
@@ -114,17 +156,13 @@
   width: 200px;
   object-fit: cover;
   overflow: hidden;
-}
+} 
 
 /* Reviews */
 
 .reviews {
-  max-width: 60vw;
-  min-width: 600px;
-  margin: 0 auto;
   background-color: grey;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  max-height: 97vh;
 }
 
 .reviewBreakdown {
@@ -137,6 +175,8 @@
 
 .ratingBreakdown {
   border: 3px solid yellow;
+  flex-basis: 1;
+  flex-grow: 1;
 }
 
 .attributesSummary {
@@ -149,6 +189,8 @@
 
 .reviewList button {
   margin: 1rem 2rem;
+  flex-basis: 2;
+  flex-grow: 1;
 }
 
 .reviewSort {
@@ -157,6 +199,8 @@
 
 .reviewTileContainer {
   border: 3px solid purple;
+  overflow-y: auto;
+  max-height: 82vh;
 }
 
 .reviewTile {

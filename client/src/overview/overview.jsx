@@ -6,14 +6,11 @@ import StyleSelector from './subComponents/StyleSelector.jsx';
 
 export default function OverView(props) {
   return (
-    <div className="overViewContainer">
-      <div className="overView">
-        {/* <h2>OverView!</h2> */}
-        <ImageGallery />
-        <ProductInfo />
-        <StyleSelector />
-        <AddToCart />
-      </div>
-    </div>
+    <section className="section-lg overView">
+      <ImageGallery />
+      <ProductInfo />
+      <StyleSelector />
+      <AddToCart />
+    </section>
   );
 };

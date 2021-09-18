@@ -4,7 +4,7 @@ import Carousel from './carousel';
 
 const Related: React.FC = () => {
   const ids = Array(20).fill(0).map((_, i) => i);
-  return <React.Fragment>
+  return <section className="section-md related">
     <h2>Related Items</h2>
     <Carousel
       title="Related Products"
@@ -26,7 +26,7 @@ const Related: React.FC = () => {
           .then(() => id / 10)
       }
     />
-  </React.Fragment>;
+  </section>;
 };
 
 export default Related;

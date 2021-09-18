@@ -4,7 +4,7 @@ import { reviews } from '../models/reviews.interface';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
-const ReviewsList: React.FC<reviews> = () => {
+const ReviewsList: React.FC = () => {
   const { setModalContent } = useContext(Contexts.ModalContext);
   const reviews: reviews | null = useContext(Contexts.ReviewsContext);
 
@@ -22,8 +22,10 @@ const ReviewsList: React.FC<reviews> = () => {
   const moreReviews = () => {
     if (numDisplayed === 14 || (reviews.results.length - 1) === numDisplayed) {
       setNumDisplayed(numDisplayed + 1);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
     } else if (numDisplayed < 15 && reviews.results.length - 1 > numDisplayed) {
       setNumDisplayed(numDisplayed + 2);
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
     };
   };
 
@@ -43,10 +45,12 @@ const ReviewsList: React.FC<reviews> = () => {
       <div className='reviewList'>
         <h2>Reviews List</h2>
         <ReviewSort />
-        <div className='reviewTileContainer'>
-          {reviews
-            ? [...displayedReviews]
-            : null}
+        <div>
+          <div className='reviewTileContainer'>
+            {reviews
+              ? [...displayedReviews]
+              : null}
+          </div>
         </div>
         <button onClick={addReview}>Add Review</button>
         {reviews === null || numDisplayed === reviews.results.length

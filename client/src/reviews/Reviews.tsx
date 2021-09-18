@@ -3,10 +3,10 @@ import ReviewBreakdown from './ReviewBreakdown';
 import ReviewsList from './ReviewsList';
 
 const Reviews: React.FC = () => (
-  <div className="reviews">
+  <section className="section-md reviews">
     <ReviewBreakdown />
     <ReviewsList />
-  </div>
+  </section>
 );
 
 export default Reviews;
