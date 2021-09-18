@@ -4,6 +4,7 @@ const ExpressCache = require('express-cache-middleware');
 const cacheManager = require('cache-manager');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { API_TOKEN, API_URL } = require('../apiConfig/config.ts');
+// const cors = require('cors');
 
 const port = 9001;
 const app = express();
@@ -15,6 +16,14 @@ const cacheMiddleware = new ExpressCache(
 );
 
 cacheMiddleware.attach(app);
+
+// app.use(cors());
+
+// app.use(function(req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
