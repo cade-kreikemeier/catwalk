@@ -15,20 +15,19 @@ const App: React.FC = () => {
   const relatedProducts = loadState(apiRequest.getRelatedProducts(44388), []);
   const reviews = loadState(apiRequest.getReviewsForProduct(44388), null);
   const reviewsMetadata = loadState(apiRequest.getReviewMetadata(44388), null);
-
   return (
     <Contexts.ProductsContext.Provider value={products}>
       <Contexts.ProductContext.Provider value={product}>
         <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
           <Contexts.ProductStyleContext.Provider value={productSytles}>
-            <Overview />
-            <Contexts.RelatedProducts.Provider value={relatedProducts}>
-              <Related />
-            </Contexts.RelatedProducts.Provider>
+            <Contexts.ReviewsContext.Provider value={reviews}>
+              <Overview />
+              <Contexts.RelatedProducts.Provider value={relatedProducts}>
+                <Related />
+                <Reviews />
+              </Contexts.RelatedProducts.Provider>
+            </Contexts.ReviewsContext.Provider>
           </Contexts.ProductStyleContext.Provider>
-          <Contexts.ReviewsContext.Provider value={reviews}>
-            <Reviews />
-          </Contexts.ReviewsContext.Provider>
         </Contexts.ReviewsMetadataContext.Provider>
       </Contexts.ProductContext.Provider>
     </Contexts.ProductsContext.Provider>
