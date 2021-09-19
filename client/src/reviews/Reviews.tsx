@@ -1,10 +1,10 @@
 import React from 'react';
-import ReviewBreakdown from './ReviewBreakdown';
+import RatingsAndReviews from './RatingsAndReviews';
 import ReviewsList from './ReviewsList';
 
 const Reviews: React.FC = () => (
   <section className="section-md reviews">
-    <ReviewBreakdown />
+    <RatingsAndReviews />
     <ReviewsList />
   </section>
 );

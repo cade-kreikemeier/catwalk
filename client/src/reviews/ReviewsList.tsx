@@ -43,7 +43,6 @@ const ReviewsList: React.FC = () => {
   return (
     <>
       <div className='reviewList'>
-        <h2>Reviews List</h2>
         <ReviewSort />
         <div>
           <div className='reviewTileContainer'>
@@ -52,10 +51,12 @@ const ReviewsList: React.FC = () => {
               : null}
           </div>
         </div>
-        <button onClick={addReview}>Add Review</button>
-        {reviews === null || numDisplayed === reviews.results.length
-          ? null
-          : <button onClick={moreReviews}>More Reviews</button>}
+        <div className="btnContainer">
+          <button onClick={addReview}>Add Review</button>
+          {reviews === null || numDisplayed === reviews.results.length
+            ? null
+            : <button onClick={moreReviews}>More Reviews</button>}
+        </div>
       </div>
     </>
   );

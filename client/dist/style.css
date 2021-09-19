@@ -30,7 +30,7 @@ p {
 body {
   margin-inline: auto;
   margin-bottom: 2rem;
-  padding-inline: clamp(1rem, 3rem, 6rem);
+  padding-inline: clamp(.25rem, 2rem, 6rem);
 }
 
 img {
@@ -45,7 +45,7 @@ img {
 
 .section-lg {
   margin-inline: auto;
-  width: clamp(30rem, 75vw, 90rem);
+  width: clamp(45rem, 75vw, 90rem);
   height: min(55rem, 100vh);
   display: flex;
 }
@@ -162,11 +162,15 @@ img {
 
 .reviews {
   background-color: grey;
-  max-height: 97vh;
+  background-size: cover;
+  max-height: max(35rem, 97vh);
+  flex-flow: row wrap;
+  flex-basis: auto;
 }
 
-.reviewBreakdown {
+.ratingsAndReviews {
   border: 3px solid red;
+  flex-grow: 1;
 }
 
 .ratingSummary {
@@ -175,8 +179,6 @@ img {
 
 .ratingBreakdown {
   border: 3px solid yellow;
-  flex-basis: 1;
-  flex-grow: 1;
 }
 
 .attributesSummary {
@@ -185,16 +187,34 @@ img {
 
 .reviewList {
   border: 3px solid blue;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-grow: 1.25;
+  
 }
 
-.reviewList button {
-  margin: 1rem 2rem;
-  flex-basis: 2;
-  flex-grow: 1;
+.btnContainer {
+  display: flex;
+  flex-flow:row wrap;
+  justify-content: space-evenly;
+}
+
+.btnContainer button {
+  border-radius: 0;
+  height: 3rem;
+  width: 10rem;
+  margin-block: .5rem;
 }
 
 .reviewSort {
   border: 3px solid green;
+  height: 3.5rem;
+  display: flex;
+}
+
+.reviewSort h3 {
+  font-size: 1.6rem;
+  margin: auto 0 auto .8rem;
 }
 
 .reviewTileContainer {
@@ -205,6 +225,7 @@ img {
 
 .reviewTile {
   border: 3px solid yellowgreen;
+  height: 16rem;
 }
 
 /* Modal */
