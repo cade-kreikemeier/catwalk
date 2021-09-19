@@ -44,12 +44,10 @@ const ReviewsList: React.FC = () => {
     <>
       <div className='reviewList'>
         <ReviewSort />
-        <div>
-          <div className='reviewTileContainer'>
-            {reviews
-              ? [...displayedReviews]
-              : null}
-          </div>
+        <div className='reviewTileContainer'>
+          {reviews
+            ? [...displayedReviews]
+            : null}
         </div>
         <div className="btnContainer">
           <button onClick={addReview}>Add Review</button>
