@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { apiRequest } from '../utils/apiRequests';
 import Contexts from './Contexts';
 
-export function ProductsProvider({ children }) {
+type Props = {
+  children: ReactNode;
+};
+
+export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -11,20 +15,14 @@ export function ProductsProvider({ children }) {
       .catch(err => console.error(err));
   }, []);
 
-  const fetchAllProducts = () => {
-    apiRequest.getAllProducts()
-      .then(setProducts)
-      .catch(err => console.error(err));
-  };
-
   return (
-    <Contexts.ProductsContext.Provider value={[products, fetchAllProducts]}>
+    <Contexts.ProductsContext.Provider value={products}>
       {children}
     </Contexts.ProductsContext.Provider>
   );
 }
 
-export function ProductProvider({ children }) {
+export function ProductProvider({ children }: Props): ReactElement {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -40,7 +38,7 @@ export function ProductProvider({ children }) {
   );
 }
 
-export function ProductSytlesProvider({ children }) {
+export function ProductSytlesProvider({ children }: Props): ReactElement {
   const [productSytles, setProductSytles] = useState(null);
 
   useEffect(() => {
@@ -56,7 +54,7 @@ export function ProductSytlesProvider({ children }) {
   );
 }
 
-export function RelatedProductsProvider({ children }) {
+export function RelatedProductsProvider({ children }: Props): ReactElement {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
@@ -72,7 +70,7 @@ export function RelatedProductsProvider({ children }) {
   );
 }
 
-export function ReviewsProvider({ children }) {
+export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
@@ -88,7 +86,7 @@ export function ReviewsProvider({ children }) {
   );
 }
 
-export function ReviewMetadataProvider({ children }) {
+export function ReviewMetadataProvider({ children }: Props): ReactElement {
   const [reviewMetadata, setReviewMetadata] = useState(null);
 
   useEffect(() => {
