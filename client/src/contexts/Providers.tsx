@@ -6,6 +6,8 @@ type Props = {
   children: ReactNode;
 };
 
+const productId = 44389;
+
 export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState([]);
 
@@ -26,10 +28,10 @@ export function ProductProvider({ children }: Props): ReactElement {
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    apiRequest.getProductById(44389)
+    apiRequest.getProductById(productId)
       .then(setProduct)
       .catch(err => console.error(err));
-  }, []);
+  }, [productId]);
 
   return (
     <Contexts.ProductContext.Provider value={product}>
@@ -42,10 +44,10 @@ export function ProductSytlesProvider({ children }: Props): ReactElement {
   const [productSytles, setProductSytles] = useState(null);
 
   useEffect(() => {
-    apiRequest.getProductStyles(44389)
+    apiRequest.getProductStyles(productId)
       .then(setProductSytles)
       .catch(err => console.error(err));
-  }, []);
+  }, [productId]);
 
   return (
     <Contexts.ProductStyleContext.Provider value={productSytles}>
@@ -58,10 +60,10 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    apiRequest.getRelatedProducts(44389)
+    apiRequest.getRelatedProducts(productId)
       .then(setRelatedProducts)
       .catch(err => console.error(err));
-  }, []);
+  }, [productId]);
 
   return (
     <Contexts.RelatedProducts.Provider value={relatedProducts}>
@@ -74,10 +76,10 @@ export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
-    apiRequest.getReviewsForProduct(44389)
+    apiRequest.getReviewsForProduct(productId)
       .then(setReviews)
       .catch(err => console.error(err));
-  }, []);
+  }, [productId]);
 
   return (
     <Contexts.ReviewsContext.Provider value={reviews}>
@@ -90,14 +92,14 @@ export function ReviewMetadataProvider({ children }: Props): ReactElement {
   const [reviewMetadata, setReviewMetadata] = useState(null);
 
   useEffect(() => {
-    apiRequest.getReviewMetadata(44389)
+    apiRequest.getReviewMetadata(productId)
       .then(setReviewMetadata)
       .catch(err => console.error(err));
-  }, []);
+  }, [productId]);
 
   return (
-    <Contexts.ReviewsContext.Provider value={reviewMetadata}>
+    <Contexts.ReviewsMetadataContext.Provider value={reviewMetadata}>
       {children}
-    </Contexts.ReviewsContext.Provider>
+    </Contexts.ReviewsMetadataContext.Provider>
   );
 }
