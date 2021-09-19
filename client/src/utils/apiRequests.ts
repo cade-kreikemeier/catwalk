@@ -34,7 +34,7 @@ export const apiRequest = {
   getRelatedProducts: (productId: number): Promise<number[]> => {
     return requests.get(`/products/${productId}/related`);
   },
-  getReviewsForProduct: (productId: number, page = 1, count = 5, sort = 'newest'): Promise<reviews> => {
+  getReviewsForProduct: (productId: number, sort = 'relevant', page = 1, count = 15): Promise<reviews> => {
     return requests.get('/reviews/', { params: { product_id: productId, page: page, count: count, sort: sort } });
   },
   getReviewMetadata: (productId: number): Promise<reviewMetaData> => {

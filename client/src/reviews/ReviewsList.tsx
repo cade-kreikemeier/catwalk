@@ -1,16 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Contexts from '../contexts/Contexts';
-import { reviews } from '../models/reviews.interface';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => {
   const { setModalContent } = useContext(Contexts.ModalContext);
-  const reviews: reviews | null = useContext(Contexts.ReviewsContext);
+  const { reviews } = useContext(Contexts.ReviewsContext);
 
   const [displayedReviews, setDisplayReviews] = useState([]);
   const [numDisplayed, setNumDisplayed] = useState(2);
-  // const [filterType, setFilterType] = useState('relevant');
 
   const child = <div>CHILD EXAMPLE</div>;
 

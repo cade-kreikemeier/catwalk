@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { reviews } from '../models/reviews.interface';
 import { apiRequest } from '../utils/apiRequests';
 import Contexts from './Contexts';
 
@@ -73,16 +74,21 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsProvider({ children }: Props): ReactElement {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState<reviews>(null);
+  const [sortType, setSortType] = useState('relevant');
 
-  useEffect(() => {
-    apiRequest.getReviewsForProduct(productId)
+  const requestReviews = () => {
+    apiRequest.getReviewsForProduct(productId, sortType)
       .then(setReviews)
       .catch(err => console.error(err));
-  }, [productId]);
+  };
+
+  useEffect(() => {
+    requestReviews();
+  }, [productId, sortType]);
 
   return (
-    <Contexts.ReviewsContext.Provider value={reviews}>
+    <Contexts.ReviewsContext.Provider value={{ reviews, setSortType }}>
       {children}
     </Contexts.ReviewsContext.Provider>
   );
