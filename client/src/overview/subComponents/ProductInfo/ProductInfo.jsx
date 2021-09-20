@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ReviewStar from './ReviewStar.jsx';
+import ReviewStar from '../../../utils/ReviewStar.jsx';
 import ProductCategory from './ProductCategory.jsx';
 import ProductName from './ProductName.jsx';
 import ProductPrice from './ProductPrice.jsx';
