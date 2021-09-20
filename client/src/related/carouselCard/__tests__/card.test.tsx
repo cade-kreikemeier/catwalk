@@ -22,11 +22,34 @@ test('displays infomation, correctly displayed', async () => {
     />);
   });
 
-  expect(screen.getByTestId('thumbnail')).toHaveAttribute('src', 'http://www.example.com/pic.jpg');
-  expect(screen.getByTestId('name')).toHaveTextContent('T-Shirt');
-  expect(screen.getByTestId('category')).toHaveTextContent('Shirt');
-  expect(screen.getByTestId('price')).toHaveTextContent('$10.00');
-  expect(screen.getByTestId('rating')).toHaveTextContent('Rating: 4.2');
+  expect(screen.queryByTestId('thumbnail')).toHaveAttribute('src', 'http://www.example.com/pic.jpg');
+  expect(screen.queryByTestId('name')).toHaveTextContent('T-Shirt');
+  expect(screen.queryByTestId('category')).toHaveTextContent('Shirt');
+  expect(screen.queryByTestId('price')).toHaveTextContent('$10.00');
+  expect(screen.queryByTestId('rating')).toHaveTextContent('Rating: 4.2');
+
+  expect(clicked).toBe(false);
+});
+
+test('when imageUrl is empty string, no image should be shown', async () => {
+  let clicked = false;
+  await act(async () => {
+    render(<CarouselCard
+      imageUrl={''}
+      metaData={{ name: 'T-Shirt', category: 'Shirt', price: '10.00' }}
+      rating={4.2}
+      actionChild={
+        <span>Child</span>
+      }
+      actionCallback={() => { clicked = true; }}
+    />);
+  });
+
+  expect(screen.queryByTestId('thumbnail')).not.toBeInTheDocument();
+  expect(screen.queryByTestId('name')).toHaveTextContent('T-Shirt');
+  expect(screen.queryByTestId('category')).toHaveTextContent('Shirt');
+  expect(screen.queryByTestId('price')).toHaveTextContent('$10.00');
+  expect(screen.queryByTestId('rating')).toHaveTextContent('Rating: 4.2');
 
   expect(clicked).toBe(false);
 });

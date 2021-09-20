@@ -11,7 +11,10 @@ interface CarouselCardProps {
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard">
-    <img data-testid="thumbnail" src={props.imageUrl} />
+    {props.imageUrl !== ''
+      ? <img data-testid="thumbnail" src={props.imageUrl} />
+      : null
+    }
     <p data-testid="category">{props.metaData.category}</p>
     <p data-testid="name">{props.metaData.name}</p>
     <p data-testid="price">${props.metaData.price}</p>
