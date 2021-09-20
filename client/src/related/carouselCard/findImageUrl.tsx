@@ -4,7 +4,7 @@ function findImageUrl(style: style): string {
   if (style === null) {
     return '';
   } else {
-    return style.results[0].photos[0].thumbnail_url;
+    return style.results[0].photos[0].thumbnail_url || '';
   }
 }
 
