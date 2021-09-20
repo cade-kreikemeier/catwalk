@@ -22,3 +22,8 @@ interface photo {
   'thumbnail_url': string,
   url: string
 }
+
+export interface reviewsProps {
+  reviews: reviews | null,
+  setReviews: React.Dispatch<React.SetStateAction<reviews>>
+}

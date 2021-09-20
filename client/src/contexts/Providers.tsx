@@ -1,6 +1,10 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
 import { apiRequest } from '../utils/apiRequests';
 import Contexts from './Contexts';
+import { product } from '../models/product.interface';
+import { style } from '../models/style.interface';
+import { reviews } from '../models/reviews.interface';
+import { reviewMetaData } from '../models/reviewMetaData.interface';
 
 type Props = {
   children: ReactNode;
@@ -9,7 +13,7 @@ type Props = {
 const productId = 44389;
 
 export function ProductsProvider({ children }: Props): ReactElement {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<product[]>([]);
 
   useEffect(() => {
     apiRequest.getAllProducts()
@@ -25,7 +29,7 @@ export function ProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ProductProvider({ children }: Props): ReactElement {
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<product>(null);
 
   useEffect(() => {
     apiRequest.getProductById(productId)
@@ -41,7 +45,7 @@ export function ProductProvider({ children }: Props): ReactElement {
 }
 
 export function ProductSytlesProvider({ children }: Props): ReactElement {
-  const [productSytles, setProductSytles] = useState(null);
+  const [productSytles, setProductSytles] = useState<style[]>(null);
 
   useEffect(() => {
     apiRequest.getProductStyles(productId)
@@ -57,7 +61,7 @@ export function ProductSytlesProvider({ children }: Props): ReactElement {
 }
 
 export function RelatedProductsProvider({ children }: Props): ReactElement {
-  const [relatedProducts, setRelatedProducts] = useState([]);
+  const [relatedProducts, setRelatedProducts] = useState<number[]>([]);
 
   useEffect(() => {
     apiRequest.getRelatedProducts(productId)
@@ -73,23 +77,23 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsProvider({ children }: Props): ReactElement {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState<reviews>(null);
 
-  useEffect(() => {
+  useEffect((): void => {
     apiRequest.getReviewsForProduct(productId)
       .then(setReviews)
       .catch(err => console.error(err));
   }, [productId]);
 
   return (
-    <Contexts.ReviewsContext.Provider value={reviews}>
+    <Contexts.ReviewsContext.Provider value={{ reviews, setReviews }}>
       {children}
     </Contexts.ReviewsContext.Provider>
   );
 }
 
 export function ReviewMetadataProvider({ children }: Props): ReactElement {
-  const [reviewMetadata, setReviewMetadata] = useState(null);
+  const [reviewMetadata, setReviewMetadata] = useState<reviewMetaData>(null);
 
   useEffect(() => {
     apiRequest.getReviewMetadata(productId)
