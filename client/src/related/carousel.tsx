@@ -1,6 +1,7 @@
 import React from 'react';
 import CarouselCardLoader from './carouselCard/carouselCardLoader';
 
+
 interface CarouselProps {
   title: string,
   ids: Array<number>,
