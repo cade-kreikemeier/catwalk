@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import reviewMetaData from '../../models/reviewMetaData.type';
+import reviewMetaData from '../../models/reviewsMetaData.type';
 
 interface CarouselCardProps {
   imageUrl: string,
