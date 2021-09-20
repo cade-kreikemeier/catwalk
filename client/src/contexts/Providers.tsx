@@ -4,7 +4,7 @@ import Contexts from './Contexts';
 import { product } from '../models/product.interface';
 import { style } from '../models/style.interface';
 import { reviews } from '../models/reviews.interface';
-import { reviewMetaData } from '../models/reviewMetaData.interface';
+import { reviewsMetaData } from '../models/reviewsMetaData.interface';
 
 type Props = {
   children: ReactNode;
@@ -92,12 +92,12 @@ export function ReviewsProvider({ children }: Props): ReactElement {
   );
 }
 
-export function ReviewMetadataProvider({ children }: Props): ReactElement {
-  const [reviewMetadata, setReviewMetadata] = useState<reviewMetaData>(null);
+export function ReviewsMetadataProvider({ children }: Props): ReactElement {
+  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData>(null);
 
   useEffect(() => {
-    apiRequest.getReviewMetadata(productId)
-      .then(setReviewMetadata)
+    apiRequest.getReviewsMetadata(productId)
+      .then(setReviewsMetadata)
       .catch(err => console.error(err));
   }, [productId]);
 
