@@ -102,7 +102,7 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
   }, [productId]);
 
   return (
-    <Contexts.ReviewsMetadataContext.Provider value={reviewMetadata}>
+    <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
       {children}
     </Contexts.ReviewsMetadataContext.Provider>
   );

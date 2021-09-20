@@ -11,7 +11,7 @@ const ReviewsList: React.FC<reviews> = () => {
 
 
   const { setModalContent } = useContext(Contexts.ModalContext);
-  const { reviews }: reviews | null = useContext(Contexts.ReviewsContext);
+  const { reviews } = useContext(Contexts.ReviewsContext);
   const child = <div>CHILD EXAMPLE</div>;
 
 

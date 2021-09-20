@@ -1,12 +1,12 @@
 import React from 'react';
 import loadState from '../utils/loadState';
-import reviewMetaData from '../models/reviewMetaData.type';
+import reviewsMetaData from '../models/reviewsMetaData.type';
 import CarouselCard from './carouselCard';
 
 interface CarouselProps {
   title: string,
   loadIds: Promise<Array<number>>,
-  metaDataProducer: (id: number) => Promise<reviewMetaData>
+  metaDataProducer: (id: number) => Promise<reviewsMetaData>
   ratingsProducer: (i: number) => Promise<number>
   imageUrlProducer: (id: number) => Promise<string>
 };
