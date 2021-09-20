@@ -37,6 +37,11 @@
   padding: .5rem;
 }
 
+.starReviewRow {
+display: flex;
+flex-direction: row;
+align-items: center;
+}
 
 .starOutline {
   display: flex;
@@ -44,14 +49,16 @@
   flex-grow: 0;
   flex-shrink: 0;
   color: lightgray;
+  font-size: 1rem;
 }
 
 .starFilled {
   position: relative;
   flex-grow: 0;
   flex-shrink: 0;
-  color: gold;
+  color: black;
   overflow: hidden;
+  font-size: 1rem;
 }
 
 .reviewStar {
@@ -59,7 +66,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
+  width: 30%;
   flex-grow: 1;
   border: 2px dashed black;
   margin: 2px;
@@ -69,6 +76,12 @@
   position: relative;
   display: flex;
   color: transparent;
+}
+
+.productReview {
+  font-size: 0.8rem;
+  border: 2px dashed black;
+  margin: 2px;
 }
 
 .productCatrgory {
@@ -103,12 +116,7 @@
   margin: 2px;
 }
 
-.productReview {
-  font-size: 0.8rem;
-  width: 50%;
-  height: 50%;
-  border: 2px dashed black;
-}
+
 
 /* Style */
 

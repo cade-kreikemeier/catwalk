@@ -1,11 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import ProductReview from './ProductReview.jsx';
-import Contexts from '../../../contexts/Contexts.tsx';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-
-export default function ReviewStar() {
-  const currentReviewsMetadata = useContext(Contexts.ReviewsMetadataContext);
-
+function ReviewStar({ currentReviewsMetadata }) {
   function calAvgRating(MetadataRating) {
     let total = 0;
     let number = 0;
@@ -15,9 +11,9 @@ export default function ReviewStar() {
         number = number + (parseInt(MetadataRating[i + 1]));
       }
     };
-
     return total / number;
   };
+
   let rating;
   if (currentReviewsMetadata !== null) {
     rating = calAvgRating(currentReviewsMetadata.ratings) / 5 * 100;
@@ -29,7 +25,12 @@ export default function ReviewStar() {
         <span className='starOutline'>★★★★★</span>
         <span className='starFilled' style={{ width: `${rating}%` }}>★★★★★</span>
       </div>
-      <ProductReview />
     </div>
   );
 };
+
+ReviewStar.propTypes = {
+  currentReviewsMetadata: PropTypes.object
+};
+
+export default ReviewStar;

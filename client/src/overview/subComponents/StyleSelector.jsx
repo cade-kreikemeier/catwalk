@@ -1,13 +1,7 @@
-import React, { useContext } from 'react';
-import Contexts from '../../contexts/Contexts.tsx';
-export default function StyleSelector(props) {
-  const currentProductStyle = useContext(Contexts.ProductStyleContext);
-  let stylePics = [];
-  if (currentProductStyle !== null) {
-    currentProductStyle.results.forEach((element, index) => {
-      stylePics.push(element.photos[0].thumbnail_url);
-    });
-  }
+import React from 'react';
+import PropTypes from 'prop-types';
+
+function StyleSelector({ stylePics, currentStyleIdx }) {
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
@@ -19,7 +13,7 @@ export default function StyleSelector(props) {
             return (
             <span key={index} className='thumbnail' onClick={ (e) => { thumbnailClicked(index); } }>
               <img className={`tn${index}`} src={stylePic} style={{ width: '150%', height: '150%' }}></img>
-              <span className={`far fa-check-circle checkIcon Icon${index}`}></span>
+                {index === currentStyleIdx ? <span className={`far fa-check-circle checkIcon Icon${index}` }></span> : null}
             </span>
             );
           })
@@ -29,3 +23,10 @@ export default function StyleSelector(props) {
     </div>
   );
 };
+
+StyleSelector.propTypes = {
+  stylePics: PropTypes.array,
+  currentStyleIdx: PropTypes.number
+};
+
+export default StyleSelector;
