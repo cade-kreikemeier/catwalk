@@ -4,7 +4,7 @@ import CarouselCardLoader from './carouselCard/carouselCardLoader';
 
 interface CarouselProps {
   title: string,
-  ids: Array<number>,
+  ids: number[],
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
