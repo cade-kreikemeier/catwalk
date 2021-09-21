@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import Contexts from '../contexts/Contexts';
 
 export default function Modal(): ReactElement {
-  const { modalContent, setModalContent } = useContext(Contexts.ModalContext);
+  const { modalContent, setModalContent } = useContext(Contexts.ModalContext) || {};
 
   const onClose = () => {
-    setModalContent(null);
+    if (setModalContent) {
+      setModalContent(null);
+    }
   };
 
-  if (modalContent) {
+  const elem = document.getElementById('modal-root');
+  if (modalContent && elem) {
     return ReactDOM.createPortal(
       <div className="modal-wrapper">
         <div className="modal-backdrop"></div>
@@ -18,9 +21,9 @@ export default function Modal(): ReactElement {
           {modalContent}
         </div>
       </div>,
-      document.getElementById('modal-root')
+      elem
     );
   }
 
-  return null;
+  return (<></>);
 };
