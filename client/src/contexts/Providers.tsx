@@ -29,7 +29,7 @@ export function ProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ProductProvider({ children }: Props): ReactElement {
-  const [product, setProduct] = useState<product>(null);
+  const [product, setProduct] = useState<product | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductById(productId)
@@ -45,7 +45,7 @@ export function ProductProvider({ children }: Props): ReactElement {
 }
 
 export function ProductSytlesProvider({ children }: Props): ReactElement {
-  const [productSytles, setProductSytles] = useState<style>(null);
+  const [productSytles, setProductSytles] = useState<style | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductStyles(productId)
@@ -77,8 +77,8 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsProvider({ children }: Props): ReactElement {
-  const [reviews, setReviews] = useState<reviews>(null);
-  const [sortType, setSortType] = useState(null);
+  const [reviews, setReviews] = useState<reviews | undefined>(undefined);
+  const [sortType, setSortType] = useState<string | undefined>(undefined);
 
   const requestReviews = () => {
     apiRequest.getReviewsForProduct(productId)
@@ -90,6 +90,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
     requestReviews();
   }, [productId, sortType]);
 
+
   return (
     <Contexts.ReviewsContext.Provider value={{ reviews, setSortType }}>
       {children}
@@ -98,8 +99,8 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
-  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData>(null);
-  const [reviewCount, setReviewCount] = useState(0);
+  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData | undefined>(undefined);
+  const [reviewCount, setReviewCount] = useState<number | undefined>(undefined);
 
   const calcReviewCount = () => {
     if (reviewsMetadata) {
@@ -120,9 +121,17 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
     setReviewCount(calcReviewCount);
   }, [reviewsMetadata]);
 
-  return (
-    <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
-      {children}
-    </Contexts.ReviewsMetadataContext.Provider>
-  );
+  if (reviewsMetadata && reviewCount) {
+    return (
+      <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
+        {children}
+      </Contexts.ReviewsMetadataContext.Provider>
+    );
+  } else {
+    return (
+      <>
+        {children}
+      </>
+    );
+  }
 }

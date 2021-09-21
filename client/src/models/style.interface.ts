@@ -21,6 +21,6 @@ interface skuData {
 }
 
 interface photo {
-  'thumbnail_url': string,
-  url: string
+  'thumbnail_url': string | null,
+  url: string | null
 }
