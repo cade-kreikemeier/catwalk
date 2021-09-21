@@ -23,7 +23,7 @@ interface photo {
   url: string
 }
 
-export interface reviewsProps {
+export interface reviewsInteraction {
   reviews: reviews | null,
   setReviews: React.Dispatch<React.SetStateAction<reviews>>
 }
