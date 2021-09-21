@@ -6,7 +6,7 @@ export default function ProductCategory() {
 
   return (
     <div className='productCatrgory'>
-      {currentProductData ? currentProductData.category : 'emptyProductCategory'}
+      {currentProductData?.category || 'emptyProductCategory'}
     </div>
   );
 }

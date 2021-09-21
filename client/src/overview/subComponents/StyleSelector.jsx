@@ -14,7 +14,7 @@ function StyleSelector({ stylePics, currentProductStyle }) {
     ({ currentStyleName, setCurrentStyleName } = StyleNameContextData);
   }
   const thumbnailClicked = (e, index) => {
-    if (currentProductStyle !== null) {
+    if (currentProductStyle) {
       setCurrentStyleIdx(index);
       setCurrentStyleName(currentProductStyle.results[index].name);
     }

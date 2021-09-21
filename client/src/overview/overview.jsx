@@ -25,7 +25,7 @@ function OverView() {
             <ImageGallery />
             <ProductInfo />
             <StyleSelector
-              stylePics={ stylePics.length ? stylePics : null }
+              stylePics={ stylePics }
               currentProductStyle={ currentProductStyle }
             />
             <AddToCart />

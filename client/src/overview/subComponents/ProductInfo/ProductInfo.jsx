@@ -8,18 +8,21 @@ import ProductReview from './ProductReview.jsx';
 
 export default function ProductInfo() {
   const currentReviewsMetadata = useContext(Contexts.ReviewsMetadataContext);
-  let reviewCount = false;
+  let reviewShow = false;
   if (currentReviewsMetadata) {
     if (Object.keys(currentReviewsMetadata).length !== 0 && currentReviewsMetadata.constructor === Object) {
-      reviewCount = true;
+      reviewShow = true;
     }
   }
   return (
     <div className='productInfo'>
-      <div className={'starReviewRow'} style={{ visibility: reviewCount ? 'visible' : 'hidden' }}>
-        <ReviewStar currentReviewsMetadata={currentReviewsMetadata}/>
-        <ProductReview />
-      </div>
+      { reviewShow
+        ? <div className={'starReviewRow'}>
+              <ReviewStar currentReviewsMetadata={currentReviewsMetadata}/>
+              <ProductReview />
+          </div>
+        : null
+      }
       <ProductCategory />
       <ProductName />
       <ProductPrice />

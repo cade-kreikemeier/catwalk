@@ -5,15 +5,19 @@ function ReviewStar({ currentReviewsMetadata }) {
   function calAvgRating(MetadataRating) {
     let total = 0;
     let number = 0;
-    for (let i = 0; i < 5; i++) {
-      if (MetadataRating[i + 1] !== undefined) {
-        total = total + (i + 1) * (MetadataRating[i + 1]);
-        number = number + (parseInt(MetadataRating[i + 1]));
+    for (let i = 1; i <= 5; i++) {
+      if (MetadataRating[i] !== undefined) {
+        total = total + (i) * (MetadataRating[i]);
+        number = number + (parseInt(MetadataRating[i]));
       }
     };
     let avg = total / number;
     const left = avg % 0.25;
-    avg = avg - left;
+    if (left < 0.125) {
+      avg = avg - left;
+    } else {
+      avg = avg - left + 0.25;
+    }
     return avg;
   };
 
@@ -25,8 +29,8 @@ function ReviewStar({ currentReviewsMetadata }) {
   return (
     <div className='reviewStar'>
       <div className='starsContainer'>
-        <span className='starOutline'>★★★★★</span>
-        <span className='starFilled' style={{ width: `${rating}%` }}>★★★★★</span>
+        <span className='starOutline star'>★★★★★</span>
+        <span className='starFilled star' style={{ width: `${rating}%` }}>★★★★★</span>
       </div>
     </div>
   );

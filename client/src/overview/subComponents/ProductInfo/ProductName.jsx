@@ -6,7 +6,7 @@ export default function ProductName() {
 
   return (
     <div className='productName'>
-      {currentProductData ? currentProductData.name : 'emptyProductName'}
+      {currentProductData?.name || 'emptyProductName'}
     </div>
   );
 };

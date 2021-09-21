@@ -49,22 +49,22 @@ flex-direction: row;
 align-items: center;
 }
 
+.star {
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
 .starOutline {
   display: flex;
   position: absolute;
-  flex-grow: 0;
-  flex-shrink: 0;
   color: lightgray;
-  font-size: 1rem;
 }
 
 .starFilled {
   position: relative;
-  flex-grow: 0;
-  flex-shrink: 0;
   color: black;
   overflow: hidden;
-  font-size: 1rem;
 }
 
 .reviewStar {
