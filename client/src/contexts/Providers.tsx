@@ -100,7 +100,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
   const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData | undefined>(undefined);
-  const [reviewCount, setReviewCount] = useState<number | undefined>(undefined);
+  const [reviewCount, setReviewCount] = useState<number>(0);
 
   const calcReviewCount = () => {
     if (reviewsMetadata) {
@@ -108,6 +108,8 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
         totalNumRatings += parseInt(starRatingNum);
         return totalNumRatings;
       }, 0);
+    } else {
+      return 0;
     }
   };
 
