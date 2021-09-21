@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
-import reviewMetaData from '../../models/reviewsMetaData.type';
+import productDescription from '../../models/productDescription.interface';
 
 interface CarouselCardProps {
   imageUrl: string,
-  metaData: reviewMetaData
+  metaData: productDescription
   rating: number,
   actionChild: ReactNode,
   actionCallback: () => void
