@@ -4,34 +4,36 @@ import AddToCart from './subComponents/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
 import StyleSelector from './subComponents/StyleSelector.jsx';
-const StyleContext = React.createContext();
+const StyleIdxContext = React.createContext();
+const StyleNameContext = React.createContext();
 
 function OverView() {
   const currentProductStyle = useContext(Contexts.ProductStyleContext);
   const stylePics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-
-  if (currentProductStyle !== null) {
+  const [currentStyleName, setCurrentStyleName] = useState('Forest Green & Black by Default');
+  if (currentProductStyle) {
     currentProductStyle.results.forEach((element, index) => {
       stylePics.push(element.photos[0].thumbnail_url);
     });
   }
-  // console.log(StyleContext);
   return (
     <div className="overViewContainer">
       <div className="overView">
-        <StyleContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
-          <ImageGallery />
-          <ProductInfo />
-          <StyleSelector
-            stylePics={ stylePics.length ? stylePics : null }
-            // currentStyleIdx={currentStyleIdx}
-          />
-          <AddToCart />
-        </StyleContext.Provider>
+        <StyleIdxContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
+          <StyleNameContext.Provider value={{ currentStyleName, setCurrentStyleName }}>
+            <ImageGallery />
+            <ProductInfo />
+            <StyleSelector
+              stylePics={ stylePics.length ? stylePics : null }
+              currentProductStyle={ currentProductStyle }
+            />
+            <AddToCart />
+          </StyleNameContext.Provider>
+        </StyleIdxContext.Provider>
       </div>
     </div>
   );
 };
 export default OverView;
-export { StyleContext };
+export { StyleIdxContext, StyleNameContext };

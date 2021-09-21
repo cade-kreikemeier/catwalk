@@ -1,24 +1,30 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { StyleContext } from '../overview.jsx';
+import { StyleIdxContext, StyleNameContext } from '../overview.jsx';
 
-function StyleSelector({ stylePics }) {
-  const contextData = useContext(StyleContext);
+function StyleSelector({ stylePics, currentProductStyle }) {
+  const StyleIdxContextData = useContext(StyleIdxContext);
+  const StyleNameContextData = useContext(StyleNameContext);
   let currentStyleIdx;
   let setCurrentStyleIdx;
-  if (contextData !== undefined) {
-    ({ currentStyleIdx, setCurrentStyleIdx } = contextData);
+  let currentStyleName;
+  let setCurrentStyleName;
+  if (StyleIdxContextData !== undefined) {
+    ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
+    ({ currentStyleName, setCurrentStyleName } = StyleNameContextData);
   }
   const thumbnailClicked = (e, index) => {
-    // console.log(index);
-    setCurrentStyleIdx(index);
+    if (currentProductStyle !== null) {
+      setCurrentStyleIdx(index);
+      setCurrentStyleName(currentProductStyle.results[index].name);
+    }
   };
 
 
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
-        {'Style > Selected Style'}
+        {`Style > ${currentStyleName}`}
       </div>
       <div className='styleThumbnail'>
         {stylePics
@@ -39,7 +45,8 @@ function StyleSelector({ stylePics }) {
 
 StyleSelector.propTypes = {
   stylePics: PropTypes.array,
-  currentStyleIdx: PropTypes.number
+  currentStyleIdx: PropTypes.number,
+  currentProductStyle: PropTypes.object
 };
 
 export default StyleSelector;
