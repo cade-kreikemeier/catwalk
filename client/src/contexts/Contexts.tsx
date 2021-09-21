@@ -15,7 +15,7 @@ ProductsContext.displayName = 'ProductsContext';
 const ProductContext = createContext<product | undefined>(undefined);
 ProductContext.displayName = 'ProductContext';
 
-const ProductStyleContext = createContext<style[] | undefined>(undefined);
+const ProductStyleContext = createContext<style | undefined>(undefined);
 ProductStyleContext.displayName = 'ProductStyleContext';
 
 const RelatedProducts = createContext<number[] | undefined>(undefined);
