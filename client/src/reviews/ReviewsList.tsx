@@ -1,10 +1,9 @@
 import React, { ReactElement, useContext } from 'react';
 import Contexts from '../contexts/Contexts';
-import { reviews } from '../models/reviews.interface';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
-const ReviewsList: React.FC<reviews> = () => {
+const ReviewsList: React.FC = () => {
   // const [displayReviews, setDisplayReviews] = useState(false);
   // const [numDisplayed, setNumDisplayed] = useState(2);
   // const [filterType, setFilterType] = useState('relevant');
