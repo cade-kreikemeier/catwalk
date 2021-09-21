@@ -165,12 +165,13 @@ img {
   background-size: cover;
   max-height: max(35rem, 97vh);
   flex-flow: row wrap;
-  flex-basis: auto;
 }
 
 .ratingsAndReviews {
   border: 3px solid red;
   flex-grow: 1;
+  flex-basis: 34%;
+  min-width: 16rem;
 }
 
 .ratingSummary {
@@ -189,8 +190,9 @@ img {
   border: 3px solid blue;
   display: flex;
   flex-flow: column nowrap;
-  flex-grow: 1.25;
-  
+  flex-grow: 1;
+  flex-basis: 66%;
+  min-width: 23rem;
 }
 
 .btnContainer {
