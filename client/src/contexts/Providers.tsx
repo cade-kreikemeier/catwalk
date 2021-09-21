@@ -1,5 +1,4 @@
 import React, { ReactElement, ReactNode, useEffect, useState } from 'react';
-import { reviews } from '../models/reviews.interface';
 import { apiRequest } from '../utils/apiRequests';
 import Contexts from './Contexts';
 import { product } from '../models/product.interface';
@@ -46,7 +45,7 @@ export function ProductProvider({ children }: Props): ReactElement {
 }
 
 export function ProductSytlesProvider({ children }: Props): ReactElement {
-  const [productSytles, setProductSytles] = useState<style[]>(null);
+  const [productSytles, setProductSytles] = useState<style>(null);
 
   useEffect(() => {
     apiRequest.getProductStyles(productId)
@@ -79,16 +78,10 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 
 export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState<reviews>(null);
-<<<<<<< HEAD
-  const [sortType, setSortType] = useState('relevant');
+  const [sortType, setSortType] = useState(null);
 
   const requestReviews = () => {
-    apiRequest.getReviewsForProduct(productId, sortType)
-=======
-
-  useEffect((): void => {
     apiRequest.getReviewsForProduct(productId)
->>>>>>> master
       .then(setReviews)
       .catch(err => console.error(err));
   };
@@ -98,11 +91,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
   }, [productId, sortType]);
 
   return (
-<<<<<<< HEAD
     <Contexts.ReviewsContext.Provider value={{ reviews, setSortType }}>
-=======
-    <Contexts.ReviewsContext.Provider value={{ reviews, setReviews }}>
->>>>>>> master
       {children}
     </Contexts.ReviewsContext.Provider>
   );
