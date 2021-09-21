@@ -25,6 +25,7 @@
         "eol-last": "off",
         "space-before-function-paren": "off",
         "no-use-before-define": "off",
+        "no-useless-call": "off",
         "no-multiple-empty-lines": [
             "error",
             {

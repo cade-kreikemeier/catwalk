@@ -1,6 +1,6 @@
 import { style } from '../../models/style.interface';
 
-function findImageUrl(style: style): string {
+function findImageUrl(style: style | null): string {
   if (style === null) {
     return '';
   } else {
