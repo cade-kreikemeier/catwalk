@@ -15,11 +15,9 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
         id => props.cardCreator(id)
       )}
     </div>
-    {(props.ids.length === 5)
+    {(props.ids.length > 4)
       ? <div data-testid="carousel-right-button">Right</div>
-      : null
-    }
-
+      : null}
   </React.Fragment>;
 };
 
