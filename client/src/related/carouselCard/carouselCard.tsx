@@ -11,7 +11,7 @@ interface CarouselCardProps {
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard">
-    {props.imageUrl !== ''
+    {props.imageUrl
       ? <img data-testid="thumbnail" src={props.imageUrl} />
       : null
     }
