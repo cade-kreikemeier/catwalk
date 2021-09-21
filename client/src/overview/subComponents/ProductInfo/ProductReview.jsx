@@ -1,16 +1,8 @@
-import React, { useContext } from 'react';
-import Contexts from '../../../contexts/Contexts.tsx';
+import React from 'react';
 
 export default function ProductReview() {
-  const currentProductReview = useContext(Contexts.ReviewsContext);
-  let reviewCount = false;
-  if (currentProductReview !== null) {
-    if (currentProductReview.results.length > 0) {
-      reviewCount = true;
-    }
-  }
   return (
-    <div className='productReview' style={{ visibility: reviewCount ? 'visible' : 'hidden' }}>
+    <div className='productReview'>
       Read all review
     </div>
   );

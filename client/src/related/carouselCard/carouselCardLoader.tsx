@@ -7,11 +7,10 @@ import findImageUrl from './findImageUrl';
 interface CarouselCardLoaderProps {
   id: number
 }
-
 const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
   const style = loadState(apiRequest.getProductStyles(id), null);
   const product = loadState(apiRequest.getProductById(id), null);
-  console.log(style);
+
   return <React.Fragment>
     <CarouselCard
       imageUrl={findImageUrl(style)}

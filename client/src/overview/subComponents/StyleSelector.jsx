@@ -30,8 +30,8 @@ function StyleSelector({ stylePics, currentProductStyle }) {
         {stylePics
           ? stylePics.map((stylePic, index) => {
             return (
-            <span key={index} className='thumbnail' onClick={ () => thumbnailClicked(event, index) }>
-              <img className={`tn${index}`} src={stylePic} style={{ width: '150%', height: '150%' }}></img>
+            <span key={index} className={`thumbnail tn${index}`} onClick={ () => thumbnailClicked(event, index) }>
+              <img src={stylePic} style={{ width: '155%', height: '155%' }}></img>
                 {index === currentStyleIdx ? <span className={`far fa-check-circle checkIcon Icon${index}` }></span> : null}
             </span>
             );
