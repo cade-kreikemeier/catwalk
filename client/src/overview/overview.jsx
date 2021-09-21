@@ -4,27 +4,28 @@ import AddToCart from './subComponents/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
 import StyleSelector from './subComponents/StyleSelector.jsx';
+const StyleContext = React.createContext();
 
 function OverView() {
   const currentProductStyle = useContext(Contexts.ProductStyleContext);
   const stylePics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  const StyleContext = React.createContext();
 
   if (currentProductStyle !== null) {
     currentProductStyle.results.forEach((element, index) => {
       stylePics.push(element.photos[0].thumbnail_url);
     });
   }
+  // console.log(StyleContext);
   return (
     <div className="overViewContainer">
       <div className="overView">
-        <StyleContext.Provider value={setCurrentStyleIdx, setCurrentStyleIdx}>
+        <StyleContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
           <ImageGallery />
           <ProductInfo />
           <StyleSelector
             stylePics={ stylePics.length ? stylePics : null }
-            currentStyleIdx={currentStyleIdx}
+            // currentStyleIdx={currentStyleIdx}
           />
           <AddToCart />
         </StyleContext.Provider>
@@ -32,5 +33,5 @@ function OverView() {
     </div>
   );
 };
-
 export default OverView;
+export { StyleContext };
