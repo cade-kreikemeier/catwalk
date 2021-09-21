@@ -1,33 +1,19 @@
 import React from 'react';
-import loadState from '../utils/loadState';
-import reviewsMetaData from '../models/reviewsMetaData.type';
-import CarouselCard from './carouselCard';
+import CarouselCardLoader from './carouselCard/carouselCardLoader';
+
 
 interface CarouselProps {
   title: string,
-  loadIds: Promise<Array<number>>,
-  metaDataProducer: (id: number) => Promise<reviewsMetaData>
-  ratingsProducer: (i: number) => Promise<number>
-  imageUrlProducer: (id: number) => Promise<string>
+  ids: number[],
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
-  const ids = loadState(props.loadIds, []);
-
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
-      {ids.map((id) => {
-        return <CarouselCard
-          loadImageUrl={props.imageUrlProducer(id)}
-          loadMetaData={props.metaDataProducer(id)}
-          loadRatings={props.ratingsProducer(id)}
-          actionCallback={() => { console.log('clicked'); }}
-          actionChild={(
-            <span>👍</span>
-          )}
-          key={id} />;
-      })}
+      {props.ids.map(
+        id => <CarouselCardLoader id={id} key={id} />
+      )}
     </div>
   </React.Fragment>;
 };

@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 import { modalProps } from '../models/modal.interface';
 import { product } from '../models/product.interface';
+import { reviewsInteraction } from '../models/reviews.interface';
 import { reviewsMetaData } from '../models/reviewsMetaData.interface';
-import { reviewsProps } from '../models/reviews.interface';
 import { style } from '../models/style.interface';
 
 
@@ -21,7 +21,7 @@ ProductStyleContext.displayName = 'ProductStyleContext';
 const RelatedProducts = createContext<number[]>(undefined);
 RelatedProducts.displayName = 'RelatedProducts';
 
-const ReviewsContext = createContext<reviewsProps>(undefined);
+const ReviewsContext = createContext<reviewsInteraction>(undefined);
 ReviewsContext.displayName = 'ReviewsContext';
 
 const ReviewsMetadataContext = createContext<reviewsMetaData>(undefined);
