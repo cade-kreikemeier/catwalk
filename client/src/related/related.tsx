@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Contexts from '../contexts/Contexts';
-import Carousel from './carousel';
+import Carousel from './carousel/carousel';
 
 const Related: React.FC = () => {
   const ids = useContext(Contexts.RelatedProducts) || [];

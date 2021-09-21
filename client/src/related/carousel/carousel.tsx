@@ -1,10 +1,10 @@
-import React from 'react';
-import CarouselCardLoader from './carouselCard/carouselCardLoader';
+import React, { ReactNode } from 'react';
 
 
 interface CarouselProps {
   title: string,
   ids: number[],
+  cardCreator: (id: number) => ReactNode
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
@@ -12,9 +12,14 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     <h3>{props.title}</h3>
     <div className="carousel">
       {props.ids.map(
-        id => <CarouselCardLoader id={id} key={id} />
+        id => props.cardCreator(id)
       )}
     </div>
+    {(props.ids.length === 5)
+      ? <div data-testid="carousel-right-button">Right</div>
+      : null
+    }
+
   </React.Fragment>;
 };
 
