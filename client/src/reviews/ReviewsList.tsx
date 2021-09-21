@@ -50,7 +50,7 @@ const ReviewsList: React.FC = () => {
         </div>
         <div className="btnContainer">
           <button onClick={addReview}>Add Review</button>
-          {reviews && numDisplayed === reviews.results?.length
+          {reviews && numDisplayed < (reviews.results?.length || 16)
             ? <button onClick={moreReviews}>More Reviews</button>
             : null}
         </div>

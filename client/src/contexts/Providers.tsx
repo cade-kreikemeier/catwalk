@@ -81,7 +81,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
   const [sortType, setSortType] = useState<string | undefined>(undefined);
 
   const requestReviews = () => {
-    apiRequest.getReviewsForProduct(productId)
+    apiRequest.getReviewsForProduct(productId, sortType)
       .then(setReviews)
       .catch(err => console.error(err));
   };
