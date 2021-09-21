@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { modalProps } from '../models/modal.interface';
 import { product } from '../models/product.interface';
 import { reviewsInteraction } from '../models/reviews.interface';
-import { reviewsMetaData } from '../models/reviewsMetaData.interface';
+import { reviewsMetaDataInteraction } from '../models/reviewsMetaData.interface';
 import { style } from '../models/style.interface';
 
 
@@ -24,7 +24,7 @@ RelatedProducts.displayName = 'RelatedProducts';
 const ReviewsContext = createContext<reviewsInteraction>(undefined);
 ReviewsContext.displayName = 'ReviewsContext';
 
-const ReviewsMetadataContext = createContext<reviewsMetaData>(undefined);
+const ReviewsMetadataContext = createContext<reviewsMetaDataInteraction>(undefined);
 ReviewsMetadataContext.displayName = 'ReviewsMetadataContext';
 
 

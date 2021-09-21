@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const apicache = require('apicache');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { API_TOKEN, API_URL } = require('../apiConfig/config.ts');
 
@@ -14,10 +13,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
-
-app.use(apicache.middleware('5 minutes'));
 
 const apiProxy = createProxyMiddleware('/api',
   {

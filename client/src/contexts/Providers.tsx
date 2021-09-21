@@ -99,6 +99,16 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
   const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData>(null);
+  const [reviewCount, setReviewCount] = useState(0);
+
+  const calcReviewCount = () => {
+    if (reviewsMetadata) {
+      return Object.values(reviewsMetadata.ratings).reduce((totalNumRatings, starRatingNum) => {
+        totalNumRatings += parseInt(starRatingNum);
+        return totalNumRatings;
+      }, 0);
+    }
+  };
 
   useEffect(() => {
     apiRequest.getReviewsMetadata(productId)
@@ -106,8 +116,12 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
       .catch(err => console.error(err));
   }, [productId]);
 
+  useEffect(() => {
+    setReviewCount(calcReviewCount);
+  }, [reviewsMetadata]);
+
   return (
-    <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
+    <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
       {children}
     </Contexts.ReviewsMetadataContext.Provider>
   );
