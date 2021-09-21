@@ -9,13 +9,15 @@ const ReviewsList: React.FC = () => {
   // const [filterType, setFilterType] = useState('relevant');
 
 
-  const { setModalContent } = useContext(Contexts.ModalContext);
-  const { reviews } = useContext(Contexts.ReviewsContext);
+  const { setModalContent } = useContext(Contexts.ModalContext) || {};
+  const { reviews } = useContext(Contexts.ReviewsContext) || {};
   const child = <div>CHILD EXAMPLE</div>;
 
 
   const onClick = () => {
-    setModalContent(child);
+    if (setModalContent) {
+      setModalContent(child);
+    }
   };
 
   return (
