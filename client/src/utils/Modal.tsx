@@ -6,9 +6,7 @@ export default function Modal(): ReactElement {
   const { modalContent, setModalContent } = useContext(Contexts.ModalContext) || {};
 
   const onClose = () => {
-    if (setModalContent) {
-      setModalContent(null);
-    }
+    setModalContent?.call(null, null);
   };
 
   const elem = document.getElementById('modal-root');

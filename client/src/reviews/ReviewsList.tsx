@@ -15,9 +15,7 @@ const ReviewsList: React.FC = () => {
 
 
   const onClick = () => {
-    if (setModalContent) {
-      setModalContent(child);
-    }
+    setModalContent?.call(null, child);
   };
 
   return (
