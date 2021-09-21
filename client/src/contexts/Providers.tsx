@@ -29,7 +29,7 @@ export function ProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ProductProvider({ children }: Props): ReactElement {
-  const [product, setProduct] = useState<product>(null);
+  const [product, setProduct] = useState<product | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductById(productId)
@@ -45,7 +45,7 @@ export function ProductProvider({ children }: Props): ReactElement {
 }
 
 export function ProductSytlesProvider({ children }: Props): ReactElement {
-  const [productSytles, setProductSytles] = useState<style[]>(null);
+  const [productSytles, setProductSytles] = useState<style | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductStyles(productId)
@@ -77,13 +77,14 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsProvider({ children }: Props): ReactElement {
-  const [reviews, setReviews] = useState<reviews>(null);
+  const [reviews, setReviews] = useState<reviews | undefined>(undefined);
 
   useEffect((): void => {
     apiRequest.getReviewsForProduct(productId)
       .then(setReviews)
       .catch(err => console.error(err));
   }, [productId]);
+
 
   return (
     <Contexts.ReviewsContext.Provider value={{ reviews, setReviews }}>
@@ -93,7 +94,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
-  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData>(null);
+  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getReviewsMetadata(productId)

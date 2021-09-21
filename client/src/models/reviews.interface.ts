@@ -24,6 +24,6 @@ interface photo {
 }
 
 export interface reviewsInteraction {
-  reviews: reviews | null,
-  setReviews: React.Dispatch<React.SetStateAction<reviews>>
+  reviews: reviews | undefined,
+  setReviews: React.Dispatch<React.SetStateAction<reviews | undefined>>
 }

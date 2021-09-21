@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { product } from '../models/product.interface';
 import { reviews } from '../models/reviews.interface';
 import { reviewsMetaData } from '../models/reviewsMetaData.interface';
@@ -16,7 +16,7 @@ const responseBody = (response: AxiosResponse) => response.data;
 // ---Requests---
 
 const requests = {
-  get: (url: string, params?: unknown) => apiServer.get(url, params).then(responseBody),
+  get: (url: string, params?: AxiosRequestConfig) => apiServer.get(url, params).then(responseBody),
   post: (url: string, body: unknown) => apiServer.post(url, body).then(responseBody),
   put: (url: string, body?: unknown) => apiServer.put(url, body).then(responseBody)
 };

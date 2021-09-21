@@ -18,7 +18,7 @@ function ReviewStar({ currentReviewsMetadata }) {
   };
 
   let rating;
-  if (currentReviewsMetadata !== null) {
+  if (currentReviewsMetadata) {
     rating = calAvgRating(currentReviewsMetadata.ratings) / 5 * 100;
   }
 
