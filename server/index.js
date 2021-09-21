@@ -1,20 +1,11 @@
 const express = require('express');
 const path = require('path');
-const ExpressCache = require('express-cache-middleware');
-const cacheManager = require('cache-manager');
+const apicache = require('apicache');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const { API_TOKEN, API_URL } = require('../apiConfig/config.ts');
 
 const port = 9001;
 const app = express();
-
-const cacheMiddleware = new ExpressCache(
-  cacheManager.caching({
-    store: 'memory', max: 10000, ttl: 3600
-  })
-);
-
-cacheMiddleware.attach(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +14,10 @@ app.use((req, res, next) => {
   next();
 });
 
+
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
+
+app.use(apicache.middleware('5 minutes'));
 
 const apiProxy = createProxyMiddleware('/api',
   {

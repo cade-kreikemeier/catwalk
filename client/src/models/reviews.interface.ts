@@ -5,7 +5,7 @@ export interface reviews {
   results: review[]
 }
 
-interface review {
+export interface review {
   'review_id': number,
   rating: number,
   summary: string,
@@ -21,4 +21,9 @@ interface review {
 interface photo {
   'thumbnail_url': string,
   url: string
+}
+
+export interface reviewsInteraction {
+  reviews: reviews | null,
+  setReviews: React.Dispatch<React.SetStateAction<reviews>>
 }

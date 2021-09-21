@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 import loadState from '../utils/loadState';
-import reviewMetaData from '../models/reviewMetaData.type';
+import reviewsMetaData from '../models/productDescription.interface';
 
 interface CarouselCardProps {
   loadImageUrl: Promise<string>,
-  loadMetaData: Promise<reviewMetaData>
+  loadMetaData: Promise<reviewsMetaData>
   loadRatings: Promise<number>,
   actionChild: ReactNode,
   actionCallback: () => void
