@@ -11,7 +11,10 @@ function ReviewStar({ currentReviewsMetadata }) {
         number = number + (parseInt(MetadataRating[i + 1]));
       }
     };
-    return total / number;
+    let avg = total / number;
+    const left = avg % 0.25;
+    avg = avg - left;
+    return avg;
   };
 
   let rating;

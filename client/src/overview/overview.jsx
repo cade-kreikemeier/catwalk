@@ -9,7 +9,8 @@ function OverView() {
   const currentProductStyle = useContext(Contexts.ProductStyleContext);
   const stylePics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  // let currentStyleIdx = 1;
+  const StyleContext = React.createContext();
+
   if (currentProductStyle !== null) {
     currentProductStyle.results.forEach((element, index) => {
       stylePics.push(element.photos[0].thumbnail_url);
@@ -18,13 +19,15 @@ function OverView() {
   return (
     <div className="overViewContainer">
       <div className="overView">
-        <ImageGallery />
-        <ProductInfo />
-        <StyleSelector
-          stylePics={ stylePics.length ? stylePics : null }
-          currentStyleIdx={currentStyleIdx}
-        />
-        <AddToCart />
+        <StyleContext.Provider value={setCurrentStyleIdx, setCurrentStyleIdx}>
+          <ImageGallery />
+          <ProductInfo />
+          <StyleSelector
+            stylePics={ stylePics.length ? stylePics : null }
+            currentStyleIdx={currentStyleIdx}
+          />
+          <AddToCart />
+        </StyleContext.Provider>
       </div>
     </div>
   );
