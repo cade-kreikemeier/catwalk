@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Overview from './overview/overview';
 import Related from './related/related';
@@ -9,13 +9,13 @@ import Modal from './utils/Modal';
 
 
 const App: React.FC = () => {
-  const [modalContent, setModalContent] = useState(null);
+  const [modalContent, setModalContent] = useState<ReactNode>(null);
 
   return (
     <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
       <Providers.ProductsProvider>
         <Providers.ProductProvider>
-          <Providers.ReviewMetadataProvider>
+          <Providers.ReviewsMetadataProvider>
             <Providers.ProductSytlesProvider>
               <Overview />
               <Providers.RelatedProductsProvider>
@@ -25,7 +25,7 @@ const App: React.FC = () => {
             <Providers.ReviewsProvider>
               <Reviews />
             </Providers.ReviewsProvider>
-          </Providers.ReviewMetadataProvider>
+          </Providers.ReviewsMetadataProvider>
         </Providers.ProductProvider>
       </Providers.ProductsProvider>
       <Modal />

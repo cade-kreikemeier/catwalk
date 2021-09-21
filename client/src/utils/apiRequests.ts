@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { product } from '../models/product.interface';
 import { reviews } from '../models/reviews.interface';
-import { reviewMetaData } from '../models/reviewMetaData.interface';
+import { reviewsMetaData } from '../models/reviewsMetaData.interface';
 import { style } from '../models/style.interface';
 import { reviewSubmission } from '../models/reviewSubmission.interface';
 
@@ -37,7 +37,7 @@ export const apiRequest = {
   getReviewsForProduct: (productId: number, sort = 'relevant', page = 1, count = 15): Promise<reviews> => {
     return requests.get('/reviews/', { params: { product_id: productId, page: page, count: count, sort: sort } });
   },
-  getReviewMetadata: (productId: number): Promise<reviewMetaData> => {
+  getReviewsMetadata: (productId: number): Promise<reviewsMetaData> => {
     return requests.get('/reviews/meta', { params: { product_id: productId } });
   },
   postReview: (review: reviewSubmission): Promise<string> => {

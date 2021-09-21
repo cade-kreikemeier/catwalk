@@ -12,7 +12,6 @@ const ReviewsList: React.FC = () => {
 
   const child = <div>CHILD EXAMPLE</div>;
 
-
   const addReview = () => {
     setModalContent(child);
   };
