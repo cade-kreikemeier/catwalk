@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-
+import React, { ReactNode, useState } from 'react';
 
 interface CarouselProps {
   title: string,
@@ -8,6 +7,12 @@ interface CarouselProps {
 };
 
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
+  const [position, setPosition] = useState(0);
+
+  function incrementPosition() {
+    setPosition(position + 1);
+  }
+
   return <React.Fragment>
     <h3>{props.title}</h3>
     <div className="carousel">
@@ -15,8 +20,13 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
         id => props.cardCreator(id)
       )}
     </div>
-    {(props.ids.length > 4)
-      ? <div data-testid="carousel-right-button">Right</div>
+    {(props.ids.length - position > 4)
+      ? <button
+        data-testid="carousel-right-button"
+        onClick={incrementPosition}
+      >
+        Right
+      </button>
       : null}
   </React.Fragment>;
 };

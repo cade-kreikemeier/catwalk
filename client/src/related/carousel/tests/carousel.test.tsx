@@ -48,16 +48,15 @@ describe('Given a carousel with 5 cards', () => {
     });
   });
 
-  describe('When right button is pressed happens', () => {
-    beforeEach(() => {
-      fireEvent(
+  describe('When the right button is pressed', () => {
+    beforeEach(async () => {
+      fireEvent.click(
         screen.getByTestId('carousel-right-button'),
-        new MouseEvent('click')
       );
     });
 
-    test('Then the right arrow should be visible', () => {
-      expect(screen.queryByTestId('carousel-right-button')).toBeTruthy();
+    test('Then the right arrow should not be visible', () => {
+      expect(screen.queryByTestId('carousel-right-button')).toBeFalsy();
     });
   });
 });
