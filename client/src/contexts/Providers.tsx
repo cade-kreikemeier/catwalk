@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-const productId = 44389;
+const productId = 44391;
 
 export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState<product[]>([]);
@@ -78,7 +78,7 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 
 export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState<reviews | undefined>(undefined);
-  const [sortType, setSortType] = useState<string | undefined>(undefined);
+  const [sortType, setSortType] = useState('relevant');
 
   const requestReviews = () => {
     apiRequest.getReviewsForProduct(productId, sortType)
@@ -123,17 +123,9 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
     setReviewCount(calcReviewCount);
   }, [reviewsMetadata]);
 
-  if (reviewsMetadata && reviewCount) {
-    return (
-      <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
-        {children}
-      </Contexts.ReviewsMetadataContext.Provider>
-    );
-  } else {
-    return (
-      <>
-        {children}
-      </>
-    );
-  }
+  return (
+    <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
+      {children}
+    </Contexts.ReviewsMetadataContext.Provider>
+  );
 }

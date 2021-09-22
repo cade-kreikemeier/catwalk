@@ -25,5 +25,5 @@ interface photo {
 
 export interface reviewsInteraction {
   reviews: reviews | undefined,
-  setSortType: React.Dispatch<React.SetStateAction<string | undefined>>
+  setSortType: React.Dispatch<React.SetStateAction<string>>
 }
