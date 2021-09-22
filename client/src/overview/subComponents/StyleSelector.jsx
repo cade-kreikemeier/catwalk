@@ -2,21 +2,21 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext, StyleNameContext } from '../overview.jsx';
 
-function StyleSelector({ stylePics, currentProductStyle }) {
+function StyleSelector({ thumbnailPics, currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const StyleNameContextData = useContext(StyleNameContext);
   let currentStyleIdx;
   let setCurrentStyleIdx;
   let currentStyleName;
   let setCurrentStyleName;
-  if (StyleIdxContextData !== undefined) {
+  if (StyleIdxContextData) {
     ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
     ({ currentStyleName, setCurrentStyleName } = StyleNameContextData);
   }
   const thumbnailClicked = (e, index) => {
-    if (currentProductStyle) {
+    if (currentProductStyles) {
       setCurrentStyleIdx(index);
-      setCurrentStyleName(currentProductStyle.results[index].name);
+      setCurrentStyleName(currentProductStyles.results[index].name);
     }
   };
 
@@ -27,8 +27,8 @@ function StyleSelector({ stylePics, currentProductStyle }) {
         {`Style > ${currentStyleName}`}
       </div>
       <div className='styleThumbnail'>
-        {stylePics
-          ? stylePics.map((stylePic, index) => {
+        {thumbnailPics
+          ? thumbnailPics.map((stylePic, index) => {
             return (
             <span key={index} className={`thumbnail tn${index}`} onClick={ () => thumbnailClicked(event, index) }>
               <img src={stylePic} style={{ width: '155%', height: '155%' }}></img>
@@ -44,9 +44,9 @@ function StyleSelector({ stylePics, currentProductStyle }) {
 };
 
 StyleSelector.propTypes = {
-  stylePics: PropTypes.array,
+  thumbnailPics: PropTypes.array,
   currentStyleIdx: PropTypes.number,
-  currentProductStyle: PropTypes.object
+  currentProductStyles: PropTypes.object
 };
 
 export default StyleSelector;

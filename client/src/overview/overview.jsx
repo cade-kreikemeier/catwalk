@@ -8,13 +8,13 @@ const StyleIdxContext = React.createContext();
 const StyleNameContext = React.createContext();
 
 function OverView() {
-  const currentProductStyle = useContext(Contexts.ProductStyleContext);
-  const stylePics = [];
+  const currentProductStyles = useContext(Contexts.ProductStyleContext);
+  const thumbnailPics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
   const [currentStyleName, setCurrentStyleName] = useState('Forest Green & Black by Default');
-  if (currentProductStyle) {
-    currentProductStyle.results.forEach((element, index) => {
-      stylePics.push(element.photos[0].thumbnail_url);
+  if (currentProductStyles) {
+    currentProductStyles.results.forEach((element, index) => {
+      thumbnailPics.push(element.photos[0].thumbnail_url);
     });
   }
   return (
@@ -22,11 +22,13 @@ function OverView() {
       <div className="overView">
         <StyleIdxContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
           <StyleNameContext.Provider value={{ currentStyleName, setCurrentStyleName }}>
-            <ImageGallery />
+            <ImageGallery
+              currentProductStyles={ currentProductStyles }
+            />
             <ProductInfo />
             <StyleSelector
-              stylePics={ stylePics }
-              currentProductStyle={ currentProductStyle }
+              thumbnailPics={ thumbnailPics }
+              currentProductStyles={ currentProductStyles }
             />
             <AddToCart />
           </StyleNameContext.Provider>
