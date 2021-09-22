@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { cleanup, render, screen, fireEvent } from '@testing-library/react';
-import { func } from 'prop-types';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import Carousel from '../carousel';
