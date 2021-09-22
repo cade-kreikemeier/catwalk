@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 import Carousel from '../carousel';
@@ -41,6 +41,19 @@ describe('Given a carousel with 5 cards', () => {
   describe('When nothing happens', () => {
     test('Then the left arrow should not be visible', () => {
       expect(screen.queryByTestId('carousel-left-button')).toBeFalsy();
+    });
+
+    test('Then the right arrow should be visible', () => {
+      expect(screen.queryByTestId('carousel-right-button')).toBeTruthy();
+    });
+  });
+
+  describe('When right button is pressed happens', () => {
+    beforeEach(() => {
+      fireEvent(
+        screen.getByTestId('carousel-right-button'),
+        new MouseEvent('click')
+      );
     });
 
     test('Then the right arrow should be visible', () => {
