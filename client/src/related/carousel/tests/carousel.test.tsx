@@ -70,9 +70,20 @@ describe('Given a carousel with 5 cards', () => {
         screen.getByTestId('carousel-right-button')
       );
     });
+    thenTheLeftButtonShouldBeVisible();
+
     thenTheRightButtonShouldNotBeVisible();
 
-    thenTheLeftButtonShouldBeVisible();
+    describe('and when the left button is pressed', () => {
+      beforeEach(async () => {
+        fireEvent.click(
+          screen.getByTestId('carousel-left-button')
+        );
+      });
+      thenTheLeftButtonShouldNotBeVisible();
+
+      thenTheRightButtonShouldBeVisible();
+    });
   });
 });
 

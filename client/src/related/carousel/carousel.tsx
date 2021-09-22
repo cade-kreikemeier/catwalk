@@ -13,11 +13,16 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     setPosition(position + 1);
   }
 
+  function decrementPosition() {
+    setPosition(position - 1);
+  }
+
   return <React.Fragment>
     <h3>{props.title}</h3>
     {(position > 0)
       ? <button
         data-testid="carousel-left-button"
+        onClick={decrementPosition}
       >
         Left
       </button>
