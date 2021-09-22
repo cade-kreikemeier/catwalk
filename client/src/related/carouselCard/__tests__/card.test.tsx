@@ -19,6 +19,7 @@ test('displays infomation, correctly displayed', async () => {
         <span>Child</span>
       }
       actionCallback={() => { clicked = true; }}
+      localCallback={() => { throw Error(); }}
     />);
   });
 
@@ -42,6 +43,7 @@ test('when imageUrl is empty string, no image should be shown', async () => {
         <span>Child</span>
       }
       actionCallback={() => { clicked = true; }}
+      localCallback={() => { throw Error(); }}
     />);
   });
 

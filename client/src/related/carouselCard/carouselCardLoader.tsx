@@ -7,6 +7,7 @@ import findImageUrl from './findImageUrl';
 interface CarouselCardLoaderProps {
   id: number
 }
+
 const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
   const style = loadState(apiRequest.getProductStyles(id), null);
   const product = loadState(apiRequest.getProductById(id), null);
@@ -15,8 +16,9 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
       imageUrl={findImageUrl(style)}
       metaData={{ category: product?.category || '', name: product?.name || '', price: product?.default_price || '' }}
       rating={4}
-      actionCallback={console.log}
       actionChild={<span>v</span>}
+      actionCallback={console.log}
+      localCallback={console.log}
     />
   </React.Fragment>;
 };
