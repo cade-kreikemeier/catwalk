@@ -94,4 +94,13 @@ describe('Given a card with valid props', () => {
       expect(localClicked).toBeTruthy();
     });
   });
+
+  describe('When the image is clicked', () => {
+    beforeEach(() => {
+      fireEvent.click(screen.getByTestId('thumbnail'));
+    });
+    test('Then the local callback will be called', () => {
+      expect(localClicked).toBeTruthy();
+    });
+  });
 });
