@@ -23,6 +23,6 @@ interface characteristic {
 }
 
 export interface reviewsMetaDataInteraction {
-  reviewsMetadata: reviewsMetaData,
+  reviewsMetadata: reviewsMetaData | undefined,
   reviewCount: number
 }

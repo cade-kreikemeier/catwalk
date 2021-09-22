@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-const productId = 44389;
+const productId = 44391;
 
 export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState<product[]>([]);
@@ -29,7 +29,7 @@ export function ProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ProductProvider({ children }: Props): ReactElement {
-  const [product, setProduct] = useState<product>(null);
+  const [product, setProduct] = useState<product | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductById(productId)
@@ -45,7 +45,7 @@ export function ProductProvider({ children }: Props): ReactElement {
 }
 
 export function ProductSytlesProvider({ children }: Props): ReactElement {
-  const [productSytles, setProductSytles] = useState<style>(null);
+  const [productSytles, setProductSytles] = useState<style | undefined>(undefined);
 
   useEffect(() => {
     apiRequest.getProductStyles(productId)
@@ -77,11 +77,11 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsProvider({ children }: Props): ReactElement {
-  const [reviews, setReviews] = useState<reviews>(null);
-  const [sortType, setSortType] = useState(null);
+  const [reviews, setReviews] = useState<reviews | undefined>(undefined);
+  const [sortType, setSortType] = useState('relevant');
 
   const requestReviews = () => {
-    apiRequest.getReviewsForProduct(productId)
+    apiRequest.getReviewsForProduct(productId, sortType)
       .then(setReviews)
       .catch(err => console.error(err));
   };
@@ -89,6 +89,7 @@ export function ReviewsProvider({ children }: Props): ReactElement {
   useEffect(() => {
     requestReviews();
   }, [productId, sortType]);
+
 
   return (
     <Contexts.ReviewsContext.Provider value={{ reviews, setSortType }}>
@@ -98,8 +99,8 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 }
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
-  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData>(null);
-  const [reviewCount, setReviewCount] = useState(0);
+  const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData | undefined>(undefined);
+  const [reviewCount, setReviewCount] = useState<number>(0);
 
   const calcReviewCount = () => {
     if (reviewsMetadata) {
@@ -107,6 +108,8 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
         totalNumRatings += parseInt(starRatingNum);
         return totalNumRatings;
       }, 0);
+    } else {
+      return 0;
     }
   };
 

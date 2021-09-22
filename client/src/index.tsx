@@ -1,5 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import ReactDOM from 'react-dom';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import Overview from './overview/overview';
 import Related from './related/related';
 import Reviews from './reviews/Reviews';

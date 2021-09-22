@@ -33,10 +33,6 @@ body {
   padding-inline: clamp(.25rem, 2rem, 6rem);
 }
 
-img {
-  max-width: 100%;
-}
-
 .section-md {
   margin-inline: auto;
   width: clamp(30rem, 60vw, 72rem);
@@ -51,16 +47,16 @@ img {
 }
 
 .overView {
-  padding: 2rem 6rem;
+  padding: 2rem max(2rem, 5vw);
   background-color: grey;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 2.5fr 1fr;
   grid-template-rows: 1.5fr 2.5fr 1fr;
   grid-template-areas:
   "imageGallery   productInfo"
   "imageGallery  styleSelector"
-  "imageGallery   addToCart"
+  "imageGallery   addToCartContainer";
 }
 
 
@@ -69,64 +65,225 @@ img {
   grid-area: imageGallery;
 }
 
-.productInfo {
-  background-color: blue;
-  grid-area: productInfo;
+.overViewContainer {
+  background-color:hotpink;
+  min-height: 75vh;
+  display: flex;
 }
+
+.productInfo {
+  grid-area: productInfo;
+  display: flex;
+  background-color: blue;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding: .5rem;
+}
+
+.starReviewRow {
+display: flex;
+flex-direction: row;
+align-items: center;
+}
+
+.star {
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+
+.starOutline {
+  display: flex;
+  position: absolute;
+  color: lightgray;
+}
+
+.starFilled {
+  position: relative;
+  color: black;
+  overflow: hidden;
+}
+
+.reviewStar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  flex-grow: 1;
+  border: 2px dashed black;
+  margin: 2px;
+}
+
+.starsContainer {
+  position: relative;
+  display: flex;
+  color: transparent;
+}
+
+.productReview {
+  font-size: 0.8rem;
+  border: 2px dashed black;
+  margin: 2px;
+}
+
+.productCatrgory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  flex-grow: 1;
+  border: 2px dashed black;
+  margin: 2px;
+}
+
+.productName {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  flex-grow: 3;
+  border: 2px dashed black;
+  margin: 2px;
+  padding: 2px;
+}
+
+.productPrice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  flex-grow: 1;
+  align-items: center;
+  border: 2px dashed black;
+  margin: 2px;
+}
+
+
+
+/* Style */
 
 .styleSelector {
   background-color: yellow;
   grid-area: styleSelector;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  padding: 5px ;
 }
 
-.addToCart {
-  background-color: green;
-  grid-area: addToCart;
+.styleHeadLine {
+  border: 2px dashed black;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 10%;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 3px;
+  margin: 2px;
 }
 
-.circle {
-  height: 40px;
-  width: 40px;
+.styleThumbnail {
+  flex-grow: 5;
+  flex-basis:70%;
+  border: 2px dashed black;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: 22% 22% 22% 22%;
+  grid-template-rows: 45% 45%;
+  grid-template-areas:
+  " tn0 tn1 tn2 tn3 "
+  " tn4 tn5 tn6 th7 ";
+  margin: 2px;
+}
+
+.thumbnail {
+  height: 60px;
+  width: 60px;
   padding: 10px 10px 10px 10px;
   margin: 5px 5px 5px 5px;
   background-color: #bbb;
   border-radius: 50%;
-  display: inline-block;
+  border: 2px solid grey;
+  flex-wrap: wrap;
+  overflow: hidden;
+  font-size: 1rem;
 }
 
-.selectSize {
-  height: 4rem;
-  width:  10rem;
-  border-style: solid;
-  border-color: black;
-  display: inline-block;
-  margin-right: 2rem;
+.thumbnail img {
+  margin: -10px;
 }
 
-.volume {
-  height: 2rem;
-  width:  4rem;
-  border-style: solid;
-  border-color: black;
-  display: inline-block;
+.checkIcon {
+  position: absolute;
+  margin-top: -.7rem;
+  margin-left: -0.3rem;
+  color: black;
+  visibility: visible;
 }
 
-.AddToBag {
-  height: 4rem;
-  width:  10rem;
-  border-style: solid;
+.addToCartContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: green;
+  grid-area: addToCartContainer;
+  padding: .5rem;
+  justify-content: space-between;
+}
+
+.sizeSelector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  flex-basis: 50%;
+  height: 40%;
+  border-style: dashed;
+  border-color: black;
+  margin: 2px;
+}
+
+.quantitySelector {
+  flex-grow: 2;
+  flex-basis: 30%;
+  height: 40%;
+  border-style: dashed;
   border-color: black;
   display: inline-block;
-  margin-right: 2rem;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addToCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  flex-grow: 4;
+  flex-basis: 70%;
+  border-style: dashed;
+  border-color: black;
+  margin: 2px;
 }
 
 .favBtn {
-  height: 2rem;
-  width:  2rem;
-  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40%;
+  flex-grow: 1;
+  flex-basis: 20%;
+  border-style: dashed;
   border-color: black;
-  display: inline-block;
+  margin: 2px;
 }
 
 /* Related Items */
