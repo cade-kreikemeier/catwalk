@@ -1,36 +1,59 @@
-import React, { ReactElement, useContext } from 'react';
+import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import Contexts from '../contexts/Contexts';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => {
-  // const [displayReviews, setDisplayReviews] = useState(false);
-  // const [numDisplayed, setNumDisplayed] = useState(2);
-  // const [filterType, setFilterType] = useState('relevant');
-
-
   const { setModalContent } = useContext(Contexts.ModalContext) || {};
   const { reviews } = useContext(Contexts.ReviewsContext) || {};
+
+  const [displayedReviews, setDisplayReviews] = useState<ReactNode[]>([]);
+  const [numDisplayed, setNumDisplayed] = useState(2);
+
   const child = <div>CHILD EXAMPLE</div>;
 
-
-  const onClick = () => {
+  const addReview = () => {
     setModalContent?.call(null, child);
   };
+
+  const moreReviews = () => {
+    if (reviews?.results) {
+      if (numDisplayed === 14 || (reviews.results.length - 1) === numDisplayed) {
+        setNumDisplayed(numDisplayed + 1);
+        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
+      } else if (numDisplayed < 15 && reviews.results.length - 1 > numDisplayed) {
+        setNumDisplayed(numDisplayed + 2);
+        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
+      };
+    }
+  };
+
+
+  useEffect(() => {
+    if (reviews?.results) {
+      const displayReviews = [];
+      for (let i = 0; i < numDisplayed; i++) {
+        displayReviews.push(<ReviewTile key={reviews.results[i].review_id} review={reviews.results[i]} />);
+      }
+      setDisplayReviews(displayReviews);
+    }
+  }, [reviews, numDisplayed]);
 
   return (
     <>
       <div className='reviewList'>
-        <h2>Reviews List</h2>
         <ReviewSort />
         <div className='reviewTileContainer'>
           {reviews
-            ? reviews.results.map((review): ReactElement => <ReviewTile key={review.review_id} review={review} />)
-            : null
-          }
+            ? [...displayedReviews]
+            : null}
         </div>
-        <button onClick={onClick}>Add Review</button>
-        <button>More Reviews</button>
+        <div className="btnContainer">
+          <button onClick={addReview}>Add Review</button>
+          {reviews && numDisplayed < (reviews.results?.length || 16)
+            ? <button onClick={moreReviews}>More Reviews</button>
+            : null}
+        </div>
       </div>
     </>
   );
