@@ -21,11 +21,9 @@ function ReviewStar({ currentReviewsMetadata }) {
     return avg;
   };
 
-  let rating;
+  let rating = 0;
   if (currentReviewsMetadata) {
     rating = calAvgRating(currentReviewsMetadata.ratings) / 5 * 100;
-  } else {
-    rating = 0;
   }
 
   if (currentReviewsMetadata) {

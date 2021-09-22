@@ -17,14 +17,13 @@ const ReviewsList: React.FC = () => {
   };
 
   const moreReviews = () => {
-    if (reviews?.results) {
-      if (numDisplayed === 14 || (reviews.results.length - 1) === numDisplayed) {
+    if (reviews?.results && (reviews.results.length - 1) >= numDisplayed) {
+      if (numDisplayed === 14 || numDisplayed === reviews.results.length - 1) {
         setNumDisplayed(numDisplayed + 1);
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
-      } else if (numDisplayed < 15 && reviews.results.length - 1 > numDisplayed) {
+      } else {
         setNumDisplayed(numDisplayed + 2);
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
-      };
+      }
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
     }
   };
 
