@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
 };
 
-const productId = 44388;
+const productId = 44391;
 
 export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState<product[]>([]);
@@ -78,16 +78,21 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 
 export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState<reviews | undefined>(undefined);
+  const [sortType, setSortType] = useState('relevant');
 
-  useEffect((): void => {
-    apiRequest.getReviewsForProduct(productId)
+  const requestReviews = () => {
+    apiRequest.getReviewsForProduct(productId, sortType)
       .then(setReviews)
       .catch(err => console.error(err));
-  }, [productId]);
+  };
+
+  useEffect(() => {
+    requestReviews();
+  }, [productId, sortType]);
 
 
   return (
-    <Contexts.ReviewsContext.Provider value={{ reviews, setReviews }}>
+    <Contexts.ReviewsContext.Provider value={{ reviews, setSortType }}>
       {children}
     </Contexts.ReviewsContext.Provider>
   );
@@ -95,6 +100,18 @@ export function ReviewsProvider({ children }: Props): ReactElement {
 
 export function ReviewsMetadataProvider({ children }: Props): ReactElement {
   const [reviewsMetadata, setReviewsMetadata] = useState<reviewsMetaData | undefined>(undefined);
+  const [reviewCount, setReviewCount] = useState<number>(0);
+
+  const calcReviewCount = () => {
+    if (reviewsMetadata) {
+      return Object.values(reviewsMetadata.ratings).reduce((totalNumRatings, starRatingNum) => {
+        totalNumRatings += parseInt(starRatingNum);
+        return totalNumRatings;
+      }, 0);
+    } else {
+      return 0;
+    }
+  };
 
   useEffect(() => {
     apiRequest.getReviewsMetadata(productId)
@@ -102,8 +119,12 @@ export function ReviewsMetadataProvider({ children }: Props): ReactElement {
       .catch(err => console.error(err));
   }, [productId]);
 
+  useEffect(() => {
+    setReviewCount(calcReviewCount);
+  }, [reviewsMetadata]);
+
   return (
-    <Contexts.ReviewsMetadataContext.Provider value={reviewsMetadata}>
+    <Contexts.ReviewsMetadataContext.Provider value={{ reviewsMetadata, reviewCount }}>
       {children}
     </Contexts.ReviewsMetadataContext.Provider>
   );
