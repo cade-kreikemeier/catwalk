@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { FC, useContext } from 'react';
 import { monthDayYear } from '../utils/dateConversion';
 import { review } from '../models/reviews.interface';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import ReviewStar from '../utils/ReviewStar.jsx';
+import { ReviewsMetadataContext } from '../contexts/Contexts';
 
-const ReviewTile: React.FC<{ review: review }> = ({ review }) => {
+
+const ReviewTile: FC<{ review: review }> = ({ review }) => {
+  const { reviewsMetadata } = useContext(ReviewsMetadataContext) || {};
   return (
     <div className="reviewTile">
       <div className="reviewReviewerName"><h4>{review.reviewer_name}</h4></div>
-      <div className="reviewRating">{review.rating} Stars</div>
+      <div className="reviewRating">
+        <ReviewStar currentReviewsMetadata={reviewsMetadata} />
+      </div>
       <div className="reviewCardDate">{monthDayYear(review.date)}</div>
       <div className="reviewSummary"><strong>{review.summary}</strong></div>
       <div className="reviewBody">
