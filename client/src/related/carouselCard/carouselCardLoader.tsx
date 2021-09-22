@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { product } from '../../models/product.interface';
 import { style } from '../../models/style.interface';
 import { apiRequest } from '../../utils/apiRequests';
-// import loadState from '../../utils/loadState';
 import CarouselCard from './carouselCard';
 import findImageUrl from './findImageUrl';
 

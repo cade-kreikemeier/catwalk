@@ -17,45 +17,40 @@ const ReviewsList: React.FC = () => {
   };
 
   const moreReviews = () => {
-    if (reviews?.results) {
-      if (numDisplayed === 14 || (reviews.results.length - 1) === numDisplayed) {
+    if (reviews?.results && (reviews.results.length - 1) >= numDisplayed) {
+      if (numDisplayed === 14 || numDisplayed === reviews.results.length - 1) {
         setNumDisplayed(numDisplayed + 1);
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
-      } else if (numDisplayed < 15 && reviews.results.length - 1 > numDisplayed) {
+      } else {
         setNumDisplayed(numDisplayed + 2);
-        setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
-      };
+      }
+      setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
     }
   };
 
 
   useEffect(() => {
     if (reviews?.results) {
-      const displayReviews = [];
-      for (let i = 0; i < numDisplayed; i++) {
-        displayReviews.push(<ReviewTile key={reviews.results[i].review_id} review={reviews.results[i]} />);
-      }
-      setDisplayReviews(displayReviews);
+      setDisplayReviews(reviews.results.slice(0, numDisplayed).map((review) => {
+        return <ReviewTile key={review.review_id} review={review} />;
+      }));
     }
   }, [reviews, numDisplayed]);
 
   return (
-    <>
-      <div className='reviewList'>
-        <ReviewSort />
-        <div className='reviewTileContainer'>
-          {reviews
-            ? [...displayedReviews]
-            : null}
-        </div>
-        <div className="btnContainer">
-          <button onClick={addReview}>Add Review</button>
-          {reviews && numDisplayed < (reviews.results?.length || 16)
-            ? <button onClick={moreReviews}>More Reviews</button>
-            : null}
-        </div>
+    <div className='reviewList'>
+      <ReviewSort />
+      <div className='reviewTileContainer'>
+        {reviews
+          ? [...displayedReviews]
+          : null}
       </div>
-    </>
+      <div className="btnContainer">
+        <button onClick={addReview}>Add Review</button>
+        {reviews && numDisplayed < (reviews.results?.length || 16)
+          ? <button onClick={moreReviews}>More Reviews</button>
+          : null}
+      </div>
+    </div>
   );
 };
 
