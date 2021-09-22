@@ -7,20 +7,20 @@ import Contexts from '../../../contexts/Contexts.tsx';
 import ProductReview from './ProductReview.jsx';
 
 export default function ProductInfo() {
-  const currentReviewsMetadata = useContext(Contexts.ReviewsMetadataContext);
+  const { reviewsMetadata } = useContext(Contexts.ReviewsMetadataContext);
   let reviewShow = false;
-  if (currentReviewsMetadata) {
-    if (Object.keys(currentReviewsMetadata).length !== 0 && currentReviewsMetadata.constructor === Object) {
+  if (reviewsMetadata) {
+    if (Object.keys(reviewsMetadata).length !== 0 && reviewsMetadata.constructor === Object) {
       reviewShow = true;
     }
   }
   return (
     <div className='productInfo'>
-      { reviewShow
+      {reviewShow
         ? <div className={'starReviewRow'}>
-              <ReviewStar currentReviewsMetadata={currentReviewsMetadata}/>
-              <ProductReview />
-          </div>
+          <ReviewStar currentReviewsMetadata={reviewsMetadata} />
+          <ProductReview />
+        </div>
         : null
       }
       <ProductCategory />

@@ -13,7 +13,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
 app.use(express.static(path.join(__dirname, '..', 'client', 'dist')));
 
 const apiProxy = createProxyMiddleware('/api',

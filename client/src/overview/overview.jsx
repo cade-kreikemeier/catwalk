@@ -18,7 +18,7 @@ function OverView() {
     });
   }
   return (
-    <div className="overViewContainer">
+    <section className="section-lg">
       <div className="overView">
         <StyleIdxContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
           <StyleNameContext.Provider value={{ currentStyleName, setCurrentStyleName }}>
@@ -34,7 +34,7 @@ function OverView() {
           </StyleNameContext.Provider>
         </StyleIdxContext.Provider>
       </div>
-    </div>
+    </section>
   );
 };
 export default OverView;

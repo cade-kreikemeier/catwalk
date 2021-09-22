@@ -21,19 +21,23 @@ function ReviewStar({ currentReviewsMetadata }) {
     return avg;
   };
 
-  let rating;
+  let rating = 0;
   if (currentReviewsMetadata) {
     rating = calAvgRating(currentReviewsMetadata.ratings) / 5 * 100;
   }
 
-  return (
-    <div className='reviewStar'>
-      <div className='starsContainer'>
-        <span className='starOutline star'>★★★★★</span>
-        <span className='starFilled star' style={{ width: `${rating}%` }}>★★★★★</span>
+  if (currentReviewsMetadata) {
+    return (
+      <div className='reviewStar'>
+        <div className='starsContainer'>
+          <span className='starOutline star'>★★★★★</span>
+          <span className='starFilled star' style={{ width: `${rating}%` }}>★★★★★</span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 ReviewStar.propTypes = {

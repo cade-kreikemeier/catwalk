@@ -22,3 +22,7 @@ interface characteristic {
   value: string
 }
 
+export interface reviewsMetaDataInteraction {
+  reviewsMetadata: reviewsMetaData | undefined,
+  reviewCount: number
+}
