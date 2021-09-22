@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../overview.jsx';
 
@@ -6,9 +6,10 @@ export default function ImageGallery({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const stylePics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
+
   let slideLength = 0;
   let currentStyleIdx;
-  if (StyleIdxContextData && currentProductStyles) { // how to made this line dryer?
+  if (StyleIdxContextData && currentProductStyles) {
     ({ currentStyleIdx } = StyleIdxContextData);
     currentProductStyles.results[currentStyleIdx].photos.forEach((photo, index) => {
       stylePics.push(photo.url);
@@ -16,18 +17,22 @@ export default function ImageGallery({ currentProductStyles }) {
     slideLength = stylePics.length;
   }
 
-  const nextSlide = () => {
-    setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
+  const changeSlide = (event, handle) => {
+    if (handle === 'next') {
+      setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
+    } else if (handle === 'prev') {
+      setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
+    }
   };
 
-  const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? slideLength - 1 : currentSlide - 1);
-  };
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [currentStyleIdx]);
 
   return (
     <div className='imageGallery'>
-      <button className={ 'fas fa-chevron-left left-arrow'} onClick={ prevSlide } />
-      <button className={ 'fas fa-chevron-right right-arrow' } onClick={ nextSlide } />
+      <button className={ 'fas fa-chevron-left left-arrow arrow'} onClick={ () => changeSlide(event, 'prev') } />
+      <button className={ 'fas fa-chevron-right right-arrow arrow' } onClick={ () => changeSlide(event, 'next') } />
       {stylePics.map((stylePic, index) => {
         return (
           <div key={index} className={index === currentSlide ? 'slide-active' : 'slide'}>

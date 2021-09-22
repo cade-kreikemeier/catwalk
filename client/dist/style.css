@@ -15,6 +15,7 @@
 .slide-active {
   height: 100%;
   width: 100%;
+  background-color: whitesmoke;
   /* align-items: center; */
 }
 
@@ -24,24 +25,21 @@
    object-fit: cover;
   }
 
-.right-arrow {
+.arrow {
   position: absolute;
   top: 50%;
-  right: 5%;
   z-index: 1;
   font-size: 2rem;
-  background-color: transparent;
   border: 0;
+  background-color: transparent;
+}
+
+.right-arrow {
+  right: 5%;
 }
 
 .left-arrow {
-  position: absolute;
-  top: 50%;
   left: 5%;
-  z-index: 1;
-  font-size: 2rem;
-  border: 0;
-  background-color: transparent;
 }
 /* Overvier */
 .overView {
