@@ -1,8 +1,8 @@
 export interface reviews {
-  product?: string,
-  page?: number,
-  count?: number,
-  results?: review[]
+  product: string,
+  page: number,
+  count: number,
+  results: review[]
 }
 
 export interface review {
