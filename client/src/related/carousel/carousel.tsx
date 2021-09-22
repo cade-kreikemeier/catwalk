@@ -28,7 +28,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
       </button>
       : null}
     <div className="carousel">
-      {props.ids.map(
+      {props.ids.slice(position, position + 4).map(
         id => props.cardCreator(id)
       )}
     </div>
