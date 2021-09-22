@@ -3,11 +3,11 @@ import ReviewStar from '../../../utils/ReviewStar.jsx';
 import ProductCategory from './ProductCategory.jsx';
 import ProductName from './ProductName.jsx';
 import ProductPrice from './ProductPrice.jsx';
-import Contexts from '../../../contexts/Contexts.tsx';
+import { ReviewsMetadataContext } from '../../../contexts/Contexts.tsx';
 import ProductReview from './ProductReview.jsx';
 
 export default function ProductInfo() {
-  const { reviewsMetadata } = useContext(Contexts.ReviewsMetadataContext);
+  const { reviewsMetadata } = useContext(ReviewsMetadataContext);
   let reviewShow = false;
   if (reviewsMetadata) {
     if (Object.keys(reviewsMetadata).length !== 0 && reviewsMetadata.constructor === Object) {

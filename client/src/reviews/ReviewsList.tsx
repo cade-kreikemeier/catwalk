@@ -1,11 +1,11 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import Contexts from '../contexts/Contexts';
+import { ModalContext, ReviewsContext } from '../contexts/Contexts';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => {
-  const { setModalContent } = useContext(Contexts.ModalContext) || {};
-  const { reviews } = useContext(Contexts.ReviewsContext) || {};
+  const { setModalContent } = useContext(ModalContext) || {};
+  const { reviews } = useContext(ReviewsContext) || {};
 
   const [displayedReviews, setDisplayReviews] = useState<ReactNode[]>([]);
   const [numDisplayed, setNumDisplayed] = useState(2);

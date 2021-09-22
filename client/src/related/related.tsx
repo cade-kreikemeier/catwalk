@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import Contexts from '../contexts/Contexts';
+import { RelatedProducts } from '../contexts/Contexts';
 import Carousel from './carousel/carousel';
 import CarouselCardLoader from './carouselCard/carouselCardLoader';
 
 const Related: React.FC = () => {
-  const ids = useContext(Contexts.RelatedProducts) || [];
+  const ids = useContext(RelatedProducts) || [];
   return <section className="section-md related">
     <h2>Related Items</h2>
     <Carousel

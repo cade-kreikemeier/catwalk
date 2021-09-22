@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import Overview from './overview/overview';
 import Related from './related/related';
 import Reviews from './reviews/Reviews';
-import Contexts from './contexts/Contexts';
+import { ModalContext } from './contexts/Contexts';
 import * as Providers from './contexts/Providers';
 import Modal from './utils/Modal';
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
 
   return (
-    <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
+    <ModalContext.Provider value={{ modalContent, setModalContent }}>
       <Providers.ProductsProvider>
         <Providers.ProductProvider>
           <Providers.ReviewsMetadataProvider>
@@ -31,7 +31,7 @@ const App: React.FC = () => {
         </Providers.ProductProvider>
       </Providers.ProductsProvider>
       <Modal />
-    </Contexts.ModalContext.Provider>
+    </ModalContext.Provider>
   );
 };
 
