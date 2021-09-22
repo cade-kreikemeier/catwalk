@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import CarouselCard from '../carouselCard';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
@@ -52,4 +52,46 @@ test('when imageUrl is empty string, no image should be shown', async () => {
   expect(screen.queryByTestId('rating')).toHaveTextContent('Rating: 4.2');
 
   expect(clicked).toBe(false);
+});
+
+describe('Given a card with valid props', () => {
+  let actionClicked = false;
+  let localClicked = false;
+  beforeEach(async () => {
+    await act(async () => {
+      render(<CarouselCard
+        imageUrl={'http://www.example.com/pic.jpg'}
+        metaData={{ name: 'T-Shirt', category: 'Shirt', price: '10.00' }}
+        rating={4.2}
+        actionChild={
+          <span>Action</span>
+        }
+        actionCallback={() => { actionClicked = true; }}
+        localCallback={() => { localClicked = true; }}
+      />);
+    });
+  });
+  afterEach(() => {
+    actionClicked = false;
+    localClicked = false;
+    cleanup();
+  });
+
+  describe('When the action button is clicked', () => {
+    beforeEach(() => {
+      fireEvent.click(screen.getByText('Action'));
+    });
+    test('Then the action callback will be called', () => {
+      expect(actionClicked).toBeTruthy();
+    });
+  });
+
+  describe('When the name is clicked', () => {
+    beforeEach(() => {
+      fireEvent.click(screen.getByTestId('name'));
+    });
+    test('Then the local callback will be called', () => {
+      expect(localClicked).toBeTruthy();
+    });
+  });
 });
