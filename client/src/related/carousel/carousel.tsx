@@ -6,6 +6,8 @@ interface CarouselProps {
   cardCreator: (id: number) => ReactNode
 };
 
+const shownCards = 4;
+
 const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   const [position, setPosition] = useState(0);
 
@@ -28,11 +30,11 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
       </button>
       : null}
     <div className="carousel">
-      {props.ids.slice(position, position + 4).map(
+      {props.ids.slice(position, position + shownCards).map(
         id => props.cardCreator(id)
       )}
     </div>
-    {(props.ids.length - position > 4)
+    {(props.ids.length - position > shownCards)
       ? <button
         data-testid="carousel-right-button"
         onClick={incrementPosition}
