@@ -30,31 +30,27 @@ const ReviewsList: React.FC = () => {
 
   useEffect(() => {
     if (reviews?.results) {
-      const displayReviews = [];
-      for (let i = 0; i < numDisplayed; i++) {
-        displayReviews.push(<ReviewTile key={reviews.results[i].review_id} review={reviews.results[i]} />);
-      }
-      setDisplayReviews(displayReviews);
+      setDisplayReviews(reviews.results.slice(0, numDisplayed).map((review) => {
+        return <ReviewTile key={review.review_id} review={review} />;
+      }));
     }
   }, [reviews, numDisplayed]);
 
   return (
-    <>
-      <div className='reviewList'>
-        <ReviewSort />
-        <div className='reviewTileContainer'>
-          {reviews
-            ? [...displayedReviews]
-            : null}
-        </div>
-        <div className="btnContainer">
-          <button onClick={addReview}>Add Review</button>
-          {reviews && numDisplayed < (reviews.results?.length || 16)
-            ? <button onClick={moreReviews}>More Reviews</button>
-            : null}
-        </div>
+    <div className='reviewList'>
+      <ReviewSort />
+      <div className='reviewTileContainer'>
+        {reviews
+          ? [...displayedReviews]
+          : null}
       </div>
-    </>
+      <div className="btnContainer">
+        <button onClick={addReview}>Add Review</button>
+        {reviews && numDisplayed < (reviews.results?.length || 16)
+          ? <button onClick={moreReviews}>More Reviews</button>
+          : null}
+      </div>
+    </div>
   );
 };
 
