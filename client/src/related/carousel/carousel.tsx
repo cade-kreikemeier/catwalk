@@ -15,6 +15,13 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
 
   return <React.Fragment>
     <h3>{props.title}</h3>
+    {(position > 0)
+      ? <button
+        data-testid="carousel-left-button"
+      >
+        Left
+      </button>
+      : null}
     <div className="carousel">
       {props.ids.map(
         id => props.cardCreator(id)

@@ -6,6 +6,30 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 import Carousel from '../carousel';
 
+function thenTheLeftButtonShouldBeVisible() {
+  test('Then the left arrow should be visible', () => {
+    expect(screen.queryByTestId('carousel-left-button')).toBeTruthy();
+  });
+}
+
+function thenTheRightButtonShouldBeVisible() {
+  test('Then the right arrow should be visible', () => {
+    expect(screen.queryByTestId('carousel-right-button')).toBeTruthy();
+  });
+}
+
+function thenTheLeftButtonShouldNotBeVisible() {
+  test('Then the left arrow should not be visible', () => {
+    expect(screen.queryByTestId('carousel-left-button')).toBeFalsy();
+  });
+}
+
+function thenTheRightButtonShouldNotBeVisible() {
+  test('Then the right arrow should not be visible', () => {
+    expect(screen.queryByTestId('carousel-right-button')).toBeFalsy();
+  });
+}
+
 describe('Given a carousel with 4 cards', () => {
   beforeEach(() => {
     render(<Carousel
@@ -16,13 +40,9 @@ describe('Given a carousel with 4 cards', () => {
   });
   afterEach(cleanup);
   describe('When nothing happens', () => {
-    test('Then the left arrow should not be visible', () => {
-      expect(screen.queryByTestId('carousel-left-button')).toBeFalsy();
-    });
+    thenTheLeftButtonShouldNotBeVisible();
 
-    test('Then the right arrow should not be visible', () => {
-      expect(screen.queryByTestId('carousel-right-button')).toBeFalsy();
-    });
+    thenTheRightButtonShouldNotBeVisible();
   });
 });
 
@@ -39,24 +59,20 @@ describe('Given a carousel with 5 cards', () => {
   });
   afterEach(cleanup);
   describe('When nothing happens', () => {
-    test('Then the left arrow should not be visible', () => {
-      expect(screen.queryByTestId('carousel-left-button')).toBeFalsy();
-    });
+    thenTheLeftButtonShouldNotBeVisible();
 
-    test('Then the right arrow should be visible', () => {
-      expect(screen.queryByTestId('carousel-right-button')).toBeTruthy();
-    });
+    thenTheRightButtonShouldBeVisible();
   });
 
   describe('When the right button is pressed', () => {
     beforeEach(async () => {
       fireEvent.click(
-        screen.getByTestId('carousel-right-button'),
+        screen.getByTestId('carousel-right-button')
       );
     });
+    thenTheRightButtonShouldNotBeVisible();
 
-    test('Then the right arrow should not be visible', () => {
-      expect(screen.queryByTestId('carousel-right-button')).toBeFalsy();
-    });
+    thenTheLeftButtonShouldBeVisible();
   });
 });
+
