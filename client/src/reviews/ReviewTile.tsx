@@ -44,9 +44,9 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
       <div className="reviewSummary"><strong>{review.summary.slice(0, 60)}</strong></div>
       <div className="reviewBody">
         <span>{reviewBody()}</span>
-        <a style={{ display: 'block' }} onClick={toggleShowFullBody}>
-          {review.body.length > 250 && (showFullBody ? 'Show Less' : 'Show More')}
-        </a>
+        {review.body.length > 250
+          ? <a onClick={toggleShowFullBody}>{(showFullBody ? 'Show Less' : 'Show More')}</a>
+          : null}
       </div>
       <div className="reviewRecommend">
         {review.recommend

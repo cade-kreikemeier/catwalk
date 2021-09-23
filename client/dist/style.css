@@ -422,6 +422,10 @@ align-items: center;
   color: black;
 }
 
+.reviewTile .reviewBody a {
+  display: block;
+}
+
 /* Modal */
 
 .modal-wrapper {
