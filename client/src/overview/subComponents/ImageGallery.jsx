@@ -10,7 +10,6 @@ export default function ImageGallery({ currentProductStyles }) {
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
   let slideLength = 0;
   let currentStyleIdx;
-  // let setCurrentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
     ({ currentStyleIdx } = StyleIdxContextData);
     currentProductStyles.results[currentStyleIdx].photos.forEach((photo) => {
@@ -45,6 +44,9 @@ export default function ImageGallery({ currentProductStyles }) {
   return (
     <div className='imageGallery'>
       <div className='previewContainer'>
+      { currentSlide === 0
+        ? null
+        : <button className={ 'fas fa-chevron-up up-arrow vertical-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
         {previewPics.map((previewPic, index) => {
           return (
             <span key={'previewPic' + index} className='previewBox' onClick={() => previewClicked(event, index)}
@@ -55,14 +57,17 @@ export default function ImageGallery({ currentProductStyles }) {
             </span>
           );
         })}
+      { currentSlide === slideLength - 1
+        ? null
+        : <button className={ 'fas fa-chevron-down down-arrow vertical-arrow'} onClick={ () => changeSlide(event, 'next') } />}
       </div>
 
       { currentSlide === 0
         ? null
-        : <button className={ 'fas fa-chevron-left left-arrow arrow'} onClick={ () => changeSlide(event, 'prev') } />}
+        : <button className={ 'fas fa-chevron-left left-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
       { currentSlide === slideLength - 1
         ? null
-        : <button className={ 'fas fa-chevron-right right-arrow arrow'} onClick={ () => changeSlide(event, 'next') } />}
+        : <button className={ 'fas fa-chevron-right right-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'next') } />}
       {stylePics.map((stylePic, index) => {
         return (
           <div key={'stylePic' + index} className={index === currentSlide ? 'slide-active' : 'slide'}>

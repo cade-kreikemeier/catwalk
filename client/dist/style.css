@@ -55,6 +55,10 @@ body {
   width: 100%;
 }
 
+.previewContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .slide-active {
   height: 100%;
   width: 100%;
@@ -70,13 +74,21 @@ body {
    object-fit: contain;
   }
 
-.arrow {
+.horizontal-arrow {
   position: absolute;
   top: 50%;
-  z-index: 1;
+  z-index: 2;
   font-size: 2rem;
   border: 0;
   background-color: transparent;
+}
+
+.vertical-arrow {
+  z-index: 2;
+  font-size: 1rem;
+  border: 0;
+  background-color: transparent;
+  padding: 2px;
 }
 
 .right-arrow {
@@ -89,23 +101,27 @@ body {
 
 .previewContainer {
   position: absolute;
-  height: 70%;
-  width: 15%;
+  max-height: 70%;
+  width: max(15%, 5rem);
   top: 50%;
   transform: translateY(-50%);
   left: 5%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   border: 2px solid black;
   z-index: 1;
+  overflow: scroll;
 }
 
 .previewBox {
-  height: 60px;
-  width: 60px;
-  margin: auto;
+  height: 5rem;
+  width: 5rem;
+  /* aspect-ratio: 1/1;
+  height: 13%; */
+  flex-shrink: 0;
+  margin: 5px 10px;
   border: 2px dashed black;
   overflow: hidden;
   object-fit: fill;
