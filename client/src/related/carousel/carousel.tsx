@@ -26,6 +26,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     {(position > 0)
       ? <button
         data-testid="carousel-left-button"
+        className="carousel-arrow carousel-arrow-left"
         onClick={decrementPosition}
       >
         Left
@@ -39,6 +40,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     {(props.ids.length - position > shownCards)
       ? <button
         data-testid="carousel-right-button"
+        className="carousel-arrow carousel-arrow-right"
         onClick={incrementPosition}
       >
         Right
