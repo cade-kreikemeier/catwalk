@@ -59,6 +59,11 @@ body {
   overflow: hidden;
 }
 
+.expandImageGallery .slide-active img {
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+ }
 
 .stdImageGallery {
   display: grid;
@@ -82,6 +87,10 @@ body {
   display: none;
 }
 
+.slide {
+  display: none;
+}
+
 .slide-active {
   height: 100%;
   width: 100%;
@@ -90,7 +99,7 @@ body {
   background-color: transparent;
 }
 
-.slide-active .expandIcon {
+ .slide-active .expandIcon {
   position: absolute;
   top: 3%;
   right: 5%;
@@ -103,7 +112,7 @@ body {
   visibility: hidden;
 }
 
- .slide-active img {
+.imageGallery .slide-active img {
    max-height: 100%;
    width: 100%;
    object-fit: cover;
