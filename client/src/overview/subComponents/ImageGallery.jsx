@@ -31,8 +31,12 @@ export default function ImageGallery({ currentProductStyles }) {
 
   return (
     <div className='imageGallery'>
-      <button className={ 'fas fa-chevron-left left-arrow arrow'} onClick={ () => changeSlide(event, 'prev') } />
-      <button className={ 'fas fa-chevron-right right-arrow arrow' } onClick={ () => changeSlide(event, 'next') } />
+      { currentSlide === 0
+        ? null
+        : <button className={ 'fas fa-chevron-left left-arrow arrow'} onClick={ () => changeSlide(event, 'prev') } />}
+      { currentSlide === slideLength - 1
+        ? null
+        : <button className={ 'fas fa-chevron-right right-arrow arrow'} onClick={ () => changeSlide(event, 'next') } />}
       {stylePics.map((stylePic, index) => {
         return (
           <div key={index} className={index === currentSlide ? 'slide-active' : 'slide'}>
