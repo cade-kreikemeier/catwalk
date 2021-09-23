@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { ModalContext } from '../../contexts/Contexts';
+import { ModalContext, ProductIdContext } from '../../contexts/Contexts';
 import { product } from '../../models/product.interface';
 import { style } from '../../models/style.interface';
 import { apiRequest } from '../../utils/apiRequests';
@@ -38,6 +38,7 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
 
   const history = useHistory();
   const { setModalContent } = useContext(ModalContext) || {};
+  const mainId = useContext(ProductIdContext) || 0;
 
   return <React.Fragment>
     <CarouselCard
@@ -45,7 +46,7 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
       metaData={{ category: product?.category || '', name: product?.name || '', price: product?.default_price || '' }}
       rating={rating}
       actionChild={<span>v</span>}
-      actionCallback={() => setModalContent?.call(null, ComparisonsModal)}
+      actionCallback={() => setModalContent?.call(null, <ComparisonsModal fromId={mainId} toId={id}/>)}
       localCallback={() => history.push('/products/' + product?.id)}
     />
   </React.Fragment>;
