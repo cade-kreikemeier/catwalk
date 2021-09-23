@@ -1,39 +1,19 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import Overview from './overview/overview';
-import Related from './related/related';
-import Reviews from './reviews/Reviews';
-import Contexts from './contexts/Contexts';
-import * as Providers from './contexts/Providers';
-import Modal from './utils/Modal';
-
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import ProductPage from './pages/ProductPage';
+const Home: React.FC = () => (
+  <>
+    <h2>Home</h2>
+    <Link to="/products/44388">Products</Link>
+  </>
+);
 
 const App: React.FC = () => {
-  const [modalContent, setModalContent] = useState<ReactNode>(null);
-
   return (
     <Router>
-      <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
-        <Providers.ProductsProvider>
-          <Providers.ProductProvider>
-            <Providers.ReviewsMetadataProvider>
-              <Providers.ProductSytlesProvider>
-                <Overview />
-                <Providers.RelatedProductsProvider>
-                  <Related />
-                </Providers.RelatedProductsProvider>
-              </Providers.ProductSytlesProvider>
-              <Providers.ReviewsProvider>
-                <Reviews />
-              </Providers.ReviewsProvider>
-            </Providers.ReviewsMetadataProvider>
-          </Providers.ProductProvider>
-        </Providers.ProductsProvider>
-        <Modal />
-      </Contexts.ModalContext.Provider>
+      <Route path="/products/:product_id" component={ProductPage} />
+      <Route path="/" component={Home} />
     </Router>
   );
 };
