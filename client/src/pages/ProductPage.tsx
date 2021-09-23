@@ -16,29 +16,31 @@ interface ProductPageProps extends Props<typeof ProductPage> {
   },
 }
 
-const ProductPage:React.FC<ProductPageProps> = (props: ProductPageProps) => {
+const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
-  console.log(props);
   console.log(props.match.params.product_id);
+  const id = Number(props.match.params.product_id);
   return (
-    <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
-      <Providers.ProductsProvider>
-        <Providers.ProductProvider>
-          <Providers.ReviewsMetadataProvider>
-            <Providers.ProductSytlesProvider>
-              <Overview />
-              <Providers.RelatedProductsProvider>
-                <Related />
-              </Providers.RelatedProductsProvider>
-            </Providers.ProductSytlesProvider>
-            <Providers.ReviewsProvider>
-              <Reviews />
-            </Providers.ReviewsProvider>
-          </Providers.ReviewsMetadataProvider>
-        </Providers.ProductProvider>
-      </Providers.ProductsProvider>
-      <Modal />
-    </Contexts.ModalContext.Provider>
+    <Contexts.ProductIdContext.Provider value={id}>
+      <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
+        <Providers.ProductsProvider>
+          <Providers.ProductProvider>
+            <Providers.ReviewsMetadataProvider>
+              <Providers.ProductSytlesProvider>
+                <Overview />
+                <Providers.RelatedProductsProvider>
+                  <Related />
+                </Providers.RelatedProductsProvider>
+              </Providers.ProductSytlesProvider>
+              <Providers.ReviewsProvider>
+                <Reviews />
+              </Providers.ReviewsProvider>
+            </Providers.ReviewsMetadataProvider>
+          </Providers.ProductProvider>
+        </Providers.ProductsProvider>
+        <Modal />
+      </Contexts.ModalContext.Provider>
+    </Contexts.ProductIdContext.Provider>
   );
 };
 
