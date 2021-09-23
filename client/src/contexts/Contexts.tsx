@@ -27,6 +27,8 @@ ReviewsContext.displayName = 'ReviewsContext';
 const ReviewsMetadataContext = createContext<reviewsMetaDataInteraction | undefined>(undefined);
 ReviewsMetadataContext.displayName = 'ReviewsMetadataContext';
 
+const ProductIdContext = createContext<number | undefined>(undefined);
+ProductIdContext.displayName = 'ProductId';
 
 const Contexts = {
   ModalContext,
@@ -35,7 +37,8 @@ const Contexts = {
   ProductStyleContext,
   RelatedProducts,
   ReviewsContext,
-  ReviewsMetadataContext
+  ReviewsMetadataContext,
+  ProductIdContext
 };
 
 export default Contexts;
