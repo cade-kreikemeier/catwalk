@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import calAvgRating from './calAvgRating';
 
 function ReviewStar({ rating }) {
-  if (typeof rating === 'object') {
-    rating = calAvgRating(rating);
-  } else {
-    rating = rating / 5 * 100;
-  }
-
-  return (
-    <div className='reviewStar'>
-      <div className='starsContainer'>
-        <span className='starOutline star'>★★★★★</span>
-        <span className='starFilled star' style={{ width: `${rating}%` }}>★★★★★</span>
+  if (rating) {
+    return (
+      <div className='reviewStar'>
+        <div className='starsContainer'>
+          <span className='starOutline star'>★★★★★</span>
+          <span className='starFilled star' style={{ width: `${rating / 5 * 100}%` }}>★★★★★</span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 ReviewStar.propTypes = {

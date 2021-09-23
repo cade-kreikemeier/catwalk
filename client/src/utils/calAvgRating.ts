@@ -16,5 +16,5 @@ export default function calAvgRating(metaDataRatings: ratings): number {
   } else {
     avg = avg - left + 0.25;
   }
-  return avg / 5 * 100;
+  return avg;
 };

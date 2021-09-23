@@ -38,15 +38,17 @@ const ReviewsList: React.FC = () => {
 
   return (
     <div className='reviewList'>
-      <ReviewSort />
-      <div className='reviewTileContainer'>
-        {reviews
-          ? [...displayedReviews]
-          : null}
-      </div>
+      {reviews?.results.length
+        ? <>
+          <ReviewSort />
+          <div className='reviewTileContainer'>
+            {[...displayedReviews]}
+          </div>
+        </>
+        : null}
       <div className="btnContainer">
         <button onClick={addReview}>Add Review</button>
-        {reviews && numDisplayed < (reviews.results?.length || 16)
+        {reviews?.results.length && numDisplayed < (reviews.results?.length || 16)
           ? <button onClick={moreReviews}>More Reviews</button>
           : null}
       </div>

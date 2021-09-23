@@ -5,6 +5,7 @@ import ProductName from './ProductName.jsx';
 import ProductPrice from './ProductPrice.jsx';
 import { ReviewsMetadataContext } from '../../../contexts/Contexts.tsx';
 import ProductReview from './ProductReview.jsx';
+import calcAvgRating from '../../../utils/calAvgRating';
 
 export default function ProductInfo() {
   const { reviewsMetadata } = useContext(ReviewsMetadataContext);
@@ -18,7 +19,7 @@ export default function ProductInfo() {
     <div className='productInfo'>
       {reviewShow
         ? <div className={'starReviewRow'}>
-          <ReviewStar rating={reviewsMetadata.ratings} />
+          <ReviewStar rating={calcAvgRating(reviewsMetadata.ratings)} />
           <ProductReview />
         </div>
         : null
