@@ -18,7 +18,7 @@ export default function ProductInfo() {
     <div className='productInfo'>
       {reviewShow
         ? <div className={'starReviewRow'}>
-          <ReviewStar currentReviewsMetadata={reviewsMetadata} />
+          <ReviewStar rating={reviewsMetadata.ratings} />
           <ProductReview />
         </div>
         : null

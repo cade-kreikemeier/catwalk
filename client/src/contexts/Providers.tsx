@@ -25,7 +25,9 @@ export function ProductsProvider({ children }: Props): ReactElement {
   useEffect(() => {
     apiRequest.getAllProducts()
       .then(setProducts)
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+      });
   }, []);
 
   return (
