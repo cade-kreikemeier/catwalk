@@ -47,6 +47,11 @@ body {
 }
 
 /* Image Gallery */
+.expandImgContainer {
+  border: 2px dashed blue;
+  z-index: 5;
+}
+
 
 .imageGallery {
   grid-area: imageGallery;
@@ -55,37 +60,89 @@ body {
   width: 100%;
 }
 
+.previewContainer::-webkit-scrollbar {
+  display: none;
+}
+
 .slide-active {
   height: 100%;
   width: 100%;
-  display: flex;
+  position: relative;
   justify-content: center;
   background-color: transparent;
-  /* align-items: center; */
+}
+
+.expandIcon {
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  z-index: 1;
+  cursor: zoom-in;
+  font-size: 2rem;
 }
 
  .slide-active img {
    max-height: 100%;
    width: 100%;
-   object-fit: contain;
+   object-fit: cover;
   }
 
-.arrow {
+.horizontal-arrow {
   position: absolute;
   top: 50%;
-  z-index: 1;
+  z-index: 2;
   font-size: 2rem;
   border: 0;
   background-color: transparent;
 }
 
+.vertical-arrow {
+  z-index: 2;
+  font-size: 1rem;
+  border: 0;
+  background-color: transparent;
+  padding: 2px;
+}
+
 .right-arrow {
-  right: 5%;
+  right: 15%;
 }
 
 .left-arrow {
-  left: 5%;
+  left: 22%;
 }
+
+.previewContainer {
+  position: absolute;
+  max-height: 70%;
+  width: max(15%, 5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 2px solid black;
+  z-index: 1;
+  overflow: scroll;
+}
+
+.previewBox {
+  height: 5rem;
+  width: 5rem;
+  flex-shrink: 0;
+  margin: 5px 10px;
+  border: 2px dashed black;
+  overflow: hidden;
+  object-fit: fill;
+}
+
+.preview {
+  height: 100%;
+  width: 100%;
+}
+
 /* Overvier */
 
 .overView {
