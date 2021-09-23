@@ -105,3 +105,18 @@ describe('Given a carousel with 5 cards', () => {
   });
 });
 
+describe('Given an array with duplicate ids', () => {
+  beforeEach(() => {
+    render(<Carousel
+      title="Sample"
+      ids={[1, 1]}
+      cardCreator={cardCreator}
+    />);
+  });
+  afterEach(cleanup);
+  describe('When nothing happens', () => {
+    test('then the duplicate id should only show one card', () => {
+      expect(screen.queryAllByText('id: 1').length).toBe(1);
+    });
+  });
+});
