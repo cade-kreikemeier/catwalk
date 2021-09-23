@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { StyleIdxContext } from '../overview.jsx';
+import { StyleIdxContext, ExpandContext } from '../overview.jsx';
 
 export default function ImageGallery({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
+  let {  expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
   const stylePics = [];
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
-  const [expandIsClicked, setExpandIsClicked] = useState(false);
   let slideLength = 0;
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
@@ -95,5 +95,7 @@ export default function ImageGallery({ currentProductStyles }) {
 
 ImageGallery.propTypes = {
   currentStyleIdx: PropTypes.number,
-  currentProductStyles: PropTypes.object
+  currentProductStyles: PropTypes.object,
+  expandIsClicked: PropTypes.bool,
+  setExpandIsClicked: PropTypes.func
 };

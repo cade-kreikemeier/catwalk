@@ -48,6 +48,7 @@ body {
 
 /* Image Gallery */
 .expandImgContainer {
+  position: absolute;
   border: 2px dashed blue;
   z-index: 5;
 }
