@@ -1,4 +1,4 @@
-/* CSS HEX */ 
+/* CSS HEX */
 :root {
   --medium-turquoise: #55dde0ff;
   --charcoal: #2f4858ff;
@@ -46,6 +46,48 @@ body {
   display: flex;
 }
 
+/* Image Gallery */
+
+.imageGallery {
+  grid-area: imageGallery;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.slide-active {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  /* align-items: center; */
+}
+
+ .slide-active img {
+   max-height: 100%;
+   width: 100%;
+   object-fit: contain;
+  }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  font-size: 2rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.right-arrow {
+  right: 5%;
+}
+
+.left-arrow {
+  left: 5%;
+}
+/* Overvier */
+
 .overView {
   padding: 2rem max(2rem, 5vw);
   background-color: grey;
@@ -60,10 +102,6 @@ body {
 }
 
 
-.imageGallery {
-  background-color: red;
-  grid-area: imageGallery;
-}
 
 .overViewContainer {
   background-color:hotpink;
@@ -161,8 +199,6 @@ align-items: center;
   border: 2px dashed black;
   margin: 2px;
 }
-
-
 
 /* Style */
 
@@ -308,7 +344,7 @@ align-items: center;
   width: 200px;
   object-fit: cover;
   overflow: hidden;
-} 
+}
 
 /* Reviews */
 
