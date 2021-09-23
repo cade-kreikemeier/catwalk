@@ -1,9 +1,9 @@
 import React, { ReactElement, useContext } from 'react';
 import ReactDOM from 'react-dom';
-import Contexts from '../contexts/Contexts';
+import { ModalContext } from '../contexts/Contexts';
 
 export default function Modal(): ReactElement {
-  const { modalContent, setModalContent } = useContext(Contexts.ModalContext) || {};
+  const { modalContent, setModalContent } = useContext(ModalContext) || {};
 
   const onClose = () => {
     setModalContent?.call(null, null);

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import Contexts from '../../../contexts/Contexts.tsx';
+import { ProductContext } from '../../../contexts/Contexts.tsx';
 
 export default function ProductPrice() {
-  const currentProductData = useContext(Contexts.ProductContext);
+  const currentProductData = useContext(ProductContext);
   return (
     <div className='productPrice'>
       {currentProductData ? `$${currentProductData.default_price}` : 'emptyProductPrice'}

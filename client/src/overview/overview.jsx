@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Contexts from '../contexts/Contexts.tsx';
+import { ProductStyleContext } from '../contexts/Contexts.tsx';
 import AddToCart from './subComponents/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
@@ -8,7 +8,7 @@ const StyleIdxContext = React.createContext();
 const StyleNameContext = React.createContext();
 
 function OverView() {
-  const currentProductStyles = useContext(Contexts.ProductStyleContext);
+  const currentProductStyles = useContext(ProductStyleContext);
   const thumbnailPics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
   const [currentStyleName, setCurrentStyleName] = useState('Forest Green & Black by Default');
@@ -23,12 +23,12 @@ function OverView() {
         <StyleIdxContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
           <StyleNameContext.Provider value={{ currentStyleName, setCurrentStyleName }}>
             <ImageGallery
-              currentProductStyles={ currentProductStyles }
+              currentProductStyles={currentProductStyles}
             />
             <ProductInfo />
             <StyleSelector
-              thumbnailPics={ thumbnailPics }
-              currentProductStyles={ currentProductStyles }
+              thumbnailPics={thumbnailPics}
+              currentProductStyles={currentProductStyles}
             />
             <AddToCart />
           </StyleNameContext.Provider>
