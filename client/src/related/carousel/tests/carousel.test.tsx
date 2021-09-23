@@ -143,3 +143,23 @@ describe('Given a carousel of 4 ids, and showing only 2', () => {
     });
   });
 });
+
+describe('Given a card with ids as strings', () => {
+  beforeEach(async () => {
+    await act(async () => {
+      render(<Carousel
+        title="Sample"
+        ids={['1', '2', '3', '4']}
+        cardCreator={(id: string) => { return <span key={id}>id: {id}</span>; }}
+        shownCards={2}
+      />);
+    }
+    );
+  });
+  afterEach(cleanup);
+  describe('When nothing happens', () => {
+    test('Then the first card should be shown', () => {
+      expect(screen.queryAllByText('id: 1')).toHaveLength(1);
+    });
+  });
+});
