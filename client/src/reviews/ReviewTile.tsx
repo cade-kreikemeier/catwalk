@@ -21,10 +21,19 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
     }
   };
 
-  // NEED TO FIX THIS!!!
   const toggleShowFullBody = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     setShowFullBody(!showFullBody);
+  };
+
+  const voteHelpfulness = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    console.log('I VOTED!');
+  };
+
+  const reportReview = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    console.log('I REPORTED!');
   };
 
   return (
@@ -46,8 +55,15 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
           ? <span className={'far fa-check-circle checkIcon'}> I recommend this product</span>
           : null}
       </div>
-      {review.response ? <div className="reviewResponse"><strong>{review.response}</strong></div> : null}
-      <div className="reviewHelpfulness">{review.helpfulness}</div>
+      {review.response
+        ? <div className="reviewResponse"><h4>Response from seller</h4><em>{review.response}</em></div>
+        : null}
+      <div className="reviewHelpfulness">
+        <span>Was this review helpful?
+          <a onClick={voteHelpfulness}> Yes</a> ({review.helpfulness}) |
+          <a onClick={reportReview}> Report</a>
+        </span>
+      </div>
     </div >
   );
 };
