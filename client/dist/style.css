@@ -67,7 +67,7 @@ body {
   background-color: transparent;
 }
 
-.expand {
+.expandIcon {
   position: absolute;
   top: 3%;
   right: 5%;
@@ -126,8 +126,6 @@ body {
 .previewBox {
   height: 5rem;
   width: 5rem;
-  /* aspect-ratio: 1/1;
-  height: 13%; */
   flex-shrink: 0;
   margin: 5px 10px;
   border: 2px dashed black;

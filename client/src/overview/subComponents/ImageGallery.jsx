@@ -8,6 +8,7 @@ export default function ImageGallery({ currentProductStyles }) {
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
+  const [expandIsClicked, setExpandIsClicked] = useState(false);
   let slideLength = 0;
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
@@ -43,40 +44,47 @@ export default function ImageGallery({ currentProductStyles }) {
 
   return (
     <div className='imageGallery'>
+      {/* Preview */}
       <div className='previewContainer'>
-      { currentSlide === 0
-        ? null
-        : <button className={ 'fas fa-chevron-up up-arrow vertical-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
-        {previewPics.map((previewPic, index) => {
-          return (
-            <span key={'previewPic' + index} className='previewBox' onClick={() => previewClicked(event, index)}
-            style={{
-              border: index === currentPreviewIdx ? '2px solid white ' : '2px dashed black '
-            }}>
-              <img src={previewPic} className='preview'></img>
-            </span>
-          );
-        })}
+        { currentSlide === 0
+          ? null
+          : <button className={ 'fas fa-chevron-up up-arrow vertical-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
+
+          {previewPics.map((previewPic, index) => {
+            return (
+              <span key={'previewPic' + index} className='previewBox' onClick={ () => previewClicked(event, index)}
+              style={{
+                border: index === currentPreviewIdx ? '2px solid white ' : '2px dashed black '
+              }}>
+                <img src={previewPic} className='preview'></img>
+              </span>
+            );
+          })}
+
       { currentSlide === slideLength - 1
         ? null
         : <button className={ 'fas fa-chevron-down down-arrow vertical-arrow'} onClick={ () => changeSlide(event, 'next') } />}
       </div>
+      {/* Main Image */}
+        { currentSlide === 0
+          ? null
+          : <button className={ 'fas fa-chevron-left left-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
+        { currentSlide === slideLength - 1
+          ? null
+          : <button className={ 'fas fa-chevron-right right-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'next') } />}
 
-      { currentSlide === 0
-        ? null
-        : <button className={ 'fas fa-chevron-left left-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'prev') } />}
-      { currentSlide === slideLength - 1
-        ? null
-        : <button className={ 'fas fa-chevron-right right-arrow horizontal-arrow'} onClick={ () => changeSlide(event, 'next') } />}
-      {stylePics.map((stylePic, index) => {
-        return (
-          <div key={'stylePic' + index} className={index === currentSlide ? 'slide-active' : 'slide'}>
-            <span className={'fas fa-expand expand'}></span>
-             {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
-          </div>
-        );
-      })}
-    </div>
+        {stylePics.map((stylePic, index) => {
+          return (
+              <div key={'stylePic' + index} className={
+                `${index === currentSlide ? 'slide-active' : 'slide'}
+                ${expandIsClicked ? 'expand-active' : 'expand'}`
+                }>
+                <span className={'fas fa-expand expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
+                {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
+              </div>
+          );
+        })}
+  </div>
   );
 };
 
