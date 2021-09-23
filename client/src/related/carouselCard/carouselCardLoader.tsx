@@ -5,6 +5,7 @@ import { product } from '../../models/product.interface';
 import { style } from '../../models/style.interface';
 import { apiRequest } from '../../utils/apiRequests';
 import calAvgRating from '../../utils/calAvgRating';
+import ComparisonsModal from '../comparisonsModal/ComparisonsModal';
 import CarouselCard from './carouselCard';
 import findImageUrl from './findImageUrl';
 
@@ -44,7 +45,7 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
       metaData={{ category: product?.category || '', name: product?.name || '', price: product?.default_price || '' }}
       rating={rating}
       actionChild={<span>v</span>}
-      actionCallback={() => setModalContent?.call(null, <span>Hello</span>)}
+      actionCallback={() => setModalContent?.call(null, ComparisonsModal)}
       localCallback={() => history.push('/products/' + product?.id)}
     />
   </React.Fragment>;
