@@ -19,24 +19,28 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
     setPosition(position - 1);
   }
 
+  const uniqueIds = Array.from(new Set(props.ids));
+
   return <React.Fragment>
     <h3>{props.title}</h3>
     {(position > 0)
       ? <button
         data-testid="carousel-left-button"
+        className="carousel-arrow carousel-arrow-left"
         onClick={decrementPosition}
       >
         Left
       </button>
       : null}
     <div className="carousel">
-      {props.ids.slice(position, position + shownCards).map(
+      {(uniqueIds.slice(position, position + shownCards).map(
         id => props.cardCreator(id)
-      )}
+      ))}
     </div>
     {(props.ids.length - position > shownCards)
       ? <button
         data-testid="carousel-right-button"
+        className="carousel-arrow carousel-arrow-right"
         onClick={incrementPosition}
       >
         Right
