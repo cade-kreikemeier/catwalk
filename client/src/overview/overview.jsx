@@ -4,7 +4,7 @@ import AddToCart from './subComponents/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
 import StyleSelector from './subComponents/StyleSelector.jsx';
-import ExpandImgGallery from './subComponents/ExpandImgGallery.jsx';
+import ExpandImageGallery from './subComponents/ExpandImgageGallery.jsx';
 
 const StyleIdxContext = React.createContext();
 const StyleNameContext = React.createContext();
@@ -23,22 +23,22 @@ function OverView() {
   }
   return (
     <section className="section-lg">
-      <div className="overView">
+      <div className={`overView ${expandIsClicked ? 'expandImageGallery' : 'stdImageGallery'}`}>
         <StyleIdxContext.Provider value={{ currentStyleIdx, setCurrentStyleIdx }}>
           <StyleNameContext.Provider value={{ currentStyleName, setCurrentStyleName }}>
             <ExpandContext.Provider value={{ expandIsClicked, setExpandIsClicked }}>
               {expandIsClicked
-                ? <ExpandImgGallery />
-                : <ImageGallery
-                currentProductStyles={ currentProductStyles }
-              />}
-
-              <ProductInfo />
-              <StyleSelector
-                thumbnailPics={ thumbnailPics }
-                currentProductStyles={ currentProductStyles }
-              />
-              <AddToCart />
+                ? <ExpandImageGallery currentProductStyles={currentProductStyles}/>
+                : <>
+                    {< ImageGallery currentProductStyles={currentProductStyles} />}
+                    {<ProductInfo />}
+                    {<StyleSelector
+                      thumbnailPics={thumbnailPics}
+                      currentProductStyles={currentProductStyles}
+                    />}
+                    {<AddToCart />}
+                  </>
+              }
             </ExpandContext.Provider>
           </StyleNameContext.Provider>
         </StyleIdxContext.Provider>

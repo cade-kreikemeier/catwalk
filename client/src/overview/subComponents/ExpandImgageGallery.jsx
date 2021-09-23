@@ -2,9 +2,9 @@ import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext, ExpandContext } from '../overview.jsx';
 
-export default function ImageGallery({ currentProductStyles }) {
+export default function ExpandImageGallery({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
-  let {  expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
+  let { expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
   const stylePics = [];
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -43,7 +43,7 @@ export default function ImageGallery({ currentProductStyles }) {
   }, [currentStyleIdx]);
 
   return (
-    <div className={'imageGallery'}>
+    <div className={'expandImageGallery'}>
       {/* Preview */}
       <div className='previewContainer'>
         {currentSlide === 0
@@ -83,7 +83,7 @@ export default function ImageGallery({ currentProductStyles }) {
             <div key={'stylePic' + index} className={
               `${index === currentSlide ? 'slide-active' : 'slide'}`
             }>
-              <span className={'fas fa-expand expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
+              <span className={'fas fa-compress expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
               {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
             </div>
           );
@@ -92,7 +92,7 @@ export default function ImageGallery({ currentProductStyles }) {
   );
 };
 
-ImageGallery.propTypes = {
+ExpandImageGallery.propTypes = {
   currentStyleIdx: PropTypes.number,
   currentProductStyles: PropTypes.object,
   expandIsClicked: PropTypes.bool,
