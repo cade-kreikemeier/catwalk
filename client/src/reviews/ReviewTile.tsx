@@ -16,7 +16,7 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
         <ReviewStar currentReviewsMetadata={reviewsMetadata} />
       </div>
       <div className="reviewCardDate">{monthDayYear(review.date)}</div>
-      <div className="reviewSummary"><strong>{review.summary}</strong></div>
+      <div className="reviewSummary"><strong>{review.summary.slice(0, 60)}</strong></div>
       <div className="reviewBody">
         {review.body}
       </div>
