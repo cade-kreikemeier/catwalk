@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
-import { monthDayYear } from '../utils/dateConversion';
-import { review } from '../models/reviews.interface';
+import { monthDayYear } from '../../utils/dateConversion';
+import { review } from '../../models/reviews.interface';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ReviewStar from '../utils/ReviewStar.jsx';
+import ReviewStar from '../../utils/ReviewStar.jsx';
 
 
 const ReviewTile: FC<{ review: review }> = ({ review }) => {

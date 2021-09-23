@@ -1,7 +1,7 @@
 import React from 'react';
-import RatingBreakdown from './RatingBreakdown';
-import RatingSummary from './RatingSummary';
-import AttributesSummary from './AttributesSummary';
+import RatingBreakdown from './RatingsAndReviews/RatingBreakdown';
+import RatingSummary from './RatingsAndReviews/RatingSummary';
+import AttributesSummary from './RatingsAndReviews/AttributesSummary';
 
 const ReviewBreakdown: React.FC = () => (
   <div className="ratingsAndReviews">

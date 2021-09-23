@@ -1,7 +1,7 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { ModalContext, ReviewsContext } from '../contexts/Contexts';
-import ReviewSort from './ReviewSort';
-import ReviewTile from './ReviewTile';
+import ReviewSort from './ReviewsList/ReviewSort';
+import ReviewTile from './ReviewsList/ReviewTile';
 
 const ReviewsList: React.FC = () => {
   const { setModalContent } = useContext(ModalContext) || {};
