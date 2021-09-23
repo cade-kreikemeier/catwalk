@@ -11,6 +11,7 @@ const Related: React.FC = () => {
       title="Related Products"
       ids={ids}
       cardCreator={id => (<CarouselCardLoader key={id} id={id} />)}
+      shownCards={4}
     />
   </section>;
 };

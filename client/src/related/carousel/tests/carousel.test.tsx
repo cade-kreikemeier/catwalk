@@ -38,6 +38,7 @@ describe('Given a carousel with 4 cards', () => {
       title="Sample"
       ids={[1, 2, 3, 4]}
       cardCreator={cardCreator}
+      shownCards={4}
     />);
   });
   afterEach(cleanup);
@@ -63,6 +64,7 @@ describe('Given a carousel with 5 cards', () => {
         title="Sample"
         ids={[1, 2, 3, 4, 5]}
         cardCreator={cardCreator}
+        shownCards={4}
       />);
     }
     );
@@ -111,12 +113,33 @@ describe('Given an array with duplicate ids', () => {
       title="Sample"
       ids={[1, 1]}
       cardCreator={cardCreator}
+      shownCards={4}
     />);
   });
   afterEach(cleanup);
   describe('When nothing happens', () => {
     test('then the duplicate id should only show one card', () => {
       expect(screen.queryAllByText('id: 1').length).toBe(1);
+    });
+  });
+});
+
+describe('Given a carousel of 4 ids, and showing only 2', () => {
+  beforeEach(async () => {
+    await act(async () => {
+      render(<Carousel
+        title="Sample"
+        ids={[1, 2, 3, 4]}
+        cardCreator={cardCreator}
+        shownCards={2}
+      />);
+    }
+    );
+  });
+  afterEach(cleanup);
+  describe('When nothing happens', () => {
+    test('Then card 3 should not be shown', () => {
+      expect(screen.queryAllByText('id: 3')).toHaveLength(0);
     });
   });
 });

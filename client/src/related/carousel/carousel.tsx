@@ -1,14 +1,13 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react';
 
-interface CarouselProps {
+interface CarouselProps<T> {
   title: string,
-  ids: number[],
-  cardCreator: (id: number) => ReactNode
+  ids: T[],
+  cardCreator: (id: T) => ReactNode,
+  shownCards: number
 };
 
-const shownCards = 4;
-
-const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
+const Carousel = <T extends unknown>(props: CarouselProps<T> & { children?: ReactNode }): ReactElement => {
   const [position, setPosition] = useState(0);
 
   function incrementPosition() {
@@ -33,11 +32,11 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
       </button>
       : null}
     <div className="carousel">
-      {(uniqueIds.slice(position, position + shownCards).map(
+      {(uniqueIds.slice(position, position + props.shownCards).map(
         id => props.cardCreator(id)
       ))}
     </div>
-    {(props.ids.length - position > shownCards)
+    {(props.ids.length - position > props.shownCards)
       ? <button
         data-testid="carousel-right-button"
         className="carousel-arrow carousel-arrow-right"
