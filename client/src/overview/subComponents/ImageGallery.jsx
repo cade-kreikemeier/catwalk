@@ -11,7 +11,7 @@ export default function ImageGallery({ currentProductStyles }) {
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
     ({ currentStyleIdx } = StyleIdxContextData);
-    currentProductStyles.results[currentStyleIdx].photos.forEach((photo, index) => {
+    currentProductStyles.results[currentStyleIdx].photos.forEach((photo) => {
       stylePics.push(photo.url);
     });
     slideLength = stylePics.length;
