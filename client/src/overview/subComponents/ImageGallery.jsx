@@ -71,6 +71,7 @@ export default function ImageGallery({ currentProductStyles }) {
       {stylePics.map((stylePic, index) => {
         return (
           <div key={'stylePic' + index} className={index === currentSlide ? 'slide-active' : 'slide'}>
+            <span className={'fas fa-expand expand'}></span>
              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
           </div>
         );
