@@ -47,6 +47,11 @@ body {
 }
 
 /* Image Gallery */
+.expandImgContainer {
+  border: 2px dashed blue;
+  z-index: 5;
+}
+
 
 .imageGallery {
   grid-area: imageGallery;
@@ -62,7 +67,7 @@ body {
 .slide-active {
   height: 100%;
   width: 100%;
-  display: relative;
+  position: relative;
   justify-content: center;
   background-color: transparent;
 }

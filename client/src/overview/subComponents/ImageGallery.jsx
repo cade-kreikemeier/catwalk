@@ -43,7 +43,7 @@ export default function ImageGallery({ currentProductStyles }) {
   }, [currentStyleIdx]);
 
   return (
-    <div className='imageGallery'>
+    <div className={'imageGallery'}>
       {/* Preview */}
       <div className='previewContainer'>
         {currentSlide === 0
