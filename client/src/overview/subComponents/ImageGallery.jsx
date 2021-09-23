@@ -39,7 +39,7 @@ export default function ImageGallery({ currentProductStyles }) {
         : <button className={ 'fas fa-chevron-right right-arrow arrow'} onClick={ () => changeSlide(event, 'next') } />}
       {stylePics.map((stylePic, index) => {
         return (
-          <div key={index} className={index === currentSlide ? 'slide-active' : 'slide'}>
+          <div key={'stylePic' + index} className={index === currentSlide ? 'slide-active' : 'slide'}>
              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
           </div>
         );
