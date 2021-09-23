@@ -86,7 +86,7 @@ export function RelatedProductsProvider({ children }: Props): ReactElement {
 
 export function ReviewsProvider({ children }: Props): ReactElement {
   const [reviews, setReviews] = useState<reviews | undefined>(undefined);
-  const [sortType, setSortType] = useState('relevant');
+  const [sortType, setSortType] = useState('relevant') || ['relevant', (s: string) => { console.log(s); }];
   const productId = useContext(Contexts.ProductIdContext);
 
   const requestReviews = () => {
