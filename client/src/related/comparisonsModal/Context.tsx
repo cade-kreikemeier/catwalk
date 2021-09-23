@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 
-interface comparison {
-  [characterist: string] : {
+export interface comparison {
+  [characteristic: string] : {
     mainValue: number | null,
     otherValue: number | null,
   }
