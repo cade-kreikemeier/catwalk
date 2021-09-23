@@ -1,6 +1,6 @@
 import { ratings } from '../models/reviewsMetaData.interface';
 
-export default function calAvgRating(metaDataRatings: ratings): number {
+export default function calAvgRating(metaDataRatings: ratings, increment = 0.25): number {
   let total = 0;
   let number = 0;
   for (let i = 1; i <= 5; i++) {
@@ -10,11 +10,11 @@ export default function calAvgRating(metaDataRatings: ratings): number {
     }
   };
   let avg = total / number;
-  const left = avg % 0.25;
-  if (left < 0.125) {
+  const left = avg % increment;
+  if (left < (increment / 2)) {
     avg = avg - left;
   } else {
-    avg = avg - left + 0.25;
+    avg = avg - left + increment;
   }
   return avg;
 };
