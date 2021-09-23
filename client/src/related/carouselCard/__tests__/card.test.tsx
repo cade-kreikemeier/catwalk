@@ -86,6 +86,10 @@ describe('Given a card with valid props', () => {
     test('Then the action callback will be called', () => {
       expect(actionClicked).toBeTruthy();
     });
+
+    test('Then the local callback will not be called', () => {
+      expect(localClicked).toBeFalsy();
+    });
   });
 
   describe('When the name is clicked', () => {
