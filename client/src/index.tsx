@@ -8,7 +8,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Route path="/products/:product_id" component={ProductPage} />
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
     </Router>
   );
 };

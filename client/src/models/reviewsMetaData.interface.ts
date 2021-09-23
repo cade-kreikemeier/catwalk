@@ -5,7 +5,7 @@ export interface reviewsMetaData {
   characteristics: characteristics
 }
 
-interface ratings {
+export interface ratings {
   [ratingLevel: string]: string
 }
 

@@ -1,5 +1,5 @@
 import React, { Props, ReactNode, useState } from 'react';
-import Contexts from '../contexts/Contexts';
+import { ProductIdContext, ModalContext } from '../contexts/Contexts';
 import * as Providers from '../contexts/Providers';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -20,8 +20,8 @@ const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
   const id = Number(props.match.params.product_id);
   return (
-    <Contexts.ProductIdContext.Provider value={id}>
-      <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
+    <ProductIdContext.Provider value={id}>
+      <ModalContext.Provider value={{ modalContent, setModalContent }}>
         <Providers.ProductsProvider>
           <Providers.ProductProvider>
             <Providers.ReviewsMetadataProvider>
@@ -38,8 +38,8 @@ const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
           </Providers.ProductProvider>
         </Providers.ProductsProvider>
         <Modal />
-      </Contexts.ModalContext.Provider>
-    </Contexts.ProductIdContext.Provider>
+      </ModalContext.Provider>
+    </ProductIdContext.Provider>
   );
 };
 

@@ -1,11 +1,11 @@
 import React, { ReactNode, useContext, useEffect, useState } from 'react';
-import Contexts from '../contexts/Contexts';
+import { ModalContext, ReviewsContext } from '../contexts/Contexts';
 import ReviewSort from './ReviewSort';
 import ReviewTile from './ReviewTile';
 
 const ReviewsList: React.FC = () => {
-  const { setModalContent } = useContext(Contexts.ModalContext) || {};
-  const { reviews } = useContext(Contexts.ReviewsContext) || {};
+  const { setModalContent } = useContext(ModalContext) || {};
+  const { reviews } = useContext(ReviewsContext) || {};
 
   const [displayedReviews, setDisplayReviews] = useState<ReactNode[]>([]);
   const [numDisplayed, setNumDisplayed] = useState(2);
@@ -38,15 +38,17 @@ const ReviewsList: React.FC = () => {
 
   return (
     <div className='reviewList'>
-      <ReviewSort />
-      <div className='reviewTileContainer'>
-        {reviews
-          ? [...displayedReviews]
-          : null}
-      </div>
+      {reviews?.results?.length
+        ? <>
+          <ReviewSort />
+          <div className='reviewTileContainer'>
+            {[...displayedReviews]}
+          </div>
+        </>
+        : null}
       <div className="btnContainer">
         <button onClick={addReview}>Add Review</button>
-        {reviews && numDisplayed < (reviews.results?.length || 16)
+        {reviews?.results?.length && numDisplayed < (reviews.results?.length || 16)
           ? <button onClick={moreReviews}>More Reviews</button>
           : null}
       </div>
