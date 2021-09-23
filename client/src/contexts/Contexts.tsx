@@ -26,3 +26,6 @@ ReviewsContext.displayName = 'ReviewsContext';
 
 export const ReviewsMetadataContext = createContext<reviewsMetaDataInteraction | undefined>(undefined);
 ReviewsMetadataContext.displayName = 'ReviewsMetadataContext';
+
+export const ProductIdContext = createContext<number | undefined>(undefined);
+ProductIdContext.displayName = 'ProductId';
