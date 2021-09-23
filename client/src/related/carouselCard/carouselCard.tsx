@@ -1,5 +1,8 @@
 import React, { ReactNode } from 'react';
 import productDescription from '../../models/productDescription.interface';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import ReviewStar from '../../utils/ReviewStar';
 
 interface CarouselCardProps {
   imageUrl: string,
@@ -19,8 +22,8 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
     <p data-testid="category">{props.metaData.category}</p>
     <p data-testid="name">{props.metaData.name}</p>
     <p data-testid="price">${props.metaData.price}</p>
-    <p data-testid="rating">Rating: {props.rating}</p>
-    <button onClick={e => {
+    <ReviewStar rating={props.rating} />
+    <button className="carouselActionButton" onClick={e => {
       props.actionCallback();
       e.stopPropagation();
     }}>
