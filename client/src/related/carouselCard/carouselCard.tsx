@@ -22,7 +22,9 @@ const CarouselCard: React.FC<CarouselCardProps> = (props) => {
     <p data-testid="category">{props.metaData.category}</p>
     <p data-testid="name">{props.metaData.name}</p>
     <p data-testid="price">${props.metaData.price}</p>
-    <ReviewStar rating={props.rating}/>
+    <div data-testid="rating">
+      <ReviewStar rating={props.rating} />
+    </div>
     <button onClick={e => {
       props.actionCallback();
       e.stopPropagation();

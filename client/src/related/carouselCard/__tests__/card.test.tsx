@@ -27,7 +27,6 @@ test('displays infomation, correctly displayed', async () => {
   expect(screen.queryByTestId('name')).toHaveTextContent('T-Shirt');
   expect(screen.queryByTestId('category')).toHaveTextContent('Shirt');
   expect(screen.queryByTestId('price')).toHaveTextContent('$10.00');
-  expect(screen.queryByTestId('rating')).toHaveTextContent('Rating: 4.2');
 
   expect(clicked).toBe(false);
 });
@@ -51,7 +50,6 @@ test('when imageUrl is empty string, no image should be shown', async () => {
   expect(screen.queryByTestId('name')).toHaveTextContent('T-Shirt');
   expect(screen.queryByTestId('category')).toHaveTextContent('Shirt');
   expect(screen.queryByTestId('price')).toHaveTextContent('$10.00');
-  expect(screen.queryByTestId('rating')).toHaveTextContent('Rating: 4.2');
 
   expect(clicked).toBe(false);
 });
