@@ -80,11 +80,40 @@ body {
 }
 
 .right-arrow {
-  right: 5%;
+  right: 15%;
 }
 
 .left-arrow {
+  left: 22%;
+}
+
+.previewContainer {
+  position: absolute;
+  height: 70%;
+  width: 15%;
+  top: 50%;
+  transform: translateY(-50%);
   left: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid black;
+  z-index: 1;
+}
+
+.previewBox {
+  height: 60px;
+  width: 60px;
+  margin: auto;
+  border: 2px dashed black;
+  overflow: hidden;
+  object-fit: fill;
+}
+
+.preview {
+  height: 100%;
+  width: 100%;
 }
 /* Overvier */
 
