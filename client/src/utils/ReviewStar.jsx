@@ -17,7 +17,7 @@ function ReviewStar({ rating }) {
 };
 
 ReviewStar.propTypes = {
-  rating: PropTypes.object
+  rating: PropTypes.number
 };
 
 export default ReviewStar;
