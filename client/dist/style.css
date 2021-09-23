@@ -79,7 +79,7 @@ body {
  .slide-active img {
    max-height: 100%;
    width: 100%;
-   object-fit: contain;
+   object-fit: cover;
   }
 
 .horizontal-arrow {
