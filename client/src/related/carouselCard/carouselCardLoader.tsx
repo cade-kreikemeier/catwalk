@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import Contexts from '../../contexts/Contexts';
+import { ModalContext } from '../../contexts/Contexts';
 import { product } from '../../models/product.interface';
 import { style } from '../../models/style.interface';
 import { apiRequest } from '../../utils/apiRequests';
@@ -27,7 +27,7 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
   }, []);
 
   const history = useHistory();
-  const { setModalContent } = useContext(Contexts.ModalContext) || {};
+  const { setModalContent } = useContext(ModalContext) || {};
 
   return <React.Fragment>
     <CarouselCard
