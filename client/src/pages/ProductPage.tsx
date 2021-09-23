@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { Props, ReactNode, useState } from 'react';
 import Contexts from '../contexts/Contexts';
 import * as Providers from '../contexts/Providers';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -8,9 +8,18 @@ import Related from '../related/related';
 import Reviews from '../reviews/Reviews';
 import Modal from '../utils/Modal';
 
-const ProductPage:React.FC = (props) => {
+interface ProductPageProps extends Props<typeof ProductPage> {
+  match: {
+    params: {
+      'product_id': string
+    }
+  },
+}
+
+const ProductPage:React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
   console.log(props);
+  console.log(props.match.params.product_id);
   return (
     <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
       <Providers.ProductsProvider>
