@@ -18,7 +18,6 @@ interface ProductPageProps extends Props<typeof ProductPage> {
 
 const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
-  console.log(props.match.params.product_id);
   const id = Number(props.match.params.product_id);
   return (
     <Contexts.ProductIdContext.Provider value={id}>
