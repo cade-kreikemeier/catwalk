@@ -17,7 +17,7 @@ type Props = {
   children: ReactNode;
 };
 
-const productId = 44392;
+const productId = 44389;
 
 export function ProductsProvider({ children }: Props): ReactElement {
   const [products, setProducts] = useState<product[]>([]);
