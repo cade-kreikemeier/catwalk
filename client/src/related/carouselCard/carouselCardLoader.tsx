@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
+import Contexts from '../../contexts/Contexts';
 import { product } from '../../models/product.interface';
 import { style } from '../../models/style.interface';
 import { apiRequest } from '../../utils/apiRequests';
@@ -24,17 +26,17 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
       .catch(err => console.log(err));
   }, []);
 
-  // ---This code seems to cause a cascade of API calls when other providers rerender---
-  // const style = loadState(apiRequest.getProductStyles(id), null);
-  // const product = loadState(apiRequest.getProductById(id), null);
+  const history = useHistory();
+  const { setModalContent } = useContext(Contexts.ModalContext) || {};
+
   return <React.Fragment>
     <CarouselCard
       imageUrl={findImageUrl(style)}
       metaData={{ category: product?.category || '', name: product?.name || '', price: product?.default_price || '' }}
       rating={4}
       actionChild={<span>v</span>}
-      actionCallback={console.log}
-      localCallback={console.log}
+      actionCallback={() => setModalContent?.call(null, <span>Hello</span>)}
+      localCallback={() => history.push('/products/' + product?.id)}
     />
   </React.Fragment>;
 };
