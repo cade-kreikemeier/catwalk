@@ -19,7 +19,7 @@ export interface characteristics {
 
 export interface characteristic {
   id: number,
-  value: string
+  value: string | null
 }
 
 export interface reviewsMetaDataInteraction {
