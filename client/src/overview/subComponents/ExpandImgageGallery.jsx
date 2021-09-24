@@ -90,7 +90,7 @@ export default function ExpandImageGallery({ currentProductStyles }) {
             <div key={'stylePic' + index} className={
               `${index === currentSlide ? 'slide-active' : 'slide'}`
             } >
-              <span className={'fas fa-compress expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
+              <span className={'fas fa-compress compressIcon expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
               {index === currentSlide && (<img src={stylePic} alt='style image' className='image' onMouseMove={() => mouseMove(event) }
               style={{ transform: imgIsClicked ? 'scale(2)' : 'scale(1)', transformOrigin: `${cordinate.x}px ${cordinate.y}px` }}
               onClick={() => setImgIsClicked(!imgIsClicked)}/>)}
