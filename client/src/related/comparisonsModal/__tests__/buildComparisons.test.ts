@@ -27,4 +27,23 @@ describe('Given a blank characteristics object', () => {
       expect(result).toEqual({ size: { mainValue: null, otherValue: '2.0' } });
     });
   });
+  describe('When the other has many characteristic ', () => {
+    beforeEach(() => {
+      productTwo = {
+        size: { id: 1, value: '2.0' },
+        weight: { id: 1, value: '3.0' },
+        quality: { id: 1, value: '3.4' },
+        heft: { id: 1, value: '1.0' }
+      };
+    });
+    test('Then the results should be have one characteristic', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({
+        size: { mainValue: null, otherValue: '2.0' },
+        weight: { mainValue: null, otherValue: '3.0' },
+        quality: { mainValue: null, otherValue: '3.4' },
+        heft: { mainValue: null, otherValue: '1.0' }
+      });
+    });
+  });
 });
