@@ -10,6 +10,8 @@ export default function ExpandImageGallery({ currentProductStyles }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
   const [imgIsClicked, setImgIsClicked] = useState(false);
+  const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
+
   let slideLength = 0;
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
@@ -38,8 +40,8 @@ export default function ExpandImageGallery({ currentProductStyles }) {
     setCurrentSlide(index);
   };
 
-  const imgZoom = (event) => {
-    setImgIsClicked(!imgIsClicked);
+  const mouseMove = (e) => {
+    setCordinate({ x: e.offsetX, y: e.offsetY });
   };
 
   useEffect(() => {
@@ -87,10 +89,11 @@ export default function ExpandImageGallery({ currentProductStyles }) {
           return (
             <div key={'stylePic' + index} className={
               `${index === currentSlide ? 'slide-active' : 'slide'}`
-            }>
+            } >
               <span className={'fas fa-compress expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
-              {index === currentSlide && (<img src={stylePic} alt='style image' className='image'
-              style={{ transform: imgIsClicked ? 'scale(2)' : 'scale(1)' }} onClick={() => imgZoom(event)}/>)}
+              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' onMouseMove={() => mouseMove(event) }
+              style={{ transform: imgIsClicked ? 'scale(2)' : 'scale(1)', transformOrigin: `${cordinate.x}px ${cordinate.y}px` }}
+              onClick={() => setImgIsClicked(!imgIsClicked)}/>)}
 
             </div>
           );
