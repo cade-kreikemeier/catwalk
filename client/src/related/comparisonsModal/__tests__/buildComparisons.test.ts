@@ -112,7 +112,6 @@ describe('Given a characteristics object with a null value', () => {
     test('Then the results should contain one comparison', () => {
       const result = buildComparisons(productOne, productTwo);
       expect(result).toEqual({
-        size: { mainValue: '2.0', otherValue: null },
         heft: { mainValue: null, otherValue: '1.0' }
       });
     });
