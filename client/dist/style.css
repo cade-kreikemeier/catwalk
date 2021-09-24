@@ -147,7 +147,7 @@ body {
 
 .previewContainer {
   position: absolute;
-  max-height: 70%;
+  max-height: 75%;
   width: max(15%, 5rem);
   top: 50%;
   transform: translateY(-50%);
