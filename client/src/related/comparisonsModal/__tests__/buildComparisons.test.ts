@@ -61,4 +61,31 @@ describe('Given a characteristics object with one key', () => {
       expect(result).toEqual({ size: { mainValue: '2.0', otherValue: null } });
     });
   });
+  describe('When the other contains a different characteristic ', () => {
+    beforeEach(() => {
+      productTwo = {
+        heft: { id: 1, value: '1.0' }
+      };
+    });
+    test('Then the results should contain one comparison', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({
+        size: { mainValue: '2.0', otherValue: null },
+        heft: { mainValue: null, otherValue: '1.0' }
+      });
+    });
+  });
+  describe('When the other contains the same characteristic ', () => {
+    beforeEach(() => {
+      productTwo = {
+        size: { id: 1, value: '1.0' }
+      };
+    });
+    test('Then the results should contain one comparison', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({
+        size: { mainValue: '2.0', otherValue: '1.0' }
+      });
+    });
+  });
 });
