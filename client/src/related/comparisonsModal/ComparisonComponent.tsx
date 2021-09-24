@@ -10,8 +10,13 @@ const ComparisonComponent: FC<ComparisonComponentProps> = ({ comparison }: Compa
     <div data-testid="size">
       {comparison?.size?.mainValue
         ? <span>{comparison.size.mainValue}</span>
-        : null}
+        : null
+      }
       {comparison.size ? <span>Size</span> : null}
+      {comparison?.size?.otherValue
+        ? <span>{comparison.size.otherValue}</span>
+        : null
+      }
     </div>
   );
 };
