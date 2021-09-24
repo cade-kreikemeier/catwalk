@@ -14,8 +14,7 @@ export default function ComparisonsModal(props: ComparisonsModalProps): ReactEle
   const productFrom = loadState<reviewsMetaData | null>(apiRequest.getReviewsMetadata(props.fromId), null);
   const productTo = loadState<reviewsMetaData | null>(apiRequest.getReviewsMetadata(props.fromId), null);
 
-  const comparison = buildComparisons(productFrom, productTo);
-  console.log(comparison);
+  const comparison = buildComparisons(productFrom?.characteristics || {}, productTo?.characteristics || {});
 
   return (
     <ComparisonContext.Provider value={comparison}>
