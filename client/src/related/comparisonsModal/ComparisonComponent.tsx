@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
+import { comparison } from './Context';
 
-const ComparisonComponent: FC = ({ comparison }) => {
+interface ComparisonComponentProps {
+  comparison: comparison
+}
+
+const ComparisonComponent: FC<ComparisonComponentProps> = ({ comparison }: ComparisonComponentProps) => {
   return (
     <div data-testid="size">
       {comparison?.size?.mainValue

@@ -3,12 +3,11 @@
  */
 import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import ComparisonComponent from '../ComparisonComponent';
 import { comparison } from '../Context';
 
 describe('Given a blank comparison Object', () => {
-  let model: comparison = {};
+  const model: comparison = {};
   beforeEach(() => {
     render(<ComparisonComponent comparison={model} />);
   });
@@ -22,7 +21,7 @@ describe('Given a blank comparison Object', () => {
 });
 
 describe('Given a comparison Object with one value', () => {
-  let model: comparison = { size: { mainValue: '2.0', otherValue: null } };
+  const model: comparison = { size: { mainValue: '2.0', otherValue: null } };
   beforeEach(() => {
     render(<ComparisonComponent comparison={model} />);
   });
