@@ -2,13 +2,16 @@ import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext, ExpandContext } from '../overview.jsx';
 
-export default function ImageGallery({ currentProductStyles }) {
+export default function ExpandImageGallery({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const { expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
   const stylePics = [];
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
+  const [imgIsClicked, setImgIsClicked] = useState(false);
+  const [cordinate, setCordinate] = useState({ x: 0, y: 0 });
+
   let slideLength = 0;
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
@@ -37,13 +40,17 @@ export default function ImageGallery({ currentProductStyles }) {
     setCurrentSlide(index);
   };
 
+  const mouseMove = (e) => {
+    setCordinate({ x: e.offsetX, y: e.offsetY });
+  };
+
   useEffect(() => {
     setCurrentSlide(0);
     setCurrentPreviewIdx(0);
   }, [currentStyleIdx]);
 
   return (
-    <div className={'imageGallery'}>
+    <div className={'expandImageGallery'}>
       {/* Preview */}
       <div className='previewContainer'>
         {currentSlide === 0
@@ -82,9 +89,12 @@ export default function ImageGallery({ currentProductStyles }) {
           return (
             <div key={'stylePic' + index} className={
               `${index === currentSlide ? 'slide-active' : 'slide'}`
-            }>
-              <span className={'fas fa-expand expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
-              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
+            } >
+              <span className={'fas fa-compress compressIcon expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
+              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' onMouseMove={() => mouseMove(event) }
+              style={{ transform: imgIsClicked ? 'scale(2)' : 'scale(1)', transformOrigin: `${cordinate.x}px ${cordinate.y}px` }}
+              onClick={() => setImgIsClicked(!imgIsClicked)}/>)}
+
             </div>
           );
         })}
@@ -92,7 +102,7 @@ export default function ImageGallery({ currentProductStyles }) {
   );
 };
 
-ImageGallery.propTypes = {
+ExpandImageGallery.propTypes = {
   currentStyleIdx: PropTypes.number,
   currentProductStyles: PropTypes.object,
   expandIsClicked: PropTypes.bool,

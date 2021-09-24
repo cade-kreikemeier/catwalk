@@ -11,7 +11,7 @@ export default function ProductInfo() {
   const { reviewsMetadata } = useContext(ReviewsMetadataContext);
   let reviewShow = false;
   if (reviewsMetadata) {
-    if (Object.keys(reviewsMetadata).length !== 0 && reviewsMetadata.constructor === Object) {
+    if (Object.keys(reviewsMetadata.ratings).length !== 0 && reviewsMetadata.constructor === Object) {
       reviewShow = true;
     }
   }
