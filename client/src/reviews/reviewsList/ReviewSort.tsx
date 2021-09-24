@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ReviewsContext, ReviewsMetadataContext } from '../contexts/Contexts';
+import { ReviewsContext, ReviewsMetadataContext } from '../../contexts/Contexts';
 
 const ReviewSort: React.FC = () => {
   const { setSortType } = useContext(ReviewsContext) || {};

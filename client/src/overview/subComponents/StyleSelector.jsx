@@ -20,7 +20,6 @@ function StyleSelector({ thumbnailPics, currentProductStyles }) {
     }
   };
 
-
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
