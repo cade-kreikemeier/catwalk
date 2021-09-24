@@ -4,7 +4,7 @@ import { StyleIdxContext, ExpandContext } from '../overview.jsx';
 
 export default function ImageGallery({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
-  let {  expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
+  const { expandIsClicked, setExpandIsClicked } = useContext(ExpandContext);
   const stylePics = [];
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
