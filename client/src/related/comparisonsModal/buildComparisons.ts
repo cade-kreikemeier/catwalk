@@ -10,14 +10,10 @@ export default function buildComparisons(productFrom: characteristics | null, pr
     };
   }
   for (const characteristic in productTo) {
-    if (comparison[characteristic]) {
-      comparison[characteristic].otherValue = productTo[characteristic].value;
-    } else {
-      comparison[characteristic] = {
-        mainValue: null,
-        otherValue: productTo[characteristic].value
-      };
-    }
+    comparison[characteristic] = {
+      mainValue: comparison[characteristic]?.mainValue || null,
+      otherValue: productTo[characteristic].value
+    };
   }
   return comparison;
 }
