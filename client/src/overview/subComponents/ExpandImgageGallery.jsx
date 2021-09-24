@@ -9,6 +9,7 @@ export default function ExpandImageGallery({ currentProductStyles }) {
   const previewPics = [];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPreviewIdx, setCurrentPreviewIdx] = useState(0);
+  const [imgIsClicked, setImgIsClicked] = useState(false);
   let slideLength = 0;
   let currentStyleIdx;
   if (StyleIdxContextData && currentProductStyles) {
@@ -37,10 +38,15 @@ export default function ExpandImageGallery({ currentProductStyles }) {
     setCurrentSlide(index);
   };
 
+  const imgZoom = (event) => {
+    setImgIsClicked(!imgIsClicked);
+  };
+
   useEffect(() => {
     setCurrentSlide(0);
     setCurrentPreviewIdx(0);
-  }, [currentStyleIdx]);
+    console.log(imgIsClicked);
+  }, [currentStyleIdx, imgIsClicked]);
 
   return (
     <div className={'expandImageGallery'}>
@@ -84,7 +90,9 @@ export default function ExpandImageGallery({ currentProductStyles }) {
               `${index === currentSlide ? 'slide-active' : 'slide'}`
             }>
               <span className={'fas fa-compress expandIcon'} onClick={() => setExpandIsClicked(!expandIsClicked)}></span>
-              {index === currentSlide && (<img src={stylePic} alt='style image' className='image' />)}
+              {index === currentSlide && (<img src={stylePic} alt='style image' className='image'
+              style={{ transform: imgIsClicked ? 'scale(2)' : 'scale(1)' }} onClick={() => imgZoom(event)}/>)}
+
             </div>
           );
         })}
