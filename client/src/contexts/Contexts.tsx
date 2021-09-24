@@ -6,36 +6,26 @@ import { reviewsMetaDataInteraction } from '../models/reviewsMetaData.interface'
 import { style } from '../models/style.interface';
 
 
-const ModalContext = createContext<modalProps | undefined>(undefined);
+export const ModalContext = createContext<modalProps | undefined>(undefined);
 ModalContext.displayName = 'ModalContext';
 
-const ProductsContext = createContext<product[] | undefined>(undefined);
+export const ProductsContext = createContext<product[] | undefined>(undefined);
 ProductsContext.displayName = 'ProductsContext';
 
-const ProductContext = createContext<product | undefined>(undefined);
+export const ProductContext = createContext<product | undefined>(undefined);
 ProductContext.displayName = 'ProductContext';
 
-const ProductStyleContext = createContext<style | undefined>(undefined);
+export const ProductStyleContext = createContext<style | undefined>(undefined);
 ProductStyleContext.displayName = 'ProductStyleContext';
 
-const RelatedProducts = createContext<number[] | undefined>(undefined);
+export const RelatedProducts = createContext<number[] | undefined>(undefined);
 RelatedProducts.displayName = 'RelatedProducts';
 
-const ReviewsContext = createContext<reviewsInteraction | undefined>(undefined);
+export const ReviewsContext = createContext<reviewsInteraction | undefined>(undefined);
 ReviewsContext.displayName = 'ReviewsContext';
 
-const ReviewsMetadataContext = createContext<reviewsMetaDataInteraction | undefined>(undefined);
+export const ReviewsMetadataContext = createContext<reviewsMetaDataInteraction | undefined>(undefined);
 ReviewsMetadataContext.displayName = 'ReviewsMetadataContext';
 
-
-const Contexts = {
-  ModalContext,
-  ProductsContext,
-  ProductContext,
-  ProductStyleContext,
-  RelatedProducts,
-  ReviewsContext,
-  ReviewsMetadataContext
-};
-
-export default Contexts;
+export const ProductIdContext = createContext<number | undefined>(undefined);
+ProductIdContext.displayName = 'ProductId';

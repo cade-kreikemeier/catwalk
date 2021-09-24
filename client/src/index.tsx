@@ -1,37 +1,15 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import Overview from './overview/overview';
-import Related from './related/related';
-import Reviews from './reviews/Reviews';
-import Contexts from './contexts/Contexts';
-import * as Providers from './contexts/Providers';
-import Modal from './utils/Modal';
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './pages/HomePage';
+import ProductPage from './pages/ProductPage';
 
 const App: React.FC = () => {
-  const [modalContent, setModalContent] = useState<ReactNode>(null);
-
   return (
-    <Contexts.ModalContext.Provider value={{ modalContent, setModalContent }}>
-      <Providers.ProductsProvider>
-        <Providers.ProductProvider>
-          <Providers.ReviewsMetadataProvider>
-            <Providers.ProductSytlesProvider>
-              <Overview />
-              <Providers.RelatedProductsProvider>
-                <Related />
-              </Providers.RelatedProductsProvider>
-            </Providers.ProductSytlesProvider>
-            <Providers.ReviewsProvider>
-              <Reviews />
-            </Providers.ReviewsProvider>
-          </Providers.ReviewsMetadataProvider>
-        </Providers.ProductProvider>
-      </Providers.ProductsProvider>
-      <Modal />
-    </Contexts.ModalContext.Provider>
+    <Router>
+      <Route path="/products/:product_id" component={ProductPage} />
+      <Route exact path="/" component={Home} />
+    </Router>
   );
 };
 

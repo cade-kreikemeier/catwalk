@@ -45,8 +45,7 @@ export default function ExpandImageGallery({ currentProductStyles }) {
   useEffect(() => {
     setCurrentSlide(0);
     setCurrentPreviewIdx(0);
-    console.log(imgIsClicked);
-  }, [currentStyleIdx, imgIsClicked]);
+  }, [currentStyleIdx]);
 
   return (
     <div className={'expandImageGallery'}>
