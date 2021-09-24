@@ -13,7 +13,7 @@ interface recommended {
   [recommendedVote: string]: string
 }
 
-interface characteristics {
+export interface characteristics {
   [itemProperty: string]: characteristic
 }
 

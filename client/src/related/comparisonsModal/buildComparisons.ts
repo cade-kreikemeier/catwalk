@@ -1,12 +1,12 @@
-import { reviewsMetaData } from '../../models/reviewsMetaData.interface';
+import { characteristics } from '../../models/reviewsMetaData.interface';
 import { comparison } from './Context';
 
-export default function buildComparisons(productFrom: reviewsMetaData | null, productTo: reviewsMetaData | null):comparison {
+export default function buildComparisons(productFrom: characteristics | null, productTo: characteristics | null):comparison {
   const comparison: comparison = {};
   if (productFrom && productTo) {
-    for (const characteristic in productFrom.characteristics) {
+    for (const characteristic in productFrom) {
       comparison[characteristic] = {
-        mainValue: Number(productFrom.characteristics[characteristic].value) || null,
+        mainValue: Number(productFrom[characteristic].value) || null,
         otherValue: null
       };
     }
