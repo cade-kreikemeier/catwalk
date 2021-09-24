@@ -5,19 +5,38 @@ interface ComparisonComponentProps {
   comparison: comparison
 }
 
+interface ComparisonListTileProps {
+  title: string,
+  main: string | null,
+  other: string | null
+}
+
+const ComparisonListTile: FC<ComparisonListTileProps> = (props: ComparisonListTileProps) => {
+  return <div data-testid={props.title}>
+    {props.main
+      ? <span>{props.main}</span>
+      : null
+    }
+    <span>{props.title}</span>
+    {props.other
+      ? <span>{props.other}</span>
+      : null
+    }
+  </div>;
+};
+
 const ComparisonComponent: FC<ComparisonComponentProps> = ({ comparison }: ComparisonComponentProps) => {
   return (
-    <div data-testid="size">
-      {comparison?.size?.mainValue
-        ? <span>{comparison.size.mainValue}</span>
-        : null
-      }
-      {comparison.size ? <span>Size</span> : null}
-      {comparison?.size?.otherValue
-        ? <span>{comparison.size.otherValue}</span>
-        : null
-      }
-    </div>
+    <>
+      {Object.keys(comparison).map(key => (
+        <ComparisonListTile
+          key={key}
+          title={key}
+          main={comparison[key].mainValue}
+          other={comparison[key].otherValue}
+        />
+      ))}
+    </>
   );
 };
 
