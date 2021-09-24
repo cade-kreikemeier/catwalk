@@ -17,7 +17,7 @@ interface characteristics {
   [itemProperty: string]: characteristic
 }
 
-interface characteristic {
+export interface characteristic {
   id: number,
   value: string
 }
