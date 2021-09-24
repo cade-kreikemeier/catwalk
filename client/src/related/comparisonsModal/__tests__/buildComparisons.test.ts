@@ -47,3 +47,18 @@ describe('Given a blank characteristics object', () => {
     });
   });
 });
+
+describe('Given a characteristics object with one key', () => {
+  beforeEach(() => {
+    productOne = { size: { id: 1, value: '2.0' } };
+  });
+  describe('When the other is empty ', () => {
+    beforeEach(() => {
+      productTwo = {};
+    });
+    test('Then the results should contain one comparison', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({ size: { mainValue: '2.0', otherValue: null } });
+    });
+  });
+});
