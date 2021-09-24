@@ -65,7 +65,6 @@ body {
   object-fit: contain;
   transition: transform 0.25s ease;
   cursor: zoom-in;
-  margin: auto 0 auto 0;
  }
 
  .compressIcon {
@@ -105,9 +104,8 @@ body {
   position: relative;
   justify-content: center;
   align-items: center;
-  background-color: rgb(0, 204, 255, 0.1);
+  background-color: rgba(0, 204, 255, 0.1);
   display: block;
-  z-index: 0;
   filter: 5px;
 }
 
@@ -128,7 +126,6 @@ body {
    max-height: 100%;
    width: 100%;
    object-fit: cover;
-   margin: auto 0;
   }
 
 .horizontal-arrow {
