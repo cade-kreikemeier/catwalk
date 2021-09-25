@@ -28,6 +28,7 @@ const ComparisonListTile: FC<ComparisonListTileProps> = (props: ComparisonListTi
 const ComparisonComponent: FC<ComparisonComponentProps> = ({ comparison }: ComparisonComponentProps) => {
   return (
     <>
+      <span>Comparing</span>
       {Object.keys(comparison).map(key => (
         <ComparisonListTile
           key={key}

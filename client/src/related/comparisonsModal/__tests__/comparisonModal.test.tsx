@@ -17,6 +17,10 @@ describe('Given a blank comparison Object', () => {
     test('Then no comparisons are shown', () => {
       expect(screen.queryAllByText('Size')).toHaveLength(0);
     });
+
+    test('Then the modal should be titled with "Comparing"', () => {
+      expect(screen.getAllByText('Comparing')).toHaveLength(1);
+    });
   });
 });
 
