@@ -38,7 +38,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
           id => props.cardCreator(id)
         ))}
       </div>
-      {(props.ids.length - position > shownCards)
+      {(uniqueIds.length - position > shownCards)
         ? <button
           data-testid="carousel-right-button"
           className="carousel-arrow carousel-arrow-right"

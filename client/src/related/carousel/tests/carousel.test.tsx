@@ -109,7 +109,7 @@ describe('Given an array with duplicate ids', () => {
   beforeEach(() => {
     render(<Carousel
       title="Sample"
-      ids={[1, 1]}
+      ids={[1, 1, 2, 3, 4]}
       cardCreator={cardCreator}
     />);
   });
@@ -117,6 +117,10 @@ describe('Given an array with duplicate ids', () => {
   describe('When nothing happens', () => {
     test('then the duplicate id should only show one card', () => {
       expect(screen.queryAllByText('id: 1').length).toBe(1);
+    });
+
+    test('And the right arros isn\'t shown', () => {
+      expect(screen.queryByTestId('carousel-right-button')).toBeFalsy();
     });
   });
 });
