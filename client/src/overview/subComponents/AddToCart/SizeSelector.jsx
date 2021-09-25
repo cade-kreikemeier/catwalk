@@ -44,6 +44,7 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
   //   useEffect(() => {
   //     function handleClickOutside(event) {
   //       if (ref.current && !ref.current.contains(event.target)) {
+  //         console.log(event.target);
   //         setOpen(!open);
   //       }
   //     }
@@ -55,7 +56,7 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
   //   }, [ref]);
   // }
   return (
-    <div className={`dropdown ${open ? 'dropdown-active' : null}` }  >
+    <div className={`dropdown ${open ? 'dropdown-active' : null}`} >
       {currentSizeArr.length
         ? currentSizeArr.map((currentSize, index) => {
           return (
