@@ -532,6 +532,23 @@ align-items: center;
   box-shadow: 4px 4px 6px 0px #00000066;
 }
 
+/* Comparison Modal */
+
+.comparison-list-tile > span {
+  display: inline-block;
+  width: 33%;
+}
+
+.comparison-middle {
+  text-align: center;
+}
+
+.comparison-right {
+  text-align: right;
+}
+
+
+
 /* Reviews */
 
 .reviews {

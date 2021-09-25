@@ -109,7 +109,7 @@ describe('Given a characteristics object with a null value', () => {
     });
     test('Then the results should be empty', () => {
       const result = buildComparisons(productOne, productTwo);
-      expect(result).toEqual({ });
+      expect(result).toEqual({});
     });
   });
   describe('When the other contains a different characteristic ', () => {
@@ -136,6 +136,22 @@ describe('Given a characteristics object with a null value', () => {
       expect(result).toEqual({
         size: { mainValue: null, otherValue: '1.0' }
       });
+    });
+  });
+});
+
+
+describe('Given a characteristics object with really long float values', () => {
+  beforeEach(() => {
+    productOne = { size: { id: 1, value: '2.0000000' } };
+  });
+  describe('When the other also has really long float ', () => {
+    beforeEach(() => {
+      productTwo = { size: { id: 1, value: '4.999999999' } };
+    });
+    test('Then the results should be rounded', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({ size: { mainValue: '2.0', otherValue: '5.0' } });
     });
   });
 });
