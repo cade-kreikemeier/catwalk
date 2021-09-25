@@ -4,7 +4,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
 import React from 'react';
 import ComparisonComponent from '../ComparisonComponent';
-import { comparison } from '../Context';
+import { comparison } from '../comparison';
 
 describe('Given a blank comparison Object', () => {
   const model: comparison = {};

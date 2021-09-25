@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { comparison } from './Context';
+import { comparison } from './comparison';
 
 interface ComparisonComponentProps {
   comparison: comparison

@@ -1,5 +1,5 @@
 import { characteristics } from '../../models/reviewsMetaData.interface';
-import { comparison } from './Context';
+import { comparison } from './comparison';
 
 export default function buildComparisons(productFrom: characteristics | null, productTo: characteristics | null): comparison {
   const comparison: comparison = {};

@@ -38,7 +38,7 @@ export const apiRequest = {
     return requests.get('/reviews/', { params: { product_id: productId, page: page, count: count, sort: sort } });
   },
   getReviewsMetadata: (productId: number): Promise<reviewsMetaData> => {
-    return requests.get('/reviews/meta', { params: { product_id: productId } }).then(x => { console.log(x); return x; });
+    return requests.get('/reviews/meta', { params: { product_id: productId } });
   },
   postReview: (review: reviewSubmission): Promise<string> => {
     return requests.post('/reviews/', review);
