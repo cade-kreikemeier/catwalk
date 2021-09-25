@@ -415,7 +415,6 @@ align-items: center;
 /* Related Items */
 
 .related {
-  flex-direction: column;
 }
 
 .carousel {
