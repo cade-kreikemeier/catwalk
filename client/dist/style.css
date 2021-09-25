@@ -1,10 +1,17 @@
 /* CSS HEX */
 :root {
-  --medium-turquoise: #55dde0ff;
-  --charcoal: #2f4858ff;
-  --queen-blue: #33658aff;
-  --honey-yellow: #f6ae2dff;
-  --safety-orange-blaze-orange: #f26419ff;
+  /* These aren't permanent, was using them as references */
+  --primary-background: #f2feff;
+  --secondary-background: #e4e8eb;
+  --accent-1: #B6DBF2;
+  --accent-2: #3F8EBF;
+  --accent-3: #33658aff;
+  --accent-4: #024873;
+  --accent-5: #f6ae2dff;
+  --accent-6: #e0bf00;
+  --accent-7: #f26419ff;
+  --btn-1: #023E73;
+  --btn-2: #06a128;
 }
 
 *,
@@ -14,7 +21,13 @@
 }
 
 body{
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
 }
 
 body,
@@ -25,16 +38,11 @@ p {
   margin: 0;
 }
 
-h2,
-h3,
-p {
-  margin-bottom: 1em;
-}
-
 body {
   margin-inline: auto;
   margin-bottom: 2rem;
   padding-inline: clamp(.25rem, 2rem, 6rem);
+  background-color: var(--primary-background);
 }
 
 .section-md {
@@ -220,18 +228,18 @@ align-items: center;
 .star {
   flex-grow: 0;
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .starOutline {
   display: flex;
   position: absolute;
-  color: lightgray;
+  color: grey;
 }
 
 .starFilled {
   position: relative;
-  color: black;
+  color: var(--accent-6);
   overflow: hidden;
 }
 
@@ -242,7 +250,6 @@ align-items: center;
   align-items: center;
   width: 30%;
   flex-grow: 1;
-  border: 2px dashed black;
   margin: 2px;
 }
 
@@ -414,9 +421,6 @@ align-items: center;
 
 /* Related Items */
 
-.related {
-}
-
 .carousel-container {
   position: relative;
 }
@@ -467,20 +471,19 @@ align-items: center;
 /* Reviews */
 
 .reviews {
-  background-color: grey;
   background-size: cover;
   max-height: max(35rem, 97vh);
   flex-flow: row wrap;
 }
 
 .ratingsAndReviews {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   flex-grow: 1;
   flex-basis: 34%;
   min-width: 16rem;
 }
 
-.ratingSummary {
+/* .ratingSummary {
   border: 3px solid orange;
 }
 
@@ -490,10 +493,10 @@ align-items: center;
 
 .attributesSummary {
   border: 3px solid darkorange;
-}
+} */
 
 .reviewList {
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
   display: flex;
   flex-flow: column nowrap;
   flex-grow: 1;
@@ -515,7 +518,7 @@ align-items: center;
 }
 
 .reviewSort {
-  border: 3px solid green;
+  /* border: 3px solid green; */
   height: 3.5rem;
   display: flex;
 }
@@ -526,18 +529,78 @@ align-items: center;
 }
 
 .reviewTileContainer {
-  border: 3px solid purple;
+  /* border: 3px solid purple; */
   overflow-y: auto;
   max-height: 82vh;
+  padding: 1rem;
+  position: relative;
 }
 
 .reviewTile {
-  border: 3px solid yellowgreen;
-  height: 16rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 10rem;
+  margin-bottom: .8rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--secondary-background);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: .5rem;
+  position: relative;
+}
+
+.reviewReviewerName {
+  font-size: 1.6rem;
+}
+
+.reviewReviewerName h4 {
+  margin-block: .4rem .8rem;
+}
+
+.reviewRating {
+  font-size: 1.4rem;
+  margin-bottom: .4rem;
+}
+
+.reviewCardDate {
+  font-weight: 600;
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+}
+
+.reviewSummary {
+  font-size: 1.3rem;
+  margin-bottom: .4rem;
+}
+
+.reviewBody {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  width: 85%;
+}
+
+.reviewRecommend {
+  margin-bottom: .6rem;
+}
+
+.reviewResponse {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.reviewResponse h4 {
+  margin: 0 0 .2rem 0 ;
+}
+
+.reviewHelpfulness a {
+  color: #1f44be;
+  cursor: pointer;
 }
 
 .reviewTile .checkIcon {
-  color: black;
+  color: #000;
 }
 
 .reviewTile .reviewBody a {
