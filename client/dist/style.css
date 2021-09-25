@@ -418,7 +418,7 @@ align-items: center;
 }
 
 .carousel {
-  overflow: auto;
+  overflow: visible;
   white-space: nowrap;
 }
 
