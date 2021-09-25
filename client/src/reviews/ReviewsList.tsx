@@ -2,6 +2,7 @@ import React, { ReactNode, useContext, useEffect, useState } from 'react';
 import { ModalContext, ReviewsContext } from '../contexts/Contexts';
 import ReviewSort from './reviewsList/ReviewSort';
 import ReviewTile from './reviewsList/ReviewTile';
+import ReviewForm from './reviewsList/ReviewForm';
 
 const ReviewsList: React.FC = () => {
   const { setModalContent } = useContext(ModalContext) || {};
@@ -10,10 +11,8 @@ const ReviewsList: React.FC = () => {
   const [displayedReviews, setDisplayReviews] = useState<ReactNode[]>([]);
   const [numDisplayed, setNumDisplayed] = useState(2);
 
-  const child = <div>CHILD EXAMPLE</div>;
-
   const addReview = () => {
-    setModalContent?.call(null, child);
+    setModalContent?.call(null, <ReviewForm />);
   };
 
   const moreReviews = () => {
@@ -26,7 +25,6 @@ const ReviewsList: React.FC = () => {
       setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 0);
     }
   };
-
 
   useEffect(() => {
     if (reviews?.results) {
