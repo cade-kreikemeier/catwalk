@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const SizeContext = React.createContext();
 
 function AddToCart({ currentProductStyles }) {
-  const [size, setSize] = useState('');
+  const [size, setSize] = useState('xs');
   return (
     <div className='addToCartContainer'>
       <SizeContext.Provider value={{ size, setSize }}>

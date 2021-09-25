@@ -456,7 +456,9 @@ align-items: center;
   transition: filter 300ms;
 }
 
-
+.addToCart:hover {
+  filter: brightness(1.3);
+}
 
 /* Related Items */
 

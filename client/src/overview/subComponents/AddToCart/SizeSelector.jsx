@@ -1,13 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
+import { SizeContext } from './AddToCart.jsx';
 
 export default function SizeSelector({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const [open, setOpen] = useState(false);
+
   let currentStyleIdx;
   let setCurrentStyleIdx;
   let currentSizeInfo;
+
   if (StyleIdxContextData) {
     ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
     if (currentProductStyles) {
@@ -20,7 +23,9 @@ export default function SizeSelector({ currentProductStyles }) {
       <span className='fas fa-tshirt' onClick={() => setOpen(!open)}>
         Size
       </span>
-      {open && <Dropdown currentSizeInfo={currentSizeInfo || null} />}
+      {open && <Dropdown
+        currentSizeInfo={currentSizeInfo || null}
+      />}
     </div>
   );
 };
@@ -48,9 +53,11 @@ function Dropdown({ currentSizeInfo }) {
 }
 
 
-function DropdownItem(props) {
+function DropdownItem({ currentSize }) {
+  const {size, setSize} = useContext(SizeContext);
+
   return (
-    <span className=" dropdownItem" onClick={() => setSize(props.currentSize.size)}>{props.currentSize.size}</span>
+    <span className=" dropdownItem" onClick={() => setSize(currentSize.size) }>{currentSize.size}</span>
   );
 }
 

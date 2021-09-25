@@ -5,20 +5,23 @@ import { SizeContext } from './AddToCart.jsx';
 
 export default function QuantitySelector({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
-  const SizeInfo = useContext(SizeContext);
+  const {size, setSize} = useContext(SizeContext);
   const [open, setOpen] = useState(false);
 
-  let size;
-  let setSize;
   let currentStyleIdx;
   let setCurrentStyleIdx;
-  let currentQuantityInfo;
+  let currentSizeQuantity = 1;
 
-  if (SizeInfo) { ({ size, setSize } = SizeInfo); }
   if (StyleIdxContextData) {
     ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
     if (currentProductStyles) {
-      currentQuantityInfo = currentProductStyles.results[currentStyleIdx].skus;
+      for(const key in currentProductStyles.results[currentStyleIdx].skus) {
+        if ( currentProductStyles.results[currentStyleIdx].skus[key].size === size ) {
+          currentSizeQuantity = currentProductStyles.results[currentStyleIdx].skus[key].quantity;
+        }
+
+      }
+      console.log(currentSizeQuantity)
     }
   }
 
@@ -26,24 +29,27 @@ export default function QuantitySelector({ currentProductStyles }) {
     <div className="quantitySelector">
       <span className='fas fa-angle-down' onClick={() => setOpen(!open)}>
       </span>
-      {open && <Dropdown currentQuantityInfo={currentQuantityInfo || null} />}
+      {open &&
+      <Dropdown
+        currentSizeQuantity={currentSizeQuantity}
+      />}
     </div>
   );
 };
 
-function Dropdown({ currentQuantityInfo }) {
+function Dropdown({ currentSizeQuantity }) {
   const currentQuantityArr = [];
-  for (const key in currentQuantityInfo) {
-    currentQuantityArr.push(currentQuantityInfo[key]);
+  for (let i = 1; i <= currentSizeQuantity; i++) {
+    currentQuantityArr.push(i)
   }
   return (
     <div className="dropdown">
       {currentQuantityArr.length
-        ? currentQuantityArr.map((currentQuantity, index) => {
+        ? currentQuantityArr.map((number, index) => {
           return (
             <DropdownItem
               key={'dropindex' + index}
-              currentQuantity={currentQuantity}
+              number={number}
             />
           );
         })
@@ -54,9 +60,9 @@ function Dropdown({ currentQuantityInfo }) {
 }
 
 
-function DropdownItem(props) {
+function DropdownItem({ number }) {
   return (
-    <span className=" dropdownItem">{props.currentQuantity.quantity}</span>
+    <span className=" dropdownItem">{number}</span>
   );
 }
 
