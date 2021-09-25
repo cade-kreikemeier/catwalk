@@ -12,7 +12,7 @@ interface ComparisonListTileProps {
 }
 
 const ComparisonListTile: FC<ComparisonListTileProps> = (props: ComparisonListTileProps) => {
-  return <div data-testid={props.title}>
+  return <div data-testid={props.title} className="comparison-list-tile">
     {props.main
       ? <span>{props.main}</span>
       : null

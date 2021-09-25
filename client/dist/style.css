@@ -436,6 +436,14 @@ align-items: center;
   overflow: hidden;
 }
 
+/* Comparison Modal */
+
+.comparison-list-tile {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
 /* Reviews */
 
 .reviews {
