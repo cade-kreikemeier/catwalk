@@ -47,10 +47,8 @@ function Dropdown({ currentSizeInfo }) {
   );
 }
 
-const SizeContext = React.createContext();
 
 function DropdownItem(props) {
-  const [size, setSize] = useState('ssssss');
   return (
     <span className=" dropdownItem" onClick={() => setSize(props.currentSize.size)}>{props.currentSize.size}</span>
   );
@@ -70,4 +68,3 @@ DropdownItem.propTypes = {
   currentSize: PropTypes.object
 };
 
-export { SizeContext }

@@ -1,14 +1,20 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
+import { SizeContext } from './AddToCart.jsx';
 
 export default function QuantitySelector({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
+  const SizeInfo = useContext(SizeContext);
   const [open, setOpen] = useState(false);
 
+  let size;
+  let setSize;
   let currentStyleIdx;
   let setCurrentStyleIdx;
   let currentQuantityInfo;
+
+  if (SizeInfo) { ({ size, setSize } = SizeInfo); }
   if (StyleIdxContextData) {
     ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
     if (currentProductStyles) {
