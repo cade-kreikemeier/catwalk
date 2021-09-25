@@ -405,14 +405,19 @@ align-items: center;
 .dropdown {
   position: absolute;
   top: calc(3.5rem + 3px);
+  max-height: 10rem;
   width: 100%;
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
-  overflow: hidden;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none;
 }
 
 .dropdownItem {
