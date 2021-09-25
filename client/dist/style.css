@@ -467,10 +467,14 @@ align-items: center;
   height: 8rem;
 }
 
-.carouselCard button {
+.carousel-action-button {
   position: absolute;
   top: 8px;
   right: 8px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0px;
+  box-shadow: 4px 4px 6px 0px #00000066;
 }
 
 /* Reviews */

@@ -45,7 +45,7 @@ const CarouselCardLoader: React.FC<CarouselCardLoaderProps> = ({ id }) => {
       imageUrl={findImageUrl(style)}
       metaData={{ category: product?.category || '', name: product?.name || '', price: product?.default_price || '' }}
       rating={rating}
-      actionChild={<span>v</span>}
+      actionChild={<span className="fa fa-star"></span>}
       actionCallback={() => setModalContent?.call(null, <ComparisonsModal fromId={mainId} toId={id}/>)}
       localCallback={() => history.push('/products/' + product?.id)}
     />
