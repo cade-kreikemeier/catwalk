@@ -385,9 +385,9 @@ align-items: center;
 }
 
 .sizeSelector {
-  position: relative;
   flex-grow: 3;
   flex-basis: 50%;
+  position: relative;
   height: 3.5rem;
   margin: 2px;
   text-align: center;
@@ -402,7 +402,7 @@ align-items: center;
   filter: brightness(1.3);
 }
 
-.sizeSelector .dropdown {
+.dropdown {
   position: absolute;
   top: calc(3.5rem + 3px);
   width: 100%;
@@ -430,14 +430,16 @@ align-items: center;
 .quantitySelector {
   flex-grow: 2;
   flex-basis: 30%;
-  height: 40%;
-  border-style: dashed;
-  border-color: black;
-  display: inline-block;
+  position: relative;
+  height: 3.5rem;
   margin: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 1rem;
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  transition: filter 300ms;
 }
 
 .addToCart {

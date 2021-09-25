@@ -5,7 +5,6 @@ import { StyleIdxContext } from '../../overview.jsx';
 export default function SizeSelector({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const [open, setOpen] = useState(false);
-
   let currentStyleIdx;
   let setCurrentStyleIdx;
   let currentSizeInfo;
@@ -48,10 +47,12 @@ function Dropdown({ currentSizeInfo }) {
   );
 }
 
+const SizeContext = React.createContext();
 
 function DropdownItem(props) {
+  const [size, setSize] = useState('ssssss');
   return (
-    <span className=" dropdownItem">{props.currentSize.size}</span>
+    <span className=" dropdownItem" onClick={() => setSize(props.currentSize.size)}>{props.currentSize.size}</span>
   );
 }
 
@@ -68,3 +69,5 @@ Dropdown.propTypes = {
 DropdownItem.propTypes = {
   currentSize: PropTypes.object
 };
+
+export { SizeContext }

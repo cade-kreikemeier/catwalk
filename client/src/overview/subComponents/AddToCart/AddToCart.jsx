@@ -6,7 +6,7 @@ export default function AddToCart({currentProductStyles}) {
   return (
     <div className='addToCartContainer'>
       <SizeSelector currentProductStyles={currentProductStyles || null}/>
-      <QuantitySelector />
+      <QuantitySelector currentProductStyles={currentProductStyles || null}/>
       <div className='addToCart'>Add To Cart</div>
       <div className='favBtn'>⭐️</div>
     </div>
