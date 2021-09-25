@@ -441,6 +441,7 @@ align-items: center;
 .comparison-list-tile {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
 }
 
 .comparison-list-tile:first-child, .comparison-list-tile:last-child {
