@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ProductStyleContext } from '../contexts/Contexts.tsx';
-import AddToCart from './subComponents/AddToCart.jsx';
+import AddToCart from './subComponents/AddToCart/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
 import StyleSelector from './subComponents/StyleSelector.jsx';
@@ -36,7 +36,7 @@ function OverView() {
                       thumbnailPics={thumbnailPics}
                       currentProductStyles={currentProductStyles}
                     />}
-                    {<AddToCart />}
+                    {<AddToCart currentProductStyles={currentProductStyles || null}/>}
                   </>
               }
             </ExpandContext.Provider>
