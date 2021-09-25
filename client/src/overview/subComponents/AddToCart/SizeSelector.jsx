@@ -18,8 +18,8 @@ export default function SizeSelector({ currentProductStyles }) {
   }
 
   return (
-    <div className="sizeSelector">
-      <span className='fas fa-tshirt shirt' onClick={() => setOpen(!open)}>
+    <div className="sizeSelector" onClick={() => setOpen(!open)}>
+      <span className='fas fa-tshirt shirt' >
         Size
       </span>
       {open && <Dropdown

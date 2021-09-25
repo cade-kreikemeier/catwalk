@@ -416,10 +416,10 @@ align-items: center;
   flex-direction: column;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
   opacity: 0;
-  transition: opacity 300ms ease-in-out;
 }
 
-.dropdown {
+.dropdown-active
+ {
   opacity: 1;
 }
 

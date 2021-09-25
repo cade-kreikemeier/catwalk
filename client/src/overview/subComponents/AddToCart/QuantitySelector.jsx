@@ -23,8 +23,8 @@ export default function QuantitySelector({ currentProductStyles }) {
   }
 
   return (
-    <div className="quantitySelector">
-      <span className='fas fa-angle-down' onClick={() => setOpen(!open)}>
+    <div className="quantitySelector" onClick={() => setOpen(!open)}>
+      <span className='fas fa-angle-down' >
       </span>
       {open &&
       <Dropdown
