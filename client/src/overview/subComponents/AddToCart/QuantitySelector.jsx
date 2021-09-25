@@ -5,18 +5,17 @@ import { SizeContext } from './AddToCart.jsx';
 
 export default function QuantitySelector({ currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
-  const {size, setSize} = useContext(SizeContext);
+  const { size } = useContext(SizeContext);
   const [open, setOpen] = useState(false);
 
   let currentStyleIdx;
-  let setCurrentStyleIdx;
   let currentSizeQuantity = 1;
 
   if (StyleIdxContextData) {
-    ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
+    ({ currentStyleIdx } = StyleIdxContextData);
     if (currentProductStyles) {
-      for(const key in currentProductStyles.results[currentStyleIdx].skus) {
-        if ( currentProductStyles.results[currentStyleIdx].skus[key].size === size ) {
+      for (const key in currentProductStyles.results[currentStyleIdx].skus) {
+        if (currentProductStyles.results[currentStyleIdx].skus[key].size === size) {
           currentSizeQuantity = currentProductStyles.results[currentStyleIdx].skus[key].quantity;
         }
       }
@@ -40,7 +39,7 @@ export default function QuantitySelector({ currentProductStyles }) {
 function Dropdown({ currentSizeQuantity, open, setOpen }) {
   const currentQuantityArr = [];
   for (let i = 1; i <= currentSizeQuantity; i++) {
-    currentQuantityArr.push(i)
+    currentQuantityArr.push(i);
   }
 
   const wrapperRef = useRef(null);
@@ -48,16 +47,16 @@ function Dropdown({ currentSizeQuantity, open, setOpen }) {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                setOpen(!open);
-            }
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setOpen(!open);
         }
+      }
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
     }, [ref]);
   }
   return (
@@ -86,18 +85,24 @@ function DropdownItem({ number, open, setOpen }) {
   );
 }
 
-
-
-
 QuantitySelector.propTypes = {
   currentStyleIdx: PropTypes.number,
-  currentProductStyles: PropTypes.object
+  currentProductStyles: PropTypes.object,
+  currentSizeQuantity: PropTypes.number,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
 Dropdown.propTypes = {
-  currentQuantityInfo: PropTypes.object
+  currentQuantityInfo: PropTypes.object,
+  currentSizeQuantity: PropTypes.number,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
 DropdownItem.propTypes = {
-  currentQuantity: PropTypes.object
+  currentQuantity: PropTypes.object,
+  number: PropTypes.number,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };

@@ -8,11 +8,10 @@ export default function SizeSelector({ currentProductStyles }) {
   const [open, setOpen] = useState(false);
 
   let currentStyleIdx;
-  let setCurrentStyleIdx;
   let currentSizeInfo;
 
   if (StyleIdxContextData) {
-    ({ currentStyleIdx, setCurrentStyleIdx } = StyleIdxContextData);
+    ({ currentStyleIdx } = StyleIdxContextData);
     if (currentProductStyles) {
       currentSizeInfo = currentProductStyles.results[currentStyleIdx].skus;
     }
@@ -43,16 +42,16 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
 
   function useOutsideAlerter(ref) {
     useEffect(() => {
-        function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-                setOpen(!open);
-            }
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setOpen(!open);
         }
+      }
 
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
     }, [ref]);
   }
   return (
@@ -74,26 +73,30 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
   );
 }
 
-
 function DropdownItem({ currentSize, open, setOpen }) {
-  const {size, setSize} = useContext(SizeContext);
+  const { setSize } = useContext(SizeContext);
   return (
-    <span className=" dropdownItem" onClick={() => {setSize(currentSize.size); setOpen(!open);} }>{currentSize.size}
+    <span className=" dropdownItem" onClick={() => { setSize(currentSize.size); setOpen(!open); } }>{currentSize.size}
     </span>
   );
 }
 
-
 SizeSelector.propTypes = {
   currentStyleIdx: PropTypes.number,
-  currentProductStyles: PropTypes.object
+  currentProductStyles: PropTypes.object,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
 Dropdown.propTypes = {
-  currentSizeInfo: PropTypes.object
+  currentSizeInfo: PropTypes.object,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
 DropdownItem.propTypes = {
-  currentSize: PropTypes.object
+  currentSize: PropTypes.object,
+  open: PropTypes.bool,
+  setOpen: PropTypes.func
 };
 
