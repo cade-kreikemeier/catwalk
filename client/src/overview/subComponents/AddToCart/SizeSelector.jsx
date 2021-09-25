@@ -25,12 +25,14 @@ export default function SizeSelector({ currentProductStyles }) {
       </span>
       {open && <Dropdown
         currentSizeInfo={currentSizeInfo || null}
+        open={open}
+        setOpen={setOpen}
       />}
     </div>
   );
 };
 
-function Dropdown({ currentSizeInfo }) {
+function Dropdown({ currentSizeInfo, open, setOpen }) {
   const currentSizeArr = [];
   for (const key in currentSizeInfo) {
     currentSizeArr.push(currentSizeInfo[key]);
@@ -43,6 +45,8 @@ function Dropdown({ currentSizeInfo }) {
             <DropdownItem
               key={'dropindex' + index}
               currentSize={currentSize}
+              open={open}
+              setOpen={setOpen}
             />
           );
         })
@@ -53,11 +57,11 @@ function Dropdown({ currentSizeInfo }) {
 }
 
 
-function DropdownItem({ currentSize }) {
+function DropdownItem({ currentSize, open, setOpen }) {
   const {size, setSize} = useContext(SizeContext);
 
   return (
-    <span className=" dropdownItem" onClick={() => setSize(currentSize.size) }>{currentSize.size}</span>
+    <span className=" dropdownItem" onClick={() => {setSize(currentSize.size); setOpen(!open);} }>{currentSize.size}</span>
   );
 }
 
