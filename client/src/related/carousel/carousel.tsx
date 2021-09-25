@@ -30,7 +30,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
           className="carousel-arrow carousel-arrow-left"
           onClick={decrementPosition}
         >
-          Left
+          <span className="fas fa-chevron-left"></span>
         </button>
         : null}
       <div className="carousel">
@@ -38,13 +38,13 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
           id => props.cardCreator(id)
         ))}
       </div>
-      {(props.ids.length - position > shownCards)
+      {(uniqueIds.length - position > shownCards)
         ? <button
           data-testid="carousel-right-button"
           className="carousel-arrow carousel-arrow-right"
           onClick={incrementPosition}
         >
-          Right
+          <span className="fas fa-chevron-right"></span>
         </button>
         : null}
     </div>

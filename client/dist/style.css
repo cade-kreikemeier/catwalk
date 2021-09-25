@@ -427,45 +427,63 @@ align-items: center;
 
 .carousel-arrow {
   position: absolute;
+  aspect-ratio: 1/1;
   z-index: 1;
   top: 50%;
+  transform: translateY(-50%);
 }
 
 .carousel-arrow-left {
-  left: 8px;
+  left: 16px;
 }
 
-
 .carousel-arrow-right {
-  right: 8px;
+  right: 16px;
 }
 
 .carousel {
   display: flex;
   overflow: visible;
   flex-direction: row;
+  justify-content: space-between;
+  margin: 8px 0px;
 }
 
 .carouselCard {
-  display: flex;
+  margin: 8px;
+  flex-grow: 1;
+  width: 100%;
   position: relative;
+  border: 0px solid white;
+  border-radius: 8px;
+  box-shadow: 4px 4px 6px 0px #00000066;
 }
+
 .carouselCard > div {
   position: relative;
-  height: 20rem;
 }
 
 .carouselCard img {
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
   overflow: hidden;
+  border-radius: 8px 8px 0px 0px;
 }
 
-.carouselCard button {
+.carousel-card-text {
+  margin: 8px;
+  height: 8rem;
+}
+
+.carousel-action-button {
   position: absolute;
   top: 8px;
   right: 8px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 0px;
+  box-shadow: 4px 4px 6px 0px #00000066;
 }
 
 /* Reviews */
