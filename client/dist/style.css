@@ -414,9 +414,6 @@ align-items: center;
 
 /* Related Items */
 
-.related {
-}
-
 .carousel-container {
   position: relative;
 }
@@ -425,12 +422,12 @@ align-items: center;
   position: absolute;
   z-index: 1;
   top: 50%;
+  transform: translateY(-50%);
 }
 
 .carousel-arrow-left {
   left: 8px;
 }
-
 
 .carousel-arrow-right {
   right: 8px;
@@ -440,6 +437,7 @@ align-items: center;
   display: flex;
   overflow: visible;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .carouselCard {
@@ -452,8 +450,8 @@ align-items: center;
 }
 
 .carouselCard img {
-  height: 200px;
-  width: 200px;
+  width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
   overflow: hidden;
 }
