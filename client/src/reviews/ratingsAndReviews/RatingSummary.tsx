@@ -12,8 +12,10 @@ const RatingSummary: React.FC = () => {
   if (reviewsMetadata?.ratings && Object.keys(reviewsMetadata.ratings).length) {
     return (
       <div className="ratingSummary">
-        <h2>{calAvgRating(reviewsMetadata.ratings, 0.1).toString().slice(0, 3)}</h2>
-        <ReviewStar rating={calAvgRating(reviewsMetadata.ratings)} />
+        <div className="ratingSummaryWrapper">
+          <h2>{calAvgRating(reviewsMetadata.ratings, 0.1).toString().slice(0, 3)}</h2>
+          <ReviewStar rating={calAvgRating(reviewsMetadata.ratings)} />
+        </div>
         <span>{reviewCount} Ratings</span>
       </div>
     );
