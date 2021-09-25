@@ -417,16 +417,26 @@ align-items: center;
 .related {
 }
 
+.carousel-container {
+display: flex;
+flex-direction: row;
+}
+
 .carousel {
+  display: flex;
   overflow: visible;
   white-space: nowrap;
+  flex-direction: row;
 }
 
 .carouselCard {
-  display: inline-block;
-  height: 300px;
+  display: flex;
   width: 25%;
   position: relative;
+}
+.carouselCard > div {
+  position: relative;
+  height: 20rem;
 }
 
 .carouselCard img {
@@ -435,6 +445,7 @@ align-items: center;
   object-fit: cover;
   overflow: hidden;
 }
+
 .carouselCard button {
   position: absolute;
   top: 8px;

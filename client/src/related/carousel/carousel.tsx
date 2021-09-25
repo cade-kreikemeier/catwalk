@@ -23,7 +23,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
 
   return <div>
     <h3>{props.title}</h3>
-    <div>
+    <div className="carousel-container">
       {(position > 0)
         ? <button
           data-testid="carousel-left-button"
