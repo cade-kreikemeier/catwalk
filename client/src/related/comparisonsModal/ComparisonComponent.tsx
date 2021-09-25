@@ -15,12 +15,12 @@ const ComparisonListTile: FC<ComparisonListTileProps> = (props: ComparisonListTi
   return <div data-testid={props.title} className="comparison-list-tile">
     {props.main
       ? <span>{props.main}</span>
-      : null
+      : <span></span>
     }
     <span>{props.title}</span>
     {props.other
       ? <span>{props.other}</span>
-      : null
+      : <span></span>
     }
   </div>;
 };
