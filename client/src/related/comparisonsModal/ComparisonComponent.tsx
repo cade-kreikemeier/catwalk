@@ -13,14 +13,20 @@ interface ComparisonListTileProps {
 
 const ComparisonListTile: FC<ComparisonListTileProps> = (props: ComparisonListTileProps) => {
   return <div data-testid={props.title} className="comparison-list-tile">
-    {props.main
-      ? <span>{props.main}</span>
-      : <span></span>
+    {<span className="comparison-left">
+      {props.main
+        ? props.main
+        : ''
+      }
+    </span>
     }
-    <span>{props.title}</span>
-    {props.other
-      ? <span>{props.other}</span>
-      : <span></span>
+    <span className="comparison-middle">{props.title}</span>
+    {<span className="comparison-right">
+      {props.other
+        ? props.other
+        : ''
+      }
+    </span>
     }
   </div>;
 };

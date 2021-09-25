@@ -481,15 +481,20 @@ align-items: center;
 
 /* Comparison Modal */
 
-.comparison-list-tile {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+.comparison-list-tile > span {
+  display: inline-block;
+  width: 33%;
 }
 
-.comparison-list-tile:first-child, .comparison-list-tile:last-child {
-  flex-grow: 1;
+.comparison-middle {
+  text-align: center;
 }
+
+.comparison-right {
+  text-align: right;
+}
+
+
 
 /* Reviews */
 
