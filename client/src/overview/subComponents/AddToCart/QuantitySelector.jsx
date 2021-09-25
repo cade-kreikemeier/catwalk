@@ -19,9 +19,7 @@ export default function QuantitySelector({ currentProductStyles }) {
         if ( currentProductStyles.results[currentStyleIdx].skus[key].size === size ) {
           currentSizeQuantity = currentProductStyles.results[currentStyleIdx].skus[key].quantity;
         }
-
       }
-      console.log(currentSizeQuantity)
     }
   }
 
@@ -32,12 +30,14 @@ export default function QuantitySelector({ currentProductStyles }) {
       {open &&
       <Dropdown
         currentSizeQuantity={currentSizeQuantity}
+        open={open}
+        setOpen={setOpen}
       />}
     </div>
   );
 };
 
-function Dropdown({ currentSizeQuantity }) {
+function Dropdown({ currentSizeQuantity, open, setOpen }) {
   const currentQuantityArr = [];
   for (let i = 1; i <= currentSizeQuantity; i++) {
     currentQuantityArr.push(i)
@@ -50,6 +50,8 @@ function Dropdown({ currentSizeQuantity }) {
             <DropdownItem
               key={'dropindex' + index}
               number={number}
+              open={open}
+              setOpen={setOpen}
             />
           );
         })
@@ -60,9 +62,9 @@ function Dropdown({ currentSizeQuantity }) {
 }
 
 
-function DropdownItem({ number }) {
+function DropdownItem({ number, open, setOpen }) {
   return (
-    <span className=" dropdownItem">{number}</span>
+    <span className=" dropdownItem" onClick={() => setOpen(!open)}>{number}</span>
   );
 }
 
