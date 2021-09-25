@@ -9,13 +9,17 @@ const AttributesSummary: React.FC = () => {
     return (
       <div className="attributesSummary">
         <h4>Attributes Summary</h4>
-        {Object.keys(reviewsMetadata.characteristics).map((char: string) => (
-          <AttributeSlider
-            key={reviewsMetadata.characteristics[char].id}
-            char={char}
-            value={reviewsMetadata.characteristics[char].value}
-          />
-        ))}
+        {Object.keys(reviewsMetadata.characteristics).map((char: string) => {
+          if (reviewsMetadata.characteristics[char].value !== null) {
+            return <AttributeSlider
+              key={reviewsMetadata.characteristics[char].id}
+              char={char}
+              value={reviewsMetadata.characteristics[char].value || ''}
+            />;
+          } else {
+            return <></>;
+          }
+        })}
       </div>
     );
   } else {

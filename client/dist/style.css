@@ -426,7 +426,7 @@ align-items: center;
 .carouselCard {
   display: inline-block;
   height: 300px;
-  width: 25vw;
+  width: 25%;
 }
 
 .carouselCard > img {
