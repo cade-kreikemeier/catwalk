@@ -36,7 +36,7 @@ describe('Given a blank characteristics object', () => {
         heft: { id: 1, value: '1.0' }
       };
     });
-    test('Then the results should be have one characteristic', () => {
+    test('Then the results should be have many characteristic', () => {
       const result = buildComparisons(productOne, productTwo);
       expect(result).toEqual({
         size: { mainValue: null, otherValue: '2.0' },
@@ -44,6 +44,15 @@ describe('Given a blank characteristics object', () => {
         quality: { mainValue: null, otherValue: '3.4' },
         heft: { mainValue: null, otherValue: '1.0' }
       });
+    });
+  });
+  describe('When the other object has a null Value', () => {
+    beforeEach(() => {
+      productTwo = { size: { id: 1, value: null } };
+    });
+    test('Then the results should be empty', () => {
+      const result = buildComparisons(productOne, productTwo);
+      expect(result).toEqual({});
     });
   });
 });

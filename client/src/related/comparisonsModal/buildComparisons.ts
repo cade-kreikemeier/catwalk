@@ -12,10 +12,12 @@ export default function buildComparisons(productFrom: characteristics | null, pr
     }
   }
   for (const characteristic in productTo) {
-    comparison[characteristic] = {
-      mainValue: comparison[characteristic]?.mainValue || null,
-      otherValue: productTo[characteristic].value
-    };
+    if (productTo[characteristic].value != null) {
+      comparison[characteristic] = {
+        mainValue: comparison[characteristic]?.mainValue || null,
+        otherValue: productTo[characteristic].value
+      };
+    }
   }
   return comparison;
 }
