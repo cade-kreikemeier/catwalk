@@ -8,7 +8,6 @@ export default function AddToCart({currentProductStyles}) {
       <SizeSelector currentProductStyles={currentProductStyles || null}/>
       <QuantitySelector currentProductStyles={currentProductStyles || null}/>
       <div className='addToCart'>Add To Cart</div>
-      <div className='favBtn'>⭐️</div>
     </div>
   );
 };
