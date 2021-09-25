@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -42,8 +42,26 @@ function Dropdown({ currentSizeQuantity, open, setOpen }) {
   for (let i = 1; i <= currentSizeQuantity; i++) {
     currentQuantityArr.push(i)
   }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOpen(!open);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+  }
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={wrapperRef}>
       {currentQuantityArr.length
         ? currentQuantityArr.map((number, index) => {
           return (
@@ -67,6 +85,8 @@ function DropdownItem({ number, open, setOpen }) {
     <span className=" dropdownItem" onClick={() => setOpen(!open)}>{number}</span>
   );
 }
+
+
 
 
 QuantitySelector.propTypes = {

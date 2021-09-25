@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -37,8 +37,26 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
   for (const key in currentSizeInfo) {
     currentSizeArr.push(currentSizeInfo[key]);
   }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOpen(!open);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+  }
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={wrapperRef}>
       {currentSizeArr.length
         ? currentSizeArr.map((currentSize, index) => {
           return (
@@ -59,9 +77,9 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
 
 function DropdownItem({ currentSize, open, setOpen }) {
   const {size, setSize} = useContext(SizeContext);
-
   return (
-    <span className=" dropdownItem" onClick={() => {setSize(currentSize.size); setOpen(!open);} }>{currentSize.size}</span>
+    <span className=" dropdownItem" onClick={() => {setSize(currentSize.size); setOpen(!open);} }>{currentSize.size}
+    </span>
   );
 }
 
