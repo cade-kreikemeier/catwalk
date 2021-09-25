@@ -22,7 +22,7 @@ export default function SizeSelector({ currentProductStyles }) {
       <span className='fas fa-tshirt shirt' >
         Size
       </span>
-      {open && <Dropdown
+      { <Dropdown
         currentSizeInfo={currentSizeInfo || null}
         open={open}
         setOpen={setOpen}
@@ -37,25 +37,25 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
     currentSizeArr.push(currentSizeInfo[key]);
   }
 
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
 
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(!open);
-        }
-      }
+  // function useOutsideAlerter(ref) {
+  //   useEffect(() => {
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //         setOpen(!open);
+  //       }
+  //     }
 
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [ref]);
-  }
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //     return () => {
+  //       document.removeEventListener('mousedown', handleClickOutside);
+  //     };
+  //   }, [ref]);
+  // }
   return (
-    <div className={`dropdown ${open ? 'dropdown-active' : null}` } ref={wrapperRef} >
+    <div className={`dropdown ${open ? 'dropdown-active' : null}` }  >
       {currentSizeArr.length
         ? currentSizeArr.map((currentSize, index) => {
           return (
