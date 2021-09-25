@@ -426,13 +426,19 @@ align-items: center;
   display: inline-block;
   height: 300px;
   width: 25%;
+  position: relative;
 }
 
-.carouselCard > img {
+.carouselCard img {
   height: 200px;
   width: 200px;
   object-fit: cover;
   overflow: hidden;
+}
+.carouselCard button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
 }
 
 /* Reviews */
