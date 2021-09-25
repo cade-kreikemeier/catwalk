@@ -43,8 +43,8 @@ describe('Given a comparison Object with one value', () => {
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Size')).children[0].textContent).toBe('2.0');
-      expect((screen.getByTestId('Size')).children[1].textContent).toBe('Size');
+      expect(screen.getByTestId('Size').innerHTML).toMatch(/>2.0</);
+      expect(screen.getByTestId('Size').innerHTML).toMatch(/>Size</);
     });
 
     test('And there are only two elements', () => {
@@ -68,8 +68,8 @@ describe('Given a comparison Object with only the other value', () => {
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Size')).children[1].textContent).toBe('Size');
-      expect((screen.getByTestId('Size')).children[2].textContent).toBe('3.0');
+      expect((screen.getByTestId('Size')).innerHTML).toMatch(/>Size</);
+      expect((screen.getByTestId('Size')).innerHTML).toMatch(/>3.0</);
     });
 
     test('And there are only two elements', () => {
@@ -94,8 +94,8 @@ describe('Given a comparison Object with only the other value', () => {
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Heft')).children[1].textContent).toBe('Heft');
-      expect((screen.getByTestId('Heft')).children[2].textContent).toBe('3.0');
+      expect((screen.getByTestId('Heft')).innerHTML).toMatch(/>Heft</);
+      expect((screen.getByTestId('Heft')).innerHTML).toMatch(/>3.0</);
     });
 
     test('And there are only two elements', () => {
