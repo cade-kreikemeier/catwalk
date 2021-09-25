@@ -12,7 +12,7 @@ export default function buildComparisons(productFrom: characteristics | null, pr
     }
   }
   for (const characteristic in productTo) {
-    if (productTo[characteristic].value != null) {
+    if (productTo[characteristic].value !== null) {
       comparison[characteristic] = {
         mainValue: comparison[characteristic]?.mainValue || null,
         otherValue: productTo[characteristic].value
