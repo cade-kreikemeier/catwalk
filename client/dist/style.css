@@ -426,11 +426,11 @@ align-items: center;
 }
 
 .carousel-arrow-left {
-  left: 8px;
+  left: 16px;
 }
 
 .carousel-arrow-right {
-  right: 8px;
+  right: 16px;
 }
 
 .carousel {
@@ -438,15 +438,18 @@ align-items: center;
   overflow: visible;
   flex-direction: row;
   justify-content: space-between;
+  margin: 8px 0px;
 }
 
 .carouselCard {
   margin: 8px;
   display: flex;
   position: relative;
-  border: 1px solid black;
+  border: 0px solid white;
   border-radius: 8px;
+  box-shadow: 4px 4px 6px 0px #00000066;
 }
+
 .carouselCard > div {
   position: relative;
 }
