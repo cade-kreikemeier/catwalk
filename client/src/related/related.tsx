@@ -6,7 +6,6 @@ import CarouselCardLoader from './carouselCard/carouselCardLoader';
 const Related: React.FC = () => {
   const ids = useContext(RelatedProducts) || [];
   return <section className="section-md related">
-    <h2>Related Items</h2>
     <Carousel
       title="Related Products"
       ids={ids}

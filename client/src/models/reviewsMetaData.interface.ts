@@ -13,13 +13,13 @@ interface recommended {
   [recommendedVote: string]: string
 }
 
-interface characteristics {
+export interface characteristics {
   [itemProperty: string]: characteristic
 }
 
 export interface characteristic {
   id: number,
-  value: string
+  value: string | null
 }
 
 export interface reviewsMetaDataInteraction {

@@ -15,20 +15,25 @@ interface CarouselCardProps {
 
 const CarouselCard: React.FC<CarouselCardProps> = (props) => {
   return <div className="carouselCard" onClick={props.localCallback} >
-    {props.imageUrl
-      ? <img data-testid="thumbnail" src={props.imageUrl} />
-      : null
-    }
-    <p data-testid="category">{props.metaData.category}</p>
-    <p data-testid="name">{props.metaData.name}</p>
-    <p data-testid="price">${props.metaData.price}</p>
-    <ReviewStar rating={props.rating} />
-    <button className="carouselActionButton" onClick={e => {
+    <div>
+      {props.imageUrl
+        ? <img data-testid="thumbnail" src={props.imageUrl} />
+        : null
+      }
+      <div className="carousel-card-text">
+        <p data-testid="category">{props.metaData.category}</p>
+        <p data-testid="name">{props.metaData.name}</p>
+        <p data-testid="price">${props.metaData.price}</p>
+        <ReviewStar rating={props.rating} />
+      </div>
+    </div>
+    <button className="carousel-action-button" onClick={e => {
       props.actionCallback();
       e.stopPropagation();
     }}>
       {props.actionChild}
     </button>
+
   </div>;
 };
 
