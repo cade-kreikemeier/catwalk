@@ -1,12 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import { act, render } from '@testing-library/react';
-import App from './App';
+import { render } from '@testing-library/react';
+import App from './app';
 import React from 'react';
 
-xtest('testing the app', () => {
-  act(() => {
-    render(<App></App>);
-  });
+test('testing the app', () => {
+  render(<App></App>);
 });
