@@ -13,7 +13,7 @@
   --text-color: #dadce1;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
-  --border-radius: 8px;
+  --border-radius: .5rem;
   --speed: 500ms;
 }
 
@@ -414,7 +414,15 @@ align-items: center;
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
 }
+
+.dropdown {
+  opacity: 1;
+}
+
 
 .dropdown::-webkit-scrollbar {
   display: none;

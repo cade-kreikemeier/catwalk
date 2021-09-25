@@ -19,7 +19,7 @@ export default function SizeSelector({ currentProductStyles }) {
 
   return (
     <div className="sizeSelector">
-      <span className='fas fa-tshirt' onClick={() => setOpen(!open)}>
+      <span className='fas fa-tshirt shirt' onClick={() => setOpen(!open)}>
         Size
       </span>
       {open && <Dropdown
@@ -55,7 +55,7 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
     }, [ref]);
   }
   return (
-    <div className="dropdown" ref={wrapperRef}>
+    <div className={`dropdown ${open ? 'dropdown-active' : null}` } ref={wrapperRef} >
       {currentSizeArr.length
         ? currentSizeArr.map((currentSize, index) => {
           return (

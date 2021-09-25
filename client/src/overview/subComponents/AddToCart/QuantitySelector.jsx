@@ -60,7 +60,7 @@ function Dropdown({ currentSizeQuantity, open, setOpen }) {
     }, [ref]);
   }
   return (
-    <div className="dropdown" ref={wrapperRef}>
+    <div className={`dropdown ${open ? 'dropdown-active' : null}`} ref={wrapperRef}>
       {currentQuantityArr.length
         ? currentQuantityArr.map((number, index) => {
           return (
