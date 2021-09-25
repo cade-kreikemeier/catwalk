@@ -418,20 +418,32 @@ align-items: center;
 }
 
 .carousel-container {
-display: flex;
-flex-direction: row;
+  position: relative;
+}
+
+.carousel-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+}
+
+.carousel-arrow-left {
+  left: 8px;
+}
+
+
+.carousel-arrow-right {
+  right: 8px;
 }
 
 .carousel {
   display: flex;
   overflow: visible;
-  white-space: nowrap;
   flex-direction: row;
 }
 
 .carouselCard {
   display: flex;
-  width: 25%;
   position: relative;
 }
 .carouselCard > div {
