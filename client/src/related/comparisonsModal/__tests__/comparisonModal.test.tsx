@@ -6,6 +6,10 @@ import React from 'react';
 import ComparisonComponent from '../ComparisonComponent';
 import { comparison } from '../comparison';
 
+const findChildrenWithContent = (node: HTMLElement): Array<ChildNode> => {
+  return Array.from(node.childNodes).filter(node => node.textContent);
+};
+
 describe('Given a blank comparison Object', () => {
   const model: comparison = {};
   beforeEach(() => {
@@ -39,12 +43,12 @@ describe('Given a comparison Object with one value', () => {
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Size')).children[0].textContent).toBe('2.0');
-      expect((screen.getByTestId('Size')).children[1].textContent).toBe('Size');
+      expect(screen.getByTestId('Size').innerHTML).toMatch(/>2.0</);
+      expect(screen.getByTestId('Size').innerHTML).toMatch(/>Size</);
     });
 
     test('And there are only two elements', () => {
-      expect((screen.getByTestId('Size')).childNodes).toHaveLength(2);
+      expect(findChildrenWithContent(screen.getByTestId('Size'))).toHaveLength(2);
     });
   });
 });
@@ -64,12 +68,12 @@ describe('Given a comparison Object with only the other value', () => {
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Size')).children[0].textContent).toBe('Size');
-      expect((screen.getByTestId('Size')).children[1].textContent).toBe('3.0');
+      expect((screen.getByTestId('Size')).innerHTML).toMatch(/>Size</);
+      expect((screen.getByTestId('Size')).innerHTML).toMatch(/>3.0</);
     });
 
     test('And there are only two elements', () => {
-      expect((screen.getByTestId('Size')).childNodes).toHaveLength(2);
+      expect(findChildrenWithContent(screen.getByTestId('Size'))).toHaveLength(2);
     });
   });
 });
@@ -84,18 +88,18 @@ describe('Given a comparison Object with only the other value', () => {
 
   describe('When nothing happens', () => {
     test('Then the heft comparisons is shown', () => {
-      expect(screen.queryAllByText('Heft')).toHaveLength(1);
+      expect((screen.queryAllByText('Heft'))).toHaveLength(1);
     });
   });
 
   describe('When give comparison prop with data', () => {
     test('Then the size comparisons is shown', () => {
-      expect((screen.getByTestId('Heft')).children[0].textContent).toBe('Heft');
-      expect((screen.getByTestId('Heft')).children[1].textContent).toBe('3.0');
+      expect((screen.getByTestId('Heft')).innerHTML).toMatch(/>Heft</);
+      expect((screen.getByTestId('Heft')).innerHTML).toMatch(/>3.0</);
     });
 
     test('And there are only two elements', () => {
-      expect((screen.getByTestId('Heft')).childNodes).toHaveLength(2);
+      expect(findChildrenWithContent(screen.getByTestId('Heft'))).toHaveLength(2);
     });
   });
 });
