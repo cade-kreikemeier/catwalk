@@ -306,6 +306,8 @@ header {
 .productReview {
   font-size: 0.8rem;
   margin: 2px;
+  color: #1f44be;
+  cursor: pointer;
 }
 
 .productCatrgory {
