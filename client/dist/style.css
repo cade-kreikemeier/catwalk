@@ -1,8 +1,8 @@
 /* CSS HEX */
 :root {
   /* These aren't permanent, was using them as references */
-  --primary-background: #f2feff;
-  --secondary-background: #e4e8eb;
+  --primary-background: rgb(240, 254, 255);
+  --secondary-background: rgb(230, 244, 245);
   --accent-1: #B6DBF2;
   --accent-2: #3F8EBF;
   --accent-3: #33658aff;
@@ -13,7 +13,7 @@
   --btn-1: #0053ee;
   --btn-2: #06a128;
 
-  --box-shadow-1: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  --box-shadow-1: 3px 3px 4px 2px rgba(0, 0, 0, 0.3);
   --bg: #242526;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
@@ -148,6 +148,7 @@ body {
   z-index: 1;
   cursor: zoom-in;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .slide .expandIcon {
@@ -215,6 +216,7 @@ body {
 .preview {
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
 
 /* Overvier */
@@ -328,6 +330,29 @@ body {
   padding: 5px ;
 }
 
+.styleName {
+  display: inline-block;
+  position: relative;
+}
+.styleName:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: black;
+  transform: scaleX(0);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.styleName:hover:after{
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 .styleHeadLine {
   font-family: 'Poppins';
   font-weight: 200;
@@ -369,6 +394,7 @@ body {
   flex-wrap: wrap;
   overflow: hidden;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .thumbnail img {
@@ -406,6 +432,7 @@ body {
   border-radius: var(--border-radius);
   color: var(--text-color);
   transition: filter 300ms;
+  cursor: pointer;
 }
 .sizeSelector:hover {
   filter: brightness(1.3);
@@ -426,7 +453,7 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
   opacity: 0;
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-
+  cursor: pointer;
 }
 
 .dropdown-active
@@ -448,9 +475,13 @@ body {
   padding: 0.5rem;
 }
 
-.menuItem:hover {
+.dropdownItem:hover {
   background-color: #525357;
 }
+
+/* .menuItem:hover {
+  background-color: #525357;
+} */
 
 .quantitySelector {
   flex-grow: 2;
@@ -465,6 +496,7 @@ body {
   border-radius: var(--border-radius);
   color: var(--text-color);
   transition: filter 300ms;
+  cursor: pointer;
 }
 
 .addToCart {
@@ -523,6 +555,8 @@ body {
   border: 0px solid white;
   border-radius: 8px;
   box-shadow: var(--box-shadow-1);
+  background-color: var(--secondary-background);
+  cursor: pointer;
 }
 
 .carouselCard > div {
@@ -550,6 +584,7 @@ body {
   border-radius: 50%;
   border: 0px;
   box-shadow: var(--box-shadow-1);
+  cursor: pointer;
 }
 
 /* Comparison Modal */
@@ -591,7 +626,7 @@ body {
 .ratingsAndReviewsBackground {
   margin-top: 2rem;
   background-color: var(--secondary-background);
-  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--box-shadow-1);
   border-radius: .5rem;
   padding: 1rem 1.2rem;
 }
@@ -619,8 +654,11 @@ body {
 }
 
 .ratingMeter {
-  margin-inline: auto;
-  margin-block: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  max-width: 35rem;
+  margin-block: .3rem;
   padding-inline: .5rem;
   height: 1.5rem;
   background: var(--accent-1);
@@ -628,7 +666,7 @@ body {
 }
 
 .ratingMeter meter {
-  width: 75%;
+  flex: 1;
 }
 
 .attributesSummary h4{
@@ -666,7 +704,7 @@ body {
   height: 3.5rem;
   display: flex;
   background-color: var(--secondary-background);
-  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--box-shadow-1);
   border-radius: .5rem;
   margin-inline: 1rem;
   margin-bottom: .5rem;
@@ -787,4 +825,10 @@ body {
   z-index: 1001;
   overflow-x: auto;
   padding: 3rem;
+}
+
+.modal-box button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

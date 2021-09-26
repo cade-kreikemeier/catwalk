@@ -4,8 +4,10 @@ import ReviewsList from './ReviewsList';
 
 const Reviews: React.FC = () => (
   <section className="section-md reviews">
-    <RatingsAndReviews />
-    <ReviewsList />
+    <div className="reviewsContainer">
+      <RatingsAndReviews />
+      <ReviewsList />
+    </div>
   </section>
 );
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext, StyleNameContext } from '../overview.jsx';
 
@@ -20,11 +20,13 @@ function StyleSelector({ thumbnailPics, currentProductStyles }) {
     }
   };
 
+
+
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
        <p>{'Style > \n '}</p>
-       <p>{currentStyleName}</p>
+       <p className={'styleName'}>{currentStyleName}</p>
       </div>
       <div className='styleThumbnail'>
         {thumbnailPics
