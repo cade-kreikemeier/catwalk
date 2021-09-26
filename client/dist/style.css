@@ -1,8 +1,8 @@
 /* CSS HEX */
 :root {
   /* These aren't permanent, was using them as references */
-  --primary-background: #f2feff;
-  --secondary-background: #e4e8eb;
+  --primary-background: #f0feff;
+  --secondary-background: #e6f4f5;
   --accent-1: #B6DBF2;
   --accent-2: #3F8EBF;
   --accent-3: #33658aff;
@@ -10,10 +10,10 @@
   --accent-5: #f6ae2dff;
   --accent-6: #e0bf00;
   --accent-7: #f26419ff;
-  --btn-1: #0053ee;
+  --btn-1: #242526;
   --btn-2: #06a128;
-  
-  --box-shadow-1: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+
+  --box-shadow-1: 3px 3px 6px 1px rgba(0, 0, 0, 0.3);
   --bg: #242526;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
@@ -21,6 +21,10 @@
   --border: 1px solid #474a4d;
   --border-radius: .5rem;
   --speed: 500ms;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 ul {
@@ -63,7 +67,7 @@ p {
 body {
   margin-inline: auto;
   margin-bottom: 2rem;
-  padding-inline: clamp(.25rem, 2rem, 6rem);
+  /* padding-inline: clamp(.25rem, 2rem, 6rem); */
   background-color: var(--primary-background);
 }
 
@@ -71,6 +75,11 @@ body {
   margin-inline: auto;
   width: clamp(30rem, 60vw, 72rem);
   display: flex;
+  flex-flow: column nowrap;
+}
+
+.section-md h2 {
+  font-size: 2.5rem;
 }
 
 .section-lg {
@@ -80,7 +89,20 @@ body {
   display: flex;
 }
 
+header {
+  display: flex;
+  height: 4rem;
+  background-color: var(--bg);
+  color: var(--primary-background);
+  font-size: 2.5rem;
+  font-family: 'Poppins';
+  font-weight: 600;
+  align-content: center;
+  padding-inline: 3rem;
+}
+
 /* Image Gallery */
+
 .expandImageGallery {
   height: 100%;
   width: 100%;
@@ -106,7 +128,7 @@ body {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 2.5fr 1fr;
-  grid-template-rows: 1.5fr 2.5fr 1fr;
+  grid-template-rows: 1.5fr 2fr 1fr;
   grid-template-areas:
   "imageGallery   productInfo"
   "imageGallery  styleSelector"
@@ -118,6 +140,7 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
+
 }
 
 .previewContainer::-webkit-scrollbar {
@@ -134,9 +157,17 @@ body {
   position: relative;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 204, 255, 0.1);
+  background-color: rgba(181, 219, 242, .1);
   display: block;
   filter: 5px;
+  border-radius: 7px;
+  transition: transform 300ms ease-out;
+}
+
+.slide-active:hover {
+  transform: scale(1.01);
+  transform-origin: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
 }
 
  .slide-active .expandIcon {
@@ -146,6 +177,7 @@ body {
   z-index: 1;
   cursor: zoom-in;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .slide .expandIcon {
@@ -156,6 +188,7 @@ body {
    max-height: 100%;
    width: 100%;
    object-fit: cover;
+   border-radius: 7px;
   }
 
 .horizontal-arrow {
@@ -194,9 +227,9 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 2px solid black;
   z-index: 1;
   overflow: scroll;
+  scrollbar-width: none;
 }
 
 .previewBox {
@@ -204,14 +237,21 @@ body {
   width: 5rem;
   flex-shrink: 0;
   margin: 5px 10px;
-  border: 2px dashed black;
   overflow: hidden;
   object-fit: fill;
+  border-radius: 5px;
+  transition: transform 300ms ease-in-out;
+}
+
+.previewBox:hover {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
+
 }
 
 .preview {
   height: 100%;
   width: 100%;
+  cursor: pointer;
 }
 
 /* Overvier */
@@ -221,7 +261,7 @@ body {
 }
 
 .overViewContainer {
-  background-color:hotpink;
+  background-color: rgba(181, 219, 242, .5);
   min-height: 75vh;
   display: flex;
 }
@@ -232,7 +272,7 @@ body {
   background-color: transparent;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-start;
   align-content: flex-start;
   padding: .5rem;
@@ -280,59 +320,110 @@ body {
 
 .productReview {
   font-size: 0.8rem;
-  border: 2px dashed black;
   margin: 2px;
+  color: #1f44be;
+  cursor: pointer;
 }
 
 .productCatrgory {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 20%;
+  width: 50%;
   flex-grow: 1;
-  border: 2px dashed black;
   margin: 2px;
+  font-family: 'Poppins';
+  font-weight: 200;
+}
+
+.productInfoContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .productName {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 90%;
-  flex-grow: 3;
-  border: 2px dashed black;
+  width: 100%;
+  flex-grow: 1.5;
   margin: 2px;
   padding: 2px;
+  font-family: Lato, sans-serif;
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 4px;
+  line-height: 58px;
+  text-transform: uppercase;
+  color: #B0925A;
 }
 
 .productPrice {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 20%;
+  bottom: 3px;
+  font-family: 'Poppins';
+  justify-content: flex-start;
+  width: 50%;
   flex-grow: 1;
   align-items: center;
-  border: 2px dashed black;
   margin: 2px;
+  font-weight: 200;
+
 }
 
 /* Style */
 
 .styleSelector {
-  background-color: transparent;
   grid-area: styleSelector;
   display: flex;
   flex-direction: column;
   padding: 5px ;
 }
 
+.styleCategory {
+  font-size: 1.7rem;
+  font-weight: 300;
+  color: #B0925A;
+
+}
+
+.styleName {
+  display: inline-block;
+  position: relative;
+
+}
+
+.styleName:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: #B0925A;
+  transform: scaleX(0);
+  opacity: 0;
+  transform-origin: bottom right;
+  transition: opacity 300ms, transform 300ms ease-out;
+}
+
+.styleName:hover:after{
+  opacity: 1;
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 .styleHeadLine {
-  border: 2px dashed black;
+  font-family: 'Poppins';
+  font-weight: 200;
+  font-size: 1.5rem;
   display: flex;
   flex-grow: 1;
   flex-basis: 10%;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   padding: 3px;
   margin: 2px;
 }
@@ -340,31 +431,39 @@ body {
 .styleThumbnail {
   flex-grow: 5;
   flex-basis:70%;
-  border: 2px dashed black;
+  max-height: 100%;
   justify-content: space-around;
   justify-items: center;
   align-items: center;
   display: grid;
   grid-gap: 2px;
-  grid-template-columns: 22% 22% 22% 22%;
-  grid-template-rows: 45% 45%;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 45% 45%;
   grid-template-areas:
   " tn0 tn1 tn2 tn3 "
-  " tn4 tn5 tn6 th7 ";
+  " tn4 tn5 tn6 th7 "; */
   margin: 2px;
+
 }
 
+
 .thumbnail {
+  /* position: relative; */
   height: 60px;
   width: 60px;
   padding: 10px 10px 10px 10px;
   margin: 5px 5px 5px 5px;
-  background-color: #bbb;
   border-radius: 50%;
-  border: 2px solid grey;
+  border: 2px solid transparent;
   flex-wrap: wrap;
   overflow: hidden;
   font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, .5);
+}
+
+.thumbnail:hover {
+  box-shadow:  0 2px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .thumbnail img {
@@ -375,8 +474,10 @@ body {
   position: absolute;
   margin-top: -.7rem;
   margin-left: -0.3rem;
-  color: black;
+  color: #E0D12D;
   visibility: visible;
+  border: none;
+  z-index: 10;
 }
 
 .addToCartContainer {
@@ -402,6 +503,7 @@ body {
   border-radius: var(--border-radius);
   color: var(--text-color);
   transition: filter 300ms;
+  cursor: pointer;
 }
 .sizeSelector:hover {
   filter: brightness(1.3);
@@ -422,7 +524,8 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
   opacity: 0;
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-
+  cursor: pointer;
+  scrollbar-width: none;
 }
 
 .dropdown-active
@@ -444,9 +547,13 @@ body {
   padding: 0.5rem;
 }
 
-.menuItem:hover {
+.dropdownItem:hover {
   background-color: #525357;
 }
+
+/* .menuItem:hover {
+  background-color: #525357;
+} */
 
 .quantitySelector {
   flex-grow: 2;
@@ -461,6 +568,7 @@ body {
   border-radius: var(--border-radius);
   color: var(--text-color);
   transition: filter 300ms;
+  cursor: pointer;
 }
 
 .addToCart {
@@ -519,6 +627,8 @@ body {
   border: 0px solid white;
   border-radius: 8px;
   box-shadow: var(--box-shadow-1);
+  background-color: var(--secondary-background);
+  cursor: pointer;
 }
 
 .carouselCard > div {
@@ -546,6 +656,7 @@ body {
   border-radius: 50%;
   border: 0px;
   box-shadow: var(--box-shadow-1);
+  cursor: pointer;
 }
 
 /* Comparison Modal */
@@ -577,6 +688,12 @@ body {
   font-size: 2.4rem;
 }
 
+.reviewsContainer {
+  display: flex;
+  max-height: max(32rem, 95vh);
+  flex-flow: row wrap;
+}
+
 .ratingsAndReviews {
   flex-grow: 1;
   flex-basis: 34%;
@@ -585,9 +702,9 @@ body {
 }
 
 .ratingsAndReviewsBackground {
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: var(--secondary-background);
-  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--box-shadow-1);
   border-radius: .5rem;
   padding: 1rem 1.2rem;
 }
@@ -597,8 +714,8 @@ body {
 }
 
 .ratingSummary h2 {
-  font-size: 2.5rem;
   margin-right: .5rem;
+  /* flex: 1; */
 }
 
 .ratingSummaryWrapper {
@@ -615,8 +732,11 @@ body {
 }
 
 .ratingMeter {
-  margin-inline: auto;
-  margin-block: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  max-width: 35rem;
+  margin-block: .3rem;
   padding-inline: .5rem;
   height: 1.5rem;
   background: var(--accent-1);
@@ -624,7 +744,7 @@ body {
 }
 
 .ratingMeter meter {
-  width: 75%;
+  flex: 1;
 }
 
 .attributesSummary h4{
@@ -655,22 +775,43 @@ body {
   font-family: 'Poppins';
   font-size: 1.2rem;
   font-weight: 600;
+  color: var(--primary-background);
   background-color: var(--btn-1);
+  box-shadow: var(--box-shadow-1);
+}
+
+.btnContainer button:hover {
+  background-color: var(--bg-accent);
 }
 
 .reviewSort {
-  height: 3.5rem;
+  min-height: 3.5rem;
   display: flex;
   background-color: var(--secondary-background);
-  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--box-shadow-1);
   border-radius: .5rem;
-  margin-inline: 1rem;
+  margin-left: 1rem;
   margin-bottom: .5rem;
 }
 
 .reviewSort h3 {
   font-size: 1.4rem;
   margin: auto 0 auto .8rem;
+}
+
+.reviewSort select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin-left: .1rem;
+  padding-left: .1rem;
+  border: none;
+  outline: none;
+  font-family: 'Poppins';
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .reviewTileContainer {
@@ -769,6 +910,7 @@ body {
   right: 0;
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.7);
+  cursor: pointer;
 }
 
 .modal-box {
@@ -783,4 +925,10 @@ body {
   z-index: 1001;
   overflow-x: auto;
   padding: 3rem;
+}
+
+.modal-box button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }

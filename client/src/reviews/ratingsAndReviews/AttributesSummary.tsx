@@ -5,7 +5,7 @@ import AttributeSlider from './AttributeSlider';
 const AttributesSummary: React.FC = () => {
   const { reviewsMetadata } = useContext(ReviewsMetadataContext) || {};
 
-  if (reviewsMetadata) {
+  if (reviewsMetadata && Object.keys(reviewsMetadata.ratings).length) {
     return (
       <div className="attributesSummary">
         <h4>Attributes Summary</h4>
@@ -23,7 +23,9 @@ const AttributesSummary: React.FC = () => {
       </div>
     );
   } else {
-    return null;
+    return <div className="attributesSummary">
+      <span>There are no reviews for this product!</span>
+    </div>;
   }
 };
 

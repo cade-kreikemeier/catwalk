@@ -5,7 +5,6 @@ import AttributesSummary from './ratingsAndReviews/AttributesSummary';
 
 const ReviewBreakdown: React.FC = () => (
   <div className="ratingsAndReviews">
-    <h2>Ratings & Reviews</h2>
     <div className="ratingsAndReviewsBackground">
       <RatingSummary />
       <RatingBreakdown />

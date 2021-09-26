@@ -13,7 +13,7 @@ function AddToCart({ currentProductStyles }) {
         <SizeSelector currentProductStyles={currentProductStyles || null}/>
         <QuantitySelector currentProductStyles={currentProductStyles || null}/>
       </SizeContext.Provider>
-      <div className='addToCart'>Add To Cart</div>
+      <div className='addToCart fas fa-shopping-cart'></div>
     </div>
   );
 };
