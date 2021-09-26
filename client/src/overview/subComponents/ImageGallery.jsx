@@ -55,7 +55,7 @@ export default function ImageGallery({ currentProductStyles }) {
           return (
             <span key={'previewPic' + index} className='previewBox' onClick={() => previewClicked(event, index)}
               style={{
-                border: index === currentPreviewIdx ? '2px solid white ' : null
+                border: index === currentPreviewIdx ? '3px solid white ' : null
               }}>
               <img src={previewPic} className='preview'></img>
             </span>

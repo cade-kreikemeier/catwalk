@@ -454,6 +454,10 @@ header {
   cursor: pointer;
 }
 
+.thumbnail:hover {
+  box-shadow:  0 2px 5px 0 rgba(0, 0, 0, .5);
+}
+
 .thumbnail img {
   margin: -10px;
 }
@@ -464,6 +468,7 @@ header {
   margin-left: -0.3rem;
   color: black;
   visibility: visible;
+  border: none;
 }
 
 .addToCartContainer {
@@ -677,6 +682,7 @@ header {
 .reviewsContainer {
   display: flex;
   max-height: max(32rem, 95vh);
+  flex-flow: row wrap;
 }
 
 .ratingsAndReviews {
