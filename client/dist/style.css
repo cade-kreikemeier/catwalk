@@ -12,7 +12,7 @@
   --accent-7: #f26419ff;
   --btn-1: #0053ee;
   --btn-2: #06a128;
-  
+
   --box-shadow-1: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
   --bg: #242526;
   --bg-accent: #484a4d;
@@ -118,6 +118,7 @@ body {
   position: relative;
   height: 100%;
   width: 100%;
+
 }
 
 .previewContainer::-webkit-scrollbar {
@@ -134,9 +135,10 @@ body {
   position: relative;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 204, 255, 0.1);
+  background-color: rgba(181, 219, 242, .2);
   display: block;
   filter: 5px;
+  border-radius: 7px;
 }
 
  .slide-active .expandIcon {
@@ -156,6 +158,7 @@ body {
    max-height: 100%;
    width: 100%;
    object-fit: cover;
+   border-radius: 7px;
   }
 
 .horizontal-arrow {
@@ -221,7 +224,7 @@ body {
 }
 
 .overViewContainer {
-  background-color:hotpink;
+  background-color: rgba(181, 219, 242, .5);
   min-height: 75vh;
   display: flex;
 }
@@ -319,7 +322,6 @@ body {
 /* Style */
 
 .styleSelector {
-  background-color: transparent;
   grid-area: styleSelector;
   display: flex;
   flex-direction: column;
@@ -327,12 +329,15 @@ body {
 }
 
 .styleHeadLine {
-  border: 2px dashed black;
+  font-family: 'Poppins';
+  font-weight: 200;
+  font-size: 1.5rem;
   display: flex;
   flex-grow: 1;
   flex-basis: 10%;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   padding: 3px;
   margin: 2px;
 }
@@ -340,7 +345,6 @@ body {
 .styleThumbnail {
   flex-grow: 5;
   flex-basis:70%;
-  border: 2px dashed black;
   justify-content: space-around;
   justify-items: center;
   align-items: center;
