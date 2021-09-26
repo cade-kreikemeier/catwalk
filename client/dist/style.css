@@ -1,10 +1,37 @@
 /* CSS HEX */
 :root {
-  --medium-turquoise: #55dde0ff;
-  --charcoal: #2f4858ff;
-  --queen-blue: #33658aff;
-  --honey-yellow: #f6ae2dff;
-  --safety-orange-blaze-orange: #f26419ff;
+  /* These aren't permanent, was using them as references */
+  --primary-background: #f2feff;
+  --secondary-background: #e4e8eb;
+  --accent-1: #B6DBF2;
+  --accent-2: #3F8EBF;
+  --accent-3: #33658aff;
+  --accent-4: #024873;
+  --accent-5: #f6ae2dff;
+  --accent-6: #e0bf00;
+  --accent-7: #f26419ff;
+  --btn-1: #0053ee;
+  --btn-2: #06a128;
+  
+  --box-shadow-1: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  --bg: #242526;
+  --bg-accent: #484a4d;
+  --text-color: #dadce1;
+  --nav-size: 60px;
+  --border: 1px solid #474a4d;
+  --border-radius: 8px;
+  --speed: 500ms;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 *,
@@ -14,27 +41,30 @@
 }
 
 body{
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Poppins', sans-serif;
 }
 
 body,
 h1,
 h2,
 h3,
+h4,
+h5,
 p {
   margin: 0;
-}
-
-h2,
-h3,
-p {
-  margin-bottom: 1em;
 }
 
 body {
   margin-inline: auto;
   margin-bottom: 2rem;
   padding-inline: clamp(.25rem, 2rem, 6rem);
+  background-color: var(--primary-background);
 }
 
 .section-md {
@@ -220,18 +250,18 @@ align-items: center;
 .star {
   flex-grow: 0;
   flex-shrink: 0;
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .starOutline {
   display: flex;
   position: absolute;
-  color: lightgray;
+  color: grey;
 }
 
 .starFilled {
   position: relative;
-  color: black;
+  color: var(--accent-6);
   overflow: hidden;
 }
 
@@ -242,7 +272,6 @@ align-items: center;
   align-items: center;
   width: 30%;
   flex-grow: 1;
-  border: 2px dashed black;
   margin: 2px;
 }
 
@@ -357,59 +386,91 @@ align-items: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: green;
+
   grid-area: addToCartContainer;
   padding: .5rem;
   justify-content: space-between;
 }
 
 .sizeSelector {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-grow: 3;
   flex-basis: 50%;
-  height: 40%;
-  border-style: dashed;
-  border-color: black;
+  position: relative;
+  height: 3.5rem;
   margin: 2px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 1rem;
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  transition: filter 300ms;
+}
+.sizeSelector:hover {
+  filter: brightness(1.3);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(3.5rem + 3px);
+  max-height: 10rem;
+  width: 100%;
+  background-color: var(--bg);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+}
+
+.menuItem:hover {
+  background-color: #525357;
 }
 
 .quantitySelector {
   flex-grow: 2;
   flex-basis: 30%;
-  height: 40%;
-  border-style: dashed;
-  border-color: black;
-  display: inline-block;
+  position: relative;
+  height: 3.5rem;
   margin: 2px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 1rem;
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  transition: filter 300ms;
 }
 
 .addToCart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
   flex-grow: 4;
   flex-basis: 70%;
-  border-style: dashed;
-  border-color: black;
+  height: 4rem;
   margin: 2px;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 1.5rem;
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  transition: filter 300ms;
 }
 
-.favBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40%;
-  flex-grow: 1;
-  flex-basis: 20%;
-  border-style: dashed;
-  border-color: black;
-  margin: 2px;
+.addToCart:hover {
+  filter: brightness(1.3);
 }
 
 /* Related Items */
@@ -449,7 +510,7 @@ align-items: center;
   position: relative;
   border: 0px solid white;
   border-radius: 8px;
-  box-shadow: 4px 4px 6px 0px #00000066;
+  box-shadow: var(--box-shadow-1);
 }
 
 .carouselCard > div {
@@ -476,7 +537,7 @@ align-items: center;
   aspect-ratio: 1/1;
   border-radius: 50%;
   border: 0px;
-  box-shadow: 4px 4px 6px 0px #00000066;
+  box-shadow: var(--box-shadow-1);
 }
 
 /* Comparison Modal */
@@ -499,38 +560,76 @@ align-items: center;
 /* Reviews */
 
 .reviews {
-  background-color: grey;
   background-size: cover;
   max-height: max(35rem, 97vh);
   flex-flow: row wrap;
 }
 
+.reviews h2 {
+  font-size: 2.4rem;
+}
+
 .ratingsAndReviews {
-  border: 3px solid red;
   flex-grow: 1;
   flex-basis: 34%;
   min-width: 16rem;
+  font-weight: 700;
+}
+
+.ratingsAndReviewsBackground {
+  margin-top: 2rem;
+  background-color: var(--secondary-background);
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  border-radius: .5rem;
+  padding: 1rem 1.2rem;
 }
 
 .ratingSummary {
-  border: 3px solid orange;
+  margin-bottom: .5rem;
+}
+
+.ratingSummary h2 {
+  font-size: 2.5rem;
+  margin-right: .5rem;
+}
+
+.ratingSummaryWrapper {
+  display: flex;
+  font-size: 2rem;
+}
+
+.ratingSummaryWrapper span {
+  font-size: 2rem;
 }
 
 .ratingBreakdown {
-  border: 3px solid yellow;
+  margin-bottom: 1rem;
 }
 
-.attributesSummary {
-  border: 3px solid darkorange;
+.ratingMeter {
+  margin-inline: auto;
+  margin-block: .5rem;
+  padding-inline: .5rem;
+  height: 1.5rem;
+  background: var(--accent-1);
+  border-radius: .5rem;
+}
+
+.ratingMeter meter {
+  width: 75%;
+}
+
+.attributesSummary h4{
+  font-size: 1.3rem;
 }
 
 .reviewList {
-  border: 3px solid blue;
   display: flex;
   flex-flow: column nowrap;
   flex-grow: 1;
   flex-basis: 66%;
   min-width: 23rem;
+  padding: 1rem;
 }
 
 .btnContainer {
@@ -540,36 +639,104 @@ align-items: center;
 }
 
 .btnContainer button {
-  border-radius: 0;
+  border-radius: .5rem;
   height: 3rem;
   width: 10rem;
   margin-block: .5rem;
+  cursor: pointer;
+  font-family: 'Poppins';
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: var(--btn-1);
 }
 
 .reviewSort {
-  border: 3px solid green;
   height: 3.5rem;
   display: flex;
+  background-color: var(--secondary-background);
+  box-shadow: 4px 4px 6px 0px rgba(0, 0, 0, 0.4);
+  border-radius: .5rem;
+  margin-inline: 1rem;
+  margin-bottom: .5rem;
 }
 
 .reviewSort h3 {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin: auto 0 auto .8rem;
 }
 
 .reviewTileContainer {
-  border: 3px solid purple;
   overflow-y: auto;
   max-height: 82vh;
+  padding: 1rem;
+  position: relative;
 }
 
 .reviewTile {
-  border: 3px solid yellowgreen;
-  height: 16rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 10rem;
+  margin-bottom: .8rem;
+  padding: 1rem 1.2rem;
+  background-color: var(--secondary-background);
+  box-shadow:  var(--box-shadow-1);
+  border-radius: .5rem;
+  position: relative;
+}
+
+.reviewReviewerName {
+  font-size: 1.6rem;
+}
+
+.reviewReviewerName h4 {
+  margin-block: .4rem .8rem;
+}
+
+.reviewRating {
+  font-size: 1.4rem;
+  margin-bottom: .4rem;
+}
+
+.reviewCardDate {
+  font-weight: 600;
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+}
+
+.reviewSummary {
+  font-size: 1.3rem;
+  margin-bottom: .4rem;
+}
+
+.reviewBody {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  width: 85%;
+}
+
+.reviewRecommend {
+  margin-bottom: .6rem;
+}
+
+.reviewResponse {
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+
+.reviewResponse h4 {
+  margin: 0 0 .2rem 0 ;
+}
+
+.reviewHelpfulness a {
+  color: #1f44be;
+  cursor: pointer;
 }
 
 .reviewTile .checkIcon {
-  color: black;
+  color: #000;
 }
 
 .reviewTile .reviewBody a {
@@ -592,7 +759,7 @@ align-items: center;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
@@ -605,7 +772,7 @@ align-items: center;
   width: 600px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  z-index: 101;
+  z-index: 1001;
   overflow-x: auto;
   padding: 3rem;
 }
