@@ -5,6 +5,15 @@ interface Props {
   value: string
 }
 
+// const characteristics = {
+//   Size: ['A size too small', 'Perfect', 'A size too wide'],
+//   Width: ['Too narrow', 'Perfect', 'Too wide'],
+//   Comfort: ['Uncomfortable', 'Ok', 'Perfect'],
+//   Quality: ['Poor', 'What I expected', 'Perfect'],
+//   Length: ['Runs Short', 'Perfect', 'Runs Long'],
+//   Fit: ['Run Tight', 'Perfect', 'Runs Loose']
+// };
+
 export default function AttributeSlider({ char, value }: Props): JSX.Element {
   return (
     <div className="attributeSlider" key={char}>
@@ -17,6 +26,7 @@ export default function AttributeSlider({ char, value }: Props): JSX.Element {
         disabled={true}
         value={parseInt(value) * 20}>
       </input>
+      {/* <div></div> */}
     </div>
   );
 }
