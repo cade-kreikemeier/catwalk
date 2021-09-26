@@ -124,7 +124,7 @@ header {
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: 2.5fr 1fr;
-  grid-template-rows: 1.5fr 2.5fr 1fr;
+  grid-template-rows: 1.5fr 2fr 1fr;
   grid-template-areas:
   "imageGallery   productInfo"
   "imageGallery  styleSelector"
@@ -427,31 +427,35 @@ header {
 .styleThumbnail {
   flex-grow: 5;
   flex-basis:70%;
+  max-height: 100%;
   justify-content: space-around;
   justify-items: center;
   align-items: center;
   display: grid;
   grid-gap: 2px;
-  grid-template-columns: 22% 22% 22% 22%;
-  grid-template-rows: 45% 45%;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 45% 45%;
   grid-template-areas:
   " tn0 tn1 tn2 tn3 "
-  " tn4 tn5 tn6 th7 ";
+  " tn4 tn5 tn6 th7 "; */
   margin: 2px;
+
 }
 
+
 .thumbnail {
+  /* position: relative; */
   height: 60px;
   width: 60px;
   padding: 10px 10px 10px 10px;
   margin: 5px 5px 5px 5px;
-  background-color: #bbb;
   border-radius: 50%;
-  border: 2px solid grey;
+  border: 2px solid transparent;
   flex-wrap: wrap;
   overflow: hidden;
   font-size: 1rem;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, .5);
 }
 
 .thumbnail:hover {
@@ -466,9 +470,10 @@ header {
   position: absolute;
   margin-top: -.7rem;
   margin-left: -0.3rem;
-  color: black;
+  color: #E0D12D;
   visibility: visible;
   border: none;
+  z-index: 10;
 }
 
 .addToCartContainer {

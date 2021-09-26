@@ -7,7 +7,7 @@ interface Props {
 
 export default function AttributeSlider({ char, value }: Props): JSX.Element {
   return (
-    <div key={char}>
+    <div className="attributeSlider" key={char}>
       <label htmlFor={char}>{char}</label>
       <input readOnly
         type="range"

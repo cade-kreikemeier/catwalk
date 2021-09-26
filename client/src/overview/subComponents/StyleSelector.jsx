@@ -36,7 +36,7 @@ function StyleSelector({ thumbnailPics, currentProductStyles }) {
             return (
             <span key={'stylePic' + index} className={`thumbnail tn${index}`} onClick={ () => thumbnailClicked(event, index) }>
               <img src={stylePic} style={{ width: '155%', height: '155%' }}></img>
-                {index === currentStyleIdx ? <span className={`far fa-check-circle checkIcon Icon${index}` }></span> : null}
+                {index === currentStyleIdx ? <span className={`fas fa-check checkIcon Icon${index}` }></span> : null}
             </span>
             );
           })
