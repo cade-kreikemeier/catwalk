@@ -21,7 +21,7 @@ const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const id = Number(props.match.params.product_id);
   return (
     <>
-      <header><h1>Shreddit Co.</h1></header>
+      <header>Shreddit Co.</header>
       <ProductIdContext.Provider value={id}>
         <ModalContext.Provider value={{ modalContent, setModalContent }}>
           <Providers.ProductsProvider>
