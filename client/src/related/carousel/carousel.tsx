@@ -22,7 +22,7 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
   const uniqueIds = Array.from(new Set(props.ids));
 
   return <div>
-    <h3>{props.title}</h3>
+    <h2>{props.title}</h2>
     <div className="carousel-container">
       {(position > 0)
         ? <button

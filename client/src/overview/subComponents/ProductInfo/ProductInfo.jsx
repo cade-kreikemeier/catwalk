@@ -26,7 +26,7 @@ export default function ProductInfo() {
       }
       <ProductCategory />
       <ProductName />
-      <ProductPrice />
+      {/* <ProductPrice /> */}
     </div>
   );
 };

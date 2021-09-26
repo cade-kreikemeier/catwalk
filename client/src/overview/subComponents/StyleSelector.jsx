@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext, StyleNameContext } from '../overview.jsx';
 
 function StyleSelector({ thumbnailPics, currentProductStyles }) {
   const StyleIdxContextData = useContext(StyleIdxContext);
   const StyleNameContextData = useContext(StyleNameContext);
+  const [display, setDisplay] = useState(false);
   let currentStyleIdx;
   let setCurrentStyleIdx;
   let currentStyleName;
@@ -17,16 +18,17 @@ function StyleSelector({ thumbnailPics, currentProductStyles }) {
     if (currentProductStyles) {
       setCurrentStyleIdx(index);
       setCurrentStyleName(currentProductStyles.results[index].name);
+      setDisplay(true);
+      setInterval(() => { setDisplay(false); }, 1000);
     }
   };
-
 
 
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
-       <p>{'Style > \n '}</p>
-       <p className={'styleName'}>{currentStyleName}</p>
+       <p className={'styleCategory'}>{'Style > \n '}</p>
+       <p className={`styleName styleInitAnimate ${display ? 'styleInitAnimate-active' : null}`}>{currentStyleName}</p>
       </div>
       <div className='styleThumbnail'>
         {thumbnailPics
