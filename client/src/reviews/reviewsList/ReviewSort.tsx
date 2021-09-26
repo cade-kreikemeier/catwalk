@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { ReviewsContext, ReviewsMetadataContext } from '../../contexts/Contexts';
+import { ReviewsContext } from '../../contexts/Contexts';
 
 const ReviewSort: React.FC = () => {
   const { reviews, setSortType } = useContext(ReviewsContext) || {};
-  // const { reviewCount } = useContext(ReviewsMetadataContext) || {};
 
   const onChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     setSortType?.call(null, e.target.value);

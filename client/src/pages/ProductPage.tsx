@@ -20,26 +20,29 @@ const ProductPage: React.FC<ProductPageProps> = (props: ProductPageProps) => {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
   const id = Number(props.match.params.product_id);
   return (
-    <ProductIdContext.Provider value={id}>
-      <ModalContext.Provider value={{ modalContent, setModalContent }}>
-        <Providers.ProductsProvider>
-          <Providers.ProductProvider>
-            <Providers.ReviewsMetadataProvider>
-              <Providers.ProductSytlesProvider>
-                <Overview />
-                <Providers.RelatedProductsProvider>
-                  <Related />
-                </Providers.RelatedProductsProvider>
-              </Providers.ProductSytlesProvider>
-              <Providers.ReviewsProvider>
-                <Reviews />
-              </Providers.ReviewsProvider>
-            </Providers.ReviewsMetadataProvider>
-          </Providers.ProductProvider>
-        </Providers.ProductsProvider>
-        <Modal />
-      </ModalContext.Provider>
-    </ProductIdContext.Provider>
+    <>
+      <header><h1>Shreddit Co.</h1></header>
+      <ProductIdContext.Provider value={id}>
+        <ModalContext.Provider value={{ modalContent, setModalContent }}>
+          <Providers.ProductsProvider>
+            <Providers.ProductProvider>
+              <Providers.ReviewsMetadataProvider>
+                <Providers.ProductSytlesProvider>
+                  <Overview />
+                  <Providers.RelatedProductsProvider>
+                    <Related />
+                  </Providers.RelatedProductsProvider>
+                </Providers.ProductSytlesProvider>
+                <Providers.ReviewsProvider>
+                  <Reviews />
+                </Providers.ReviewsProvider>
+              </Providers.ReviewsMetadataProvider>
+            </Providers.ProductProvider>
+          </Providers.ProductsProvider>
+          <Modal />
+        </ModalContext.Provider>
+      </ProductIdContext.Provider>
+    </>
   );
 };
 
