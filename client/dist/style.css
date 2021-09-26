@@ -209,10 +209,7 @@ body {
 
 .overView {
   padding: 2rem max(2rem, 5vw);
-  /* background-color: grey; */
 }
-
-
 
 .overViewContainer {
   background-color:hotpink;
@@ -223,7 +220,7 @@ body {
 .productInfo {
   grid-area: productInfo;
   display: flex;
-  background-color: blue;
+  background-color: transparent;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -233,9 +230,9 @@ body {
 }
 
 .starReviewRow {
-display: flex;
-flex-direction: row;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .star {
@@ -314,7 +311,7 @@ align-items: center;
 /* Style */
 
 .styleSelector {
-  background-color: yellow;
+  background-color: transparent;
   grid-area: styleSelector;
   display: flex;
   flex-direction: column;
@@ -426,7 +423,6 @@ align-items: center;
   transform: translateY(calc(1rem + 3px));
 
 }
-
 
 .dropdown::-webkit-scrollbar {
   display: none;
