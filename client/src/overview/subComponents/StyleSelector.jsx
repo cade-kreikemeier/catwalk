@@ -23,7 +23,7 @@ function StyleSelector({ thumbnailPics, currentProductStyles }) {
   return (
     <div className='styleSelector'>
       <div className='styleHeadLine'>
-       <p>{'Style >  '}</p>
+       <p>{'Style > \n '}</p>
        <p>{currentStyleName}</p>
       </div>
       <div className='styleThumbnail'>
