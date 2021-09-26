@@ -19,7 +19,7 @@
   --text-color: #dadce1;
   --nav-size: 60px;
   --border: 1px solid #474a4d;
-  --border-radius: 8px;
+  --border-radius: .5rem;
   --speed: 500ms;
 }
 
@@ -218,10 +218,7 @@ body {
 
 .overView {
   padding: 2rem max(2rem, 5vw);
-  /* background-color: grey; */
 }
-
-
 
 .overViewContainer {
   background-color:hotpink;
@@ -232,7 +229,7 @@ body {
 .productInfo {
   grid-area: productInfo;
   display: flex;
-  background-color: blue;
+  background-color: transparent;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -242,9 +239,9 @@ body {
 }
 
 .starReviewRow {
-display: flex;
-flex-direction: row;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .star {
@@ -322,7 +319,7 @@ align-items: center;
 /* Style */
 
 .styleSelector {
-  background-color: yellow;
+  background-color: transparent;
   grid-area: styleSelector;
   display: flex;
   flex-direction: column;
@@ -412,7 +409,7 @@ align-items: center;
 
 .dropdown {
   position: absolute;
-  top: calc(3.5rem + 3px);
+  top: calc(2.5rem);
   max-height: 10rem;
   width: 100%;
   background-color: var(--bg);
@@ -422,6 +419,17 @@ align-items: center;
   overflow: scroll;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .5);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+
+}
+
+.dropdown-active
+ {
+  opacity: 1;
+  transform: translateY(calc(1rem + 3px));
+
 }
 
 .dropdown::-webkit-scrollbar {

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -18,11 +18,11 @@ export default function SizeSelector({ currentProductStyles }) {
   }
 
   return (
-    <div className="sizeSelector">
-      <span className='fas fa-tshirt' onClick={() => setOpen(!open)}>
+    <div className="sizeSelector" onClick={() => setOpen(!open)}>
+      <span className='fas fa-tshirt shirt' >
         Size
       </span>
-      {open && <Dropdown
+      { <Dropdown
         currentSizeInfo={currentSizeInfo || null}
         open={open}
         setOpen={setOpen}
@@ -37,25 +37,26 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
     currentSizeArr.push(currentSizeInfo[key]);
   }
 
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
 
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(!open);
-        }
-      }
+  // function useOutsideAlerter(ref) {
+  //   useEffect(() => {
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //         console.log(event.target);
+  //         setOpen(!open);
+  //       }
+  //     }
 
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [ref]);
-  }
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //     return () => {
+  //       document.removeEventListener('mousedown', handleClickOutside);
+  //     };
+  //   }, [ref]);
+  // }
   return (
-    <div className="dropdown" ref={wrapperRef}>
+    <div className={`dropdown ${open ? 'dropdown-active' : null}`} >
       {currentSizeArr.length
         ? currentSizeArr.map((currentSize, index) => {
           return (

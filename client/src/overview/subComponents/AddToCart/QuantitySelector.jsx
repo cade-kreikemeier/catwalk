@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -23,10 +23,10 @@ export default function QuantitySelector({ currentProductStyles }) {
   }
 
   return (
-    <div className="quantitySelector">
-      <span className='fas fa-angle-down' onClick={() => setOpen(!open)}>
+    <div className="quantitySelector" onClick={() => setOpen(!open)}>
+      <span className='fas fa-angle-down' >
       </span>
-      {open &&
+      {
       <Dropdown
         currentSizeQuantity={currentSizeQuantity}
         open={open}
@@ -42,25 +42,25 @@ function Dropdown({ currentSizeQuantity, open, setOpen }) {
     currentQuantityArr.push(i);
   }
 
-  const wrapperRef = useRef(null);
-  useOutsideAlerter(wrapperRef);
+  // const wrapperRef = useRef(null);
+  // useOutsideAlerter(wrapperRef);
 
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(!open);
-        }
-      }
+  // function useOutsideAlerter(ref) {
+  //   useEffect(() => {
+  //     function handleClickOutside(event) {
+  //       if (ref.current && !ref.current.contains(event.target)) {
+  //         setOpen(!open);
+  //       }
+  //     }
 
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
-    }, [ref]);
-  }
+  //     document.addEventListener('mousedown', handleClickOutside);
+  //     return () => {
+  //       document.removeEventListener('mousedown', handleClickOutside);
+  //     };
+  //   }, [ref]);
+  // }
   return (
-    <div className="dropdown" ref={wrapperRef}>
+    <div className={`dropdown ${open ? 'dropdown-active' : null}`} >
       {currentQuantityArr.length
         ? currentQuantityArr.map((number, index) => {
           return (
