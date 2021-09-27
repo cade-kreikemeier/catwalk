@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { monthDayYear } from '../../utils/dateConversion';
-import { review } from '../../models/reviews.interface';
+import { review, photo } from '../../models/reviews.interface';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ReviewStar from '../../utils/ReviewStar.jsx';
@@ -58,6 +58,13 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
       </div>
       {review.response
         ? <div className="reviewResponse"><h4>Response from seller</h4><em>{review.response}</em></div>
+        : null}
+      {review.photos.length
+        ? <div className="reviewPhotos">
+          {review.photos.map((photo: photo) => (
+            <img key={photo.id} className="reviewPhoto" src={photo.url}></img>
+          ))}
+        </div>
         : null}
       <div className="reviewHelpfulness">
         <span>Was this review helpful?

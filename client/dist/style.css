@@ -999,6 +999,18 @@ header {
   display: block;
 }
 
+.reviewPhotos {
+  display: flex;
+  margin-bottom: .5rem;
+  gap: .5rem;
+}
+
+.reviewPhoto {
+  height: 4rem;
+  width: 4rem;
+  border-radius: .5rem;
+}
+
 /* Modal */
 
 .modal-wrapper {
@@ -1025,8 +1037,9 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 300px;
-  width: 600px;
+  min-height: 12rem;
+  max-height: 80vh;
+  width: 37.5rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   z-index: 1001;
