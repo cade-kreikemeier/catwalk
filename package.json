@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "server": "node server/index.js",
-    "build-dev": "webpack -w",
-    "build": "webpack",
+    "build-dev": "webpack -w --mode development",
+    "build": "webpack --mode production",
     "lint": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx",
     "lint:fix": "eslint . --ext .ts --ext .tsx --ext .js --ext .jsx --fix",
     "live": "live-server --open=./client/dist/"
