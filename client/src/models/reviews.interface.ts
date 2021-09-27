@@ -18,8 +18,8 @@ export interface review {
   photos: photo[]
 }
 
-interface photo {
-  'thumbnail_url': string,
+export interface photo {
+  id: number,
   url: string
 }
 

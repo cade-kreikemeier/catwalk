@@ -749,6 +749,109 @@ header {
 
 .attributesSummary h4{
   font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: .3rem;
+}
+
+.attributeSlider {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5rem;
+}
+
+.attributeSlider input[type=range] {
+  height: 2rem;
+  -webkit-appearance: none;
+  width: 100%;
+  background-color: transparent;
+}
+.attributeSlider input[type=range]:focus {
+  outline: none;
+}
+.attributeSlider input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: .5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #000000;
+  background: #808080;
+  border-radius: .25rem;
+  border: 1px solid #8A8A8A;
+}
+.attributeSlider input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 0px #828282;
+  border: 1px solid #8A8A8A;
+  height: 1.5rem;
+  width: .5rem;
+  border-radius: .5rem;
+  background: #00AB60;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -.6rem;
+}
+.attributeSlider input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #808080;
+}
+.attributeSlider input[type=range]::-moz-range-track {
+  width: 100%;
+  height: .5rem;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px #000000;
+  background: #808080;
+  border-radius: .25rem;
+  border: 1px solid #8A8A8A;
+}
+.attributeSlider input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 0px #828282;
+  border: 1px solid #8A8A8A;
+  height: 1.5rem;
+  width: .5rem;
+  border-radius: .5rem;
+  background: #00AB60;
+  cursor: pointer;
+}
+.attributeSlider input[type=range]::-ms-track {
+  width: 100%;
+  height: 12px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.attributeSlider input[type=range]::-ms-fill-lower {
+  background: #808080;
+  border: 1px solid #8A8A8A;
+  border-radius: 50px;
+  box-shadow: 1px 1px 2px #000000;
+}
+.attributeSlider input[type=range]::-ms-fill-upper {
+  background: #808080;
+  border: 1px solid #8A8A8A;
+  border-radius: 50px;
+  box-shadow: 1px 1px 2px #000000;
+}
+.attributeSlider input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 0px #828282;
+  border: 1px solid #8A8A8A;
+  height: 32px;
+  width: 24px;
+  border-radius: 8px;
+  background: #00AB60;
+  cursor: pointer;
+}
+.attributeSlider input[type=range]:focus::-ms-fill-lower {
+  background: #808080;
+}
+.attributeSlider input[type=range]:focus::-ms-fill-upper {
+  background: #808080;
+}
+
+
+.sliderAttributes {
+  display: flex;
+  font-size: .8rem;
+  font-weight: 300;
+  justify-content: space-between;
 }
 
 .reviewList {
@@ -864,6 +967,10 @@ header {
   width: 85%;
 }
 
+.reviewBody a {
+  color: #1f44be;
+}
+
 .reviewRecommend {
   margin-bottom: .6rem;
 }
@@ -892,6 +999,18 @@ header {
   display: block;
 }
 
+.reviewPhotos {
+  display: flex;
+  margin-bottom: .5rem;
+  gap: .5rem;
+}
+
+.reviewPhoto {
+  height: 4rem;
+  width: 4rem;
+  border-radius: .5rem;
+}
+
 /* Modal */
 
 .modal-wrapper {
@@ -918,8 +1037,9 @@ header {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 300px;
-  width: 600px;
+  min-height: 12rem;
+  max-height: 80vh;
+  width: 37.5rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   z-index: 1001;

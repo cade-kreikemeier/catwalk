@@ -6,7 +6,6 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'client', 'dist')
   },
-  mode: 'development',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
