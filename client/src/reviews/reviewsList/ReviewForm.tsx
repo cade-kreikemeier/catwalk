@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState, ChangeEvent } from 'react';
 
 interface reviewForm {
   'product_id': number | null,
@@ -37,7 +37,7 @@ export default function ReviewForm(): ReactElement {
     });
   };
 
-  const onChange = (e) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>) => {
     setReviewForm((reviewForm) => {
       return { ...reviewForm, [e.target.name]: e.target.value };
     });
