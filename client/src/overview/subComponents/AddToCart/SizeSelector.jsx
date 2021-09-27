@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -16,9 +16,27 @@ export default function SizeSelector({ currentProductStyles }) {
       currentSizeInfo = currentProductStyles.results[currentStyleIdx].skus;
     }
   }
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target) && open) {
+          setOpen(!open);
+        }
+      }
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref, open]);
+  }
+
 
   return (
-    <div className="sizeSelector" onClick={() => setOpen(!open)}>
+    <div className="sizeSelector" onClick={() => setOpen(!open)} ref={wrapperRef}>
       <span className='fas fa-tshirt shirt' >
         Size
       </span>
@@ -37,24 +55,7 @@ function Dropdown({ currentSizeInfo, open, setOpen }) {
     currentSizeArr.push(currentSizeInfo[key]);
   }
 
-  // const wrapperRef = useRef(null);
-  // useOutsideAlerter(wrapperRef);
 
-  // function useOutsideAlerter(ref) {
-  //   useEffect(() => {
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         console.log(event.target);
-  //         setOpen(!open);
-  //       }
-  //     }
-
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener('mousedown', handleClickOutside);
-  //     };
-  //   }, [ref]);
-  // }
   return (
     <div className={`dropdown ${open ? 'dropdown-active' : null}`} >
       {currentSizeArr.length
