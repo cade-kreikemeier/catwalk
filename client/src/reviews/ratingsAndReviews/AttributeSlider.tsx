@@ -5,11 +5,11 @@ interface Props {
   value: string
 }
 
-interface characteristics {
-  [key: string]: string[]
+interface attributes {
+  [key: string]: string[];
 }
 
-const characteristics: characteristics = {
+const attributes: attributes = {
   Size: ['A size too small', 'Perfect', 'A size too wide'],
   Width: ['Too narrow', 'Perfect', 'Too wide'],
   Comfort: ['Uncomfortable', 'Ok', 'Perfect'],
@@ -19,9 +19,9 @@ const characteristics: characteristics = {
 };
 
 const charDescriptions = (char: string) => {
-  if (characteristics[char].length) {
-    return <div>
-      {characteristics[char].map((description: string) => {
+  if (attributes[char].length) {
+    return <div className="sliderAttributes">
+      {attributes[char].map((description: string) => {
         return <span key={description}>{description}</span>;
       })}
     </div>;
