@@ -138,9 +138,12 @@ header {
 .imageGallery {
   grid-area: imageGallery;
   position: relative;
+  display: flex;
   height: 100%;
   width: 100%;
-
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .previewContainer::-webkit-scrollbar {
@@ -154,11 +157,8 @@ header {
 .slide-active {
   height: 100%;
   width: 100%;
-  position: relative;
-  justify-content: center;
-  align-items: center;
   background-color: rgba(181, 219, 242, .1);
-  display: block;
+  display: flex;
   filter: 5px;
   border-radius: 7px;
   transition: transform 300ms ease-out;
