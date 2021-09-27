@@ -5,7 +5,11 @@ interface Props {
   value: string
 }
 
-const characteristics = {
+interface characteristics {
+  [key: string]: string[]
+}
+
+const characteristics: characteristics = {
   Size: ['A size too small', 'Perfect', 'A size too wide'],
   Width: ['Too narrow', 'Perfect', 'Too wide'],
   Comfort: ['Uncomfortable', 'Ok', 'Perfect'],

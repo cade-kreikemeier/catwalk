@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { StyleIdxContext } from '../../overview.jsx';
 import { SizeContext } from './AddToCart.jsx';
@@ -22,8 +22,26 @@ export default function QuantitySelector({ currentProductStyles }) {
     }
   }
 
+  const wrapperRef2 = useRef(null);
+  useOutsideAlerter(wrapperRef2);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target) && open) {
+          setOpen(!open);
+        }
+      }
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref, open]);
+  }
+
   return (
-    <div className="quantitySelector" onClick={() => setOpen(!open)}>
+    <div className="quantitySelector" onClick={() => setOpen(!open)} ref={wrapperRef2}>
       <span className='fas fa-angle-down' >
       </span>
       {
@@ -42,23 +60,6 @@ function Dropdown({ currentSizeQuantity, open, setOpen }) {
     currentQuantityArr.push(i);
   }
 
-  // const wrapperRef = useRef(null);
-  // useOutsideAlerter(wrapperRef);
-
-  // function useOutsideAlerter(ref) {
-  //   useEffect(() => {
-  //     function handleClickOutside(event) {
-  //       if (ref.current && !ref.current.contains(event.target)) {
-  //         setOpen(!open);
-  //       }
-  //     }
-
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener('mousedown', handleClickOutside);
-  //     };
-  //   }, [ref]);
-  // }
   return (
     <div className={`dropdown ${open ? 'dropdown-active' : null}`} >
       {currentQuantityArr.length
