@@ -50,7 +50,10 @@ const ReviewTile: FC<{ review: review }> = ({ review }) => {
       </div>
       <div className="reviewRecommend">
         {review.recommend
-          ? <span className={'far fa-check-circle checkIcon'}> I recommend this product</span>
+          ? <div>
+            <span className={'far fa-check-circle checkIcon'} />
+            <span className={'reviewRecommendText'}>  I recommend this product</span>
+          </div>
           : null}
       </div>
       {review.response

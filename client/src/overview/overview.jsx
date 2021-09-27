@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { ProductStyleContext } from '../contexts/Contexts.tsx';
-import AddToCart from './subComponents/AddToCart.jsx';
+import AddToCart from './subComponents/AddToCart/AddToCart.jsx';
 import ImageGallery from './subComponents/ImageGallery.jsx';
 import ProductInfo from './subComponents/ProductInfo/ProductInfo.jsx';
 import StyleSelector from './subComponents/StyleSelector.jsx';
@@ -14,13 +14,20 @@ function OverView() {
   const currentProductStyles = useContext(ProductStyleContext);
   const thumbnailPics = [];
   const [currentStyleIdx, setCurrentStyleIdx] = useState(0);
-  const [currentStyleName, setCurrentStyleName] = useState('Forest Green & Black by Default');
+  const [currentStyleName, setCurrentStyleName] = useState(null);
   const [expandIsClicked, setExpandIsClicked] = useState(false);
+
   if (currentProductStyles) {
     currentProductStyles.results.forEach((element, index) => {
       thumbnailPics.push(element.photos[0].thumbnail_url);
     });
   }
+
+  useEffect(() => {
+    if (currentProductStyles) {
+      setCurrentStyleName(currentProductStyles.results[currentStyleIdx].name);
+    }
+  }, [currentProductStyles]);
   return (
     <section className="section-lg">
       <div className={`overView ${expandIsClicked ? 'expandImageGallery' : 'stdImageGallery'}`}>
@@ -36,7 +43,7 @@ function OverView() {
                       thumbnailPics={thumbnailPics}
                       currentProductStyles={currentProductStyles}
                     />}
-                    {<AddToCart />}
+                    {<AddToCart currentProductStyles={currentProductStyles || null}/>}
                   </>
               }
             </ExpandContext.Provider>

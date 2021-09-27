@@ -21,32 +21,34 @@ const Carousel: React.FC<CarouselProps> = (props: CarouselProps) => {
 
   const uniqueIds = Array.from(new Set(props.ids));
 
-  return <React.Fragment>
-    <h3>{props.title}</h3>
-    {(position > 0)
-      ? <button
-        data-testid="carousel-left-button"
-        className="carousel-arrow carousel-arrow-left"
-        onClick={decrementPosition}
-      >
-        Left
-      </button>
-      : null}
-    <div className="carousel">
-      {(uniqueIds.slice(position, position + shownCards).map(
-        id => props.cardCreator(id)
-      ))}
+  return <div>
+    <h2>{props.title}</h2>
+    <div className="carousel-container">
+      {(position > 0)
+        ? <button
+          data-testid="carousel-left-button"
+          className="carousel-arrow carousel-arrow-left"
+          onClick={decrementPosition}
+        >
+          <span className="fas fa-chevron-left"></span>
+        </button>
+        : null}
+      <div className="carousel">
+        {(uniqueIds.slice(position, position + shownCards).map(
+          id => props.cardCreator(id)
+        ))}
+      </div>
+      {(uniqueIds.length - position > shownCards)
+        ? <button
+          data-testid="carousel-right-button"
+          className="carousel-arrow carousel-arrow-right"
+          onClick={incrementPosition}
+        >
+          <span className="fas fa-chevron-right"></span>
+        </button>
+        : null}
     </div>
-    {(props.ids.length - position > shownCards)
-      ? <button
-        data-testid="carousel-right-button"
-        className="carousel-arrow carousel-arrow-right"
-        onClick={incrementPosition}
-      >
-        Right
-      </button>
-      : null}
-  </React.Fragment>;
+  </div>;
 };
 
 export default Carousel;
